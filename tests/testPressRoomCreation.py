@@ -1,0 +1,68 @@
+#
+# Test Press Room content type initialization
+#
+
+import os, sys
+if __name__ == '__main__':
+    execfile(os.path.join(sys.path[0], 'framework.py'))
+
+from Testing import ZopeTestCase
+from Products.PressRoom.tests import PressRoomTestCase
+from Products.CMFPlone import transaction
+
+
+if __name__ == '__main__':
+    execfile(os.path.join(sys.path[0], 'framework.py'))
+
+class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
+    """Ensure content types can be created and edited"""
+
+    def afterSetUp(self):
+        self.setRoles(['Manager'])
+        self.folder.invokeFactory('PressRoom', id="pressroom", title="Press Room",)
+        self.pressroom = getattr(self.folder, 'pressroom')
+        
+        self.childFolderMapping = {
+                                    'press-releases':'all-press-releases',
+                                    'press-clips':'all-press-clips',
+                                    'press-contacts':'roster',
+                                  }
+
+    def testCreatePressRoom(self):
+        self.failUnless('pressroom' in self.folder.objectIds())
+
+    def testEditPressRoom(self):
+        self.pressroom.setTitle('Media Center')
+        self.assertEqual(self.pressroom.Title(), 'Media Center')
+
+    def testPressRoomChildrenCreated(self):
+        for f in self.childFolderMapping.keys():
+            self.failUnless(f in self.pressroom.objectIds())
+
+    def testPressContactsTypesContrained(self):
+        self.presscontacts = getattr(self.pressroom,'press-contacts')
+        self.assertEqual(self.presscontacts.getConstrainTypesMode(), 1)
+        self.failUnless("PressContact","Topic" in self.presscontacts.getLocallyAllowedTypes())
+        self.failUnless("PressContact" in self.presscontacts.getImmediatelyAddableTypes())
+    
+    def testDefaultPage(self):
+        for k,v in self.childFolderMapping.items():
+            self.assertEqual(self.pressroom[k].getDefaultPage(), v)
+
+    def testChildrenTopicsCreated(self):
+        for k,v in self.childFolderMapping.items():
+            self.failUnless(v in self.pressroom[k].objectIds())
+            
+    def testSupplPressRoomViews(self):
+        self.failUnless(self.pressroom.getLayout() == 'pressroom_view')
+        self.pressroom.setLayout('pressroom_no_contacts_view') 
+        self.failUnless(self.pressroom.getLayout() == 'pressroom_no_contacts_view')
+
+def test_suite():
+    from unittest import TestSuite, makeSuite
+    suite = TestSuite()
+    suite.addTest(makeSuite(TestPressRoomCreation))
+    return suite
+
+if __name__ == '__main__':
+    framework()

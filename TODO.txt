@@ -1,0 +1,72 @@
+Press Room TODO:
+
+Before initial use:
+-=-=-=-=-=-=-=-=-=-=
+
+X - Register a stylesheet with the product that can be expanded upon as needed
+
+X - Come up with some good sensible defaults for how the PressRoom is useful OOTB
+    X - 0.1 thoughts:
+        X - On archetype initialization
+            X - Create 3 sub-folders (
+                X - Press Contacts (restricted to press contacts), 
+                X - Press Release (not restricted, so images and files can be added), 
+                X - Press Clips (restricted?)
+                X - Prove it w/ tests
+            X - Create 3 smart folders one for each of the aformentioned folders if firsttime -- these will be the default item for each folder:
+                X - Press Contacts smart folder
+                    X - Published
+                    X - "public"
+                    X - Type
+                    X - Sort order getObjPositionInParent
+                    X - Prove it w/ test
+                X - Press Releases smart folder
+                    X - Published
+                    X - Sort on effective date, reverse
+                    X - Type
+                X - Press Clips/In The News smart folder
+                    X - Published
+                    X - Sort on effective date, reverse
+                    X - Type
+
+- Add in multi-lingual support:
+    X - LinguaPlone support (attention to Schema needed?)
+    X - Add msgids to AT Schema fields
+    - Add i18N tags to PTs
+
+- Add license (NB - It'll be GPL'ed) and author information to the product
+
+- Skins improvements
+    - Register a new (or a few new) selectable views with page and set the default on for an auto added page to /press-room (Create a nice composity type view for the default "Press Room" view)
+
+- Refine the views for 
+    - press release - I think we should be able to google for some guidlines here
+    - press clip - 
+    - press contact - 
+
+- Minor tweaks
+    - Press Room shouldn't be addable by members, since by definition, you only want 1 per site
+    X - Make sure PressRoom folderish object has support for CMFDynamicViewFTI
+    X - Make sure we're not accidently re-Titling and re-Descriptitoning the portal
+    X - Get kupu settings right
+    X - Enable getObjPositionInParent setting w/ the portal_atct tool
+
+Intermediate term use:
+-=-=-=-=-=-=-=-=-=-=
+- Add a rich body to the PressRoom content type
+- Get some additional views in place
+    - Jon had the idea to create a dynamic view which:
+        - Query the catalog at root + path/to/press/room for all uniqueValues for Type
+        - Loop through each of those unque values and say: "latest images","latest files", "latest press releases", etc.
+    - I think initial clients for the press room will drive demand here
+- Come up with some good content icons for PressClip & PressRelease
+- Documentation for how to administer Press Items (everything else is still too undefined)
+- More Tests!
+- Look into possibly more suitable widgets for the reuse of publication sources
+
+
+To be determined:
+-=-=-=-=-=-=-=-=-=-=
+
+- News Item - Disable this on installation? Still not sure.  My gut says no, but when you potentialy have an option to add a Press Release, Press Clip, News Item (and possibly a Blog Entry), will unsophisticated users get confused
+- 
