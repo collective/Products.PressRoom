@@ -19,8 +19,8 @@
 /* -=-=-=- Press Release Styles -=-=-=- */
 
 .release-hashes { text-align: center; }
-
-
+.releaseTiming { text-transform: uppercase; font-weight: bold; }
+.companyName { font-weight: bold; }
 
 
 /* </dtml-with> */
