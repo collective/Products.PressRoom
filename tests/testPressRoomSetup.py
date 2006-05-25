@@ -87,17 +87,24 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
         self.failUnless('pr1' in self.folder.objectIds())
 
     def testEditPressRelease(self):
+        from DateTime import DateTime
+        now = DateTime()
+        
         self.pr1.setTitle('Big Foot Sighting!')
         self.pr1.setSubhead('Sasquatch Seen Lurking in Local Park')
         self.pr1.setDescription('A description')
         self.pr1.setText('<p>Body text</p>')
         self.pr1.setLocation('SEATTLE, WA')
+        self.pr1.setReleaseTiming('FOR IMMEDIATE RELEASE')
+        self.pr1.setReleaseDate(now)
 
         self.assertEqual(self.pr1.Title(), 'Big Foot Sighting!')
         self.assertEqual(self.pr1.getSubhead(), 'Sasquatch Seen Lurking in Local Park')
         self.assertEqual(self.pr1.Description(), 'A description')
         self.assertEqual(self.pr1.getText(), '<p>Body text</p>')
         self.assertEqual(self.pr1.getLocation(), 'SEATTLE, WA')
+        self.assertEqual(self.pr1.getReleaseTiming(), 'FOR IMMEDIATE RELEASE')
+        self.assertEqual(self.pr1.getReleaseDate(), now)
 
     def testCreatePressClip(self):
         self.failUnless('pc1' in self.folder.objectIds())
