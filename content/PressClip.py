@@ -64,7 +64,7 @@ class PressClip(ATNewsItem):
     archetype_name = 'Press Clip'
     immediate_view = 'pressclip_view'
     default_view   = 'pressclip_view'
-    content_icon   = 'newsitem_icon.gif'
+    content_icon   = 'pressclip_icon.gif'
     typeDescription = """For organization's press clips."""
     typeDescMsgId  = """Press_clip_description_edit"""
     schema         = schema
