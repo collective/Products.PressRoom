@@ -67,6 +67,8 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.contactroster._getPortalTypeName(), 'Topic')
         self.assertEqual(self.contactroster.buildQuery()['Type'], ('Press Contact',))
         self.assertEqual(self.contactroster.buildQuery()['review_state'], 'published')
+        self.assertEqual(self.contactroster.buildQuery()['path']['query'][0],"/".join(self.pressroom.getPhysicalPath()))
+        self.assertEqual(self.contactroster.buildQuery()['path']['depth'],-1)
         self.assertEqual(self.contactroster.getSortCriterion().field,'getObjPositionInParent')
 
     def testAllPressReleasesCriteria(self):
@@ -75,6 +77,8 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.allreleases._getPortalTypeName(), 'Topic')
         self.assertEqual(self.allreleases.buildQuery()['Type'], ('Press Release',))
         self.assertEqual(self.allreleases.buildQuery()['review_state'], 'published')
+        self.assertEqual(self.allreleases.buildQuery()['path']['query'][0],"/".join(self.pressroom.getPhysicalPath()))
+        self.assertEqual(self.allreleases.buildQuery()['path']['depth'],-1)
         self.assertEqual(self.allreleases.getSortCriterion().field,'effective')
         self.assertEqual(self.allreleases.getSortCriterion().getReversed(),True)
 
@@ -84,6 +88,8 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.allclips._getPortalTypeName(), 'Topic')
         self.assertEqual(self.allclips.buildQuery()['Type'], ('Press Clip',))
         self.assertEqual(self.allclips.buildQuery()['review_state'], 'published')
+        self.assertEqual(self.allclips.buildQuery()['path']['query'][0],"/".join(self.pressroom.getPhysicalPath()))
+        self.assertEqual(self.allclips.buildQuery()['path']['depth'],-1)
         self.assertEqual(self.allclips.getSortCriterion().field,'effective')
         self.assertEqual(self.allclips.getSortCriterion().getReversed(),True)
 
