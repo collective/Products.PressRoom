@@ -26,9 +26,11 @@
             <div tal:replace="structure here/getText | nothing" />
         </div>
 
-        <tal:recentreleases define="pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
+        <tal:recentreleases define="path python:'/'.join(context.getPhysicalPath());
+                                    pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
                                                                                               review_state='published',
                                                                                               sort_order='reverse',
+                                                                                              path=path,
                                                                                               sort_on='Date',)[:5]">
 
         <h2 class="documentFirstHeading">
@@ -123,10 +125,12 @@
 
         </tal:recentreleases>
 
-        <tal:recentclips define="pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',
+        <tal:recentclips define="path python:'/'.join(context.getPhysicalPath());
+                                 pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',
                                                                                               review_state='published',
                                                                                               sort_order='reverse',
-                                                                                              sort_on='Date',)[:5]">
+                                                                                              path=path,
+                                                                                              sort_on='Date',)[:5];">
 
         <h2 class="documentFirstHeading">
             Recent Press Clips
