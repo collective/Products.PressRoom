@@ -101,9 +101,16 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
             state_crit = smart_obj.addCriterion('review_state',
                                           'ATSimpleStringCriterion')
             state_crit.setValue('published')
+
             type_crit = smart_obj.addCriterion('Type',
                                          'ATPortalTypeCriterion')
             type_crit.setValue('Press Release')
+
+            path_crit = smart_obj.addCriterion('path',
+                                         'ATPathCriterion')
+            path_crit.setValue(self.UID())
+            path_crit.setRecurse(True)
+
             sort_crit = smart_obj.addCriterion('effective','ATSortCriterion')
             smart_obj.getSortCriterion().setReversed(True)
 
@@ -142,6 +149,10 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
                                          'ATPortalTypeCriterion')
             type_crit.setValue('Press Clip')
             sort_crit = smart_obj.addCriterion('effective','ATSortCriterion')
+            path_crit = smart_obj.addCriterion('path',
+                                         'ATPathCriterion')
+            path_crit.setValue(self.UID())
+            path_crit.setRecurse(True)
             smart_obj.getSortCriterion().setReversed(True)
 
         if 'press-contacts' not in self.objectIds():
@@ -182,6 +193,10 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
             type_crit = smart_obj.addCriterion('Type',
                                          'ATPortalTypeCriterion')
             type_crit.setValue('Press Contact')
+            path_crit = smart_obj.addCriterion('path',
+                                         'ATPathCriterion')
+            path_crit.setValue(self.UID())
+            path_crit.setRecurse(True)
             sort_crit = smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
             
         get_transaction().commit(1)
