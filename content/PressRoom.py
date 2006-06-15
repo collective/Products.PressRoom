@@ -13,6 +13,7 @@
 
 # CMF/ZOPE
 from Products.CMFCore import CMFCorePermissions
+from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.WorkflowCore import WorkflowException
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
@@ -37,12 +38,30 @@ from Products.ATContentTypes.interfaces import IATFolder
 # PR
 from Products.PressRoom.config import *
 
-ATFolderSchema = ATContentTypeSchema.copy() + ConstrainTypesMixinSchema
-finalizeATCTSchema(ATFolderSchema, folderish=True, moveDiscussion=False)
+ATPressRoomSchema = ATContentTypeSchema.copy() + ConstrainTypesMixinSchema
+ATPressRoomSchema += Schema((
+    TextField('text',
+              required=0,
+              primary=1,
+              searchable=1,
+              default_output_type='text/x-html-safe',
+              allowable_content_types=('text/restructured',
+                                       'text/plain',
+                                       'text/html'),
+              widget = RichWidget(
+                        description = "",
+                        description_msgid = "help_body_text",
+                        label = "Body Text",
+                        label_msgid = "label_body_text",
+                        rows = 25,
+                        i18n_domain = "plone",)),
+    ))
+
+finalizeATCTSchema(ATPressRoomSchema, folderish=True, moveDiscussion=False)
 
 class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
     """A folder where all the press related materials in the site live"""
-    schema = ATFolderSchema
+    schema = ATPressRoomSchema
 
     content_icon = 'folder_icon.gif'
 

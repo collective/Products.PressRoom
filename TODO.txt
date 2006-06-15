@@ -47,7 +47,6 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
     - press clip - 
     - press contact - disable rss on press contact smart folder
     - press room - default release first view, clip second, contacts to the right view
-    - 
 
 - Minor tweaks
     - Press Room shouldn't be addable by members, since by definition, you only want 1 per site
@@ -58,19 +57,18 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
 
 - Improvements to core content types:
     - Press Room
-        - Determine how easy it is to globally disallow the press* types, but then allow them within the pressroom section + every other type
         X - Add path query to each press room smart folder on creation, so we're not pulling releases from everywhere on the site
-        - Add a rich body to the PressRoom content type
+        X - Add a rich body to the PressRoom content type
         - On a press room by press room basis, users should be able to decide how many per type items there will be
         - checkbox for group by view
         - widget querying for unique values of type w/in that path
+        - Determine how easy it is to globally disallow the press* types, but then allow them within the pressroom section + every other type
     - Press Contact
         - add image field for portrait of contacts
         
 - Create configlet
     - End characters for press release "###" the default
     - Where contacts should show up (i.e. before, after text)
-        
 
 Intermediate term use:
 -=-=-=-=-=-=-=-=-=-=
