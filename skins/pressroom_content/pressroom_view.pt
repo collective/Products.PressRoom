@@ -22,6 +22,10 @@
             Description
         </p>
 
+        <div class="stx">
+            <div tal:replace="structure here/getText | nothing" />
+        </div>
+
         <tal:recentreleases define="pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
                                                                                               review_state='published',
                                                                                               sort_order='reverse',

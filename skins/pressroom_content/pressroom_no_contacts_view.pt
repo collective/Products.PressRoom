@@ -22,6 +22,10 @@
             Description
         </p>
 
+        <div class="stx">
+            <div tal:replace="structure here/getText | nothing" />
+        </div>
+
     </metal:main-macro>
     </div>
 
