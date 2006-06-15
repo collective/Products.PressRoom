@@ -59,7 +59,7 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
 - Improvements to core content types:
     - Press Room
         - Determine how easy it is to globally disallow the press* types, but then allow them within the pressroom section + every other type
-        - Add path query to each press room smart folder on creation, so we're not pulling releases from everywhere
+        X - Add path query to each press room smart folder on creation, so we're not pulling releases from everywhere on the site
         - Add a rich body to the PressRoom content type
         - On a press room by press room basis, users should be able to decide how many per type items there will be
         - checkbox for group by view
