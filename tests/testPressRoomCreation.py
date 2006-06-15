@@ -33,7 +33,13 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
 
     def testEditPressRoom(self):
         self.pressroom.setTitle('Media Center')
+        self.pressroom.setDescription('Our Media Center')
+        self.pressroom.setText('<p>Here are our latest <strong>press releases and press clips</strong>:</p>')
+        
+        
         self.assertEqual(self.pressroom.Title(), 'Media Center')
+        self.assertEqual(self.pressroom.Description(), 'Our Media Center')
+        self.assertEqual(self.pressroom.getText(), '<p>Here are our latest <strong>press releases and press clips</strong>:</p>')
 
     def testPressRoomChildrenCreated(self):
         for f in self.childFolderMapping.keys():
