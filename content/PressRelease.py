@@ -126,7 +126,7 @@ class PressRelease(ATNewsItem):
     archetype_name  = 'Press Release'
     immediate_view  = 'pressrelease_view'
     default_view    = 'pressrelease_view'
-    content_icon    = 'newsitem_icon.gif'
+    content_icon    = 'pressrelease_icon.gif'
     typeDescription = """For an organization's original press release documents"""
     typeDescMsgId   = """Press_release_description_edit"""
     schema          = schema
