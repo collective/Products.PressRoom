@@ -49,7 +49,7 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
     - press room - default release first view, clip second, contacts to the right view
 
 - Minor tweaks
-    - Press Room shouldn't be addable by members, since by definition, you only want 1 per site
+    X - Press Room shouldn't be addable by members, since by definition, you only want 1 per site
     X - Make sure PressRoom folderish object has support for CMFDynamicViewFTI
     X - Make sure we're not accidently re-Titling and re-Descriptitoning the portal
     X - Get kupu settings right

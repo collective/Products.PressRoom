@@ -8,8 +8,8 @@ except ImportError:
 
 PROJECTNAME = "PressRoom"
 SKINS_DIR = 'skins'
-ADD_CONTENT_PERMISSION = AddPortalContent
+ADD_CONTENT_PERMISSION = 'PressRoom: Add portal press rooms'
 
-setDefaultRoles(ADD_CONTENT_PERMISSION, ('Manager', 'Owner',))
+setDefaultRoles(ADD_CONTENT_PERMISSION, ('Manager'))
 
 product_globals=globals()
