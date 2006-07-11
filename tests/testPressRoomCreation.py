@@ -48,7 +48,8 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
     def testPressContactsTypesContrained(self):
         self.presscontacts = getattr(self.pressroom,'press-contacts')
         self.assertEqual(self.presscontacts.getConstrainTypesMode(), 1)
-        self.failUnless("PressContact","Topic" in self.presscontacts.getLocallyAllowedTypes())
+        self.failUnless("PressContact" in self.presscontacts.getLocallyAllowedTypes())
+        self.failUnless("Topic" in self.presscontacts.getLocallyAllowedTypes()) 
         self.failUnless("PressContact" in self.presscontacts.getImmediatelyAddableTypes())
     
     def testDefaultPage(self):
