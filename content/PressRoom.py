@@ -40,21 +40,56 @@ from Products.PressRoom.config import *
 
 ATPressRoomSchema = ATContentTypeSchema.copy() + ConstrainTypesMixinSchema
 ATPressRoomSchema += Schema((
+    
+    IntegerField('num_releases',
+            required=0,
+            default=4,
+            widget = IntegerWidget(
+                        label = "Number of press releases",
+                        label_msgid = "label_num_releases",
+                        description = "What is the maximum number of press releases that should appear in the press room default view?",
+                        description_msgid = "help_num_releases",
+                        i18n_domain = "pressroom",),
+            ),
+
+    IntegerField('num_clips',
+            required=0,
+            default=4,
+            widget = IntegerWidget(
+                        label = "Number of press clips",
+                        label_msgid = "label_num_clips",
+                        description = "What is the maximum number of press clips that should appear in the press room default view?",
+                        description_msgid = "help_num_clips",
+                        i18n_domain = "pressroom",),
+            ),
+
+    BooleanField('show_contacts',
+            required=0,
+            default=True,
+            widget = BooleanWidget(
+                        label = "Display contacts?",
+                        label_msgid = "label_show_contacts",
+                        description = "If this is checked, a box listing your published contacts will appear.",
+                        description_msgid = "help_show_contacts",
+                        i18n_domain = "pressroom",),
+            ),
+    
     TextField('text',
-              required=0,
-              primary=1,
-              searchable=1,
-              default_output_type='text/x-html-safe',
-              allowable_content_types=('text/restructured',
-                                       'text/plain',
-                                       'text/html'),
-              widget = RichWidget(
+            required=0,
+            primary=1,
+            searchable=1,
+            default_output_type='text/x-html-safe',
+            allowable_content_types=('text/restructured',
+                                     'text/plain',
+                                     'text/html'),
+            widget = RichWidget(
                         description = "",
                         description_msgid = "help_body_text",
                         label = "Body Text",
                         label_msgid = "label_body_text",
                         rows = 25,
-                        i18n_domain = "plone",)),
+                        i18n_domain = "pressroom",)
+            ),
     ))
 
 finalizeATCTSchema(ATPressRoomSchema, folderish=True, moveDiscussion=False)
@@ -63,7 +98,7 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
     """A folder where all the press related materials in the site live"""
     schema = ATPressRoomSchema
 
-    content_icon = 'pressroom_icon.gif'
+    content_icon = 'folder_icon.gif'
 
     archetype_name = 'Press Room'
     meta_type = portal_type = 'PressRoom'
@@ -136,6 +171,10 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
         if 'press-clips' not in self.objectIds():
             self.invokeFactory('Folder','press-clips') # XXX Make large plone folder
             obj = self['press-clips']
+            obj.setConstrainTypesMode(1)
+            obj.setImmediatelyAddableTypes(["PressClip",])
+            obj.setLocallyAllowedTypes(["Topic","PressClip",])
+
             obj.setTitle(self.translate(
                     msgid='pr_press_clip_title',
                     domain='pressroom',
