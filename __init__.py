@@ -33,14 +33,3 @@ def initialize(context):
         extra_constructors = constructors,
         fti                = ftis,
         ).initialize(context)
-
-
-  # Give it some extra permissions to control them on a per class limit
-    for i in range(0,len(content_types)):
-        klassname=content_types[i].__name__
-        if not klassname in ADD_CONTENT_PERMISSIONS:
-            continue
-
-        context.registerClass(meta_type   = ftis[i]['meta_type'],
-                              constructors= (constructors[i],),
-                              permission  = ADD_CONTENT_PERMISSIONS[klassname])

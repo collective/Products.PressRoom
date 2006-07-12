@@ -145,4 +145,4 @@ class PressRelease(ATNewsItem):
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
 
-registerType(PressRelease, PROJECTNAME)
+registerType(PressRelease)

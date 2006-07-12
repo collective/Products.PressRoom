@@ -119,4 +119,4 @@ class PressContact(ATCTContent):
     
     _at_rename_after_creation = True
 
-registerType(PressContact, PROJECTNAME)
+registerType(PressContact)

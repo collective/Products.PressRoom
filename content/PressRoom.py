@@ -98,7 +98,7 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
     """A folder where all the press related materials in the site live"""
     schema = ATPressRoomSchema
 
-    content_icon = 'folder_icon.gif'
+    content_icon = 'pressroom_icon.gif'
 
     archetype_name = 'Press Room'
     meta_type = portal_type = 'PressRoom'
@@ -265,4 +265,4 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
 
     security = ClassSecurityInfo()
 
-registerType(PressRoom, PROJECTNAME)
+registerType(PressRoom)
