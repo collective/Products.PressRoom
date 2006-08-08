@@ -30,8 +30,8 @@
         </div>
 
 
-					<div id='press-contacts'
-                         tal:condition='showContacts'
+     <div id="press-contacts"
+                         tal:condition="showContacts"
                          tal:define="path python:'/'.join(context.getPhysicalPath());
                                      testStr python: 'testValue';
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
