@@ -28,7 +28,94 @@
         <div class="stx">
             <div tal:replace="structure here/getText | nothing" />
         </div>
-
+                
+                    <div id='press-contacts'
+                         tal:condition='showContacts'
+                         tal:define="path python:'/'.join(context.getPhysicalPath());
+                                     testStr python: 'testValue';
+                                     use_view_action site_properties/typesUseViewActionInListings|python:();
+                                     show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
+                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact',
+                                                                                               review_state='published',
+                                                                                               path=path,);">
+                        <h2 class="documentFirstHeading">
+                            Press Contacts
+                        </h2>
+                        
+                        <dl>
+                            <tal:entry tal:condition="pressContacts" 
+                                       tal:repeat="item pressContacts">
+                                <tal:block tal:define="item_url item/getURL|item/absolute_url;
+                                                       item_id item/getId|item/id;
+                                                       item_title_or_id item/pretty_title_or_id;
+                                                       item_description item/Description;
+                                                       item_type item/portal_type;
+                                                       item_type_title item/Type;
+                                                       item_modified item/ModificationDate;
+                                                       item_created item/CreationDate;
+                                                       item_type_class python: 'contenttype-' + normalizeString(item_type);
+                                                       item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
+                                                       item_creator item/Creator;">
+                                    
+                                    <dt metal:define-macro='contactlist'>
+                                        <span tal:attributes="class item_type_class">
+                                            <a href="#" 
+                                               tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                                               class string:$item_wf_state_class visualIconPadding"
+                                               tal:content="item_title_or_id">
+                                                Item Title
+                                            </a>
+                                            
+                                            <span class="documentByLine"
+                                                  tal:condition="show_about">
+                    
+                                                <tal:name tal:condition="item_creator"
+                                                    tal:define="author python:mtool.getMemberInfo(item_creator)">
+                                                  <span i18n:translate="label_by_author">
+                                                    by
+                                                  <a href="#"
+                                                     tal:attributes="href string:${portal_url}/author/${item_creator}"
+                                                     tal:content="python:author and author['fullname'] or item_creator"
+                                                     tal:omit-tag="not:author"
+                                                     i18n:name="author">
+                                                    Bob Dobalina
+                                                  </a>
+                                                  </span>
+                    
+                                                </tal:name>
+                    
+                                                &mdash;
+                                                <tal:mod i18n:translate="box_last_modified">
+                                                  last modified
+                                                </tal:mod>
+                                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+                                                  August 16, 2001 at 23:35:59
+                                                </span>
+                    
+                                                <metal:description define-slot="description_slot">
+                                                    <tal:comment replace="nothing"> 
+                                                        Place custom listing info for custom types here
+                                                    </tal:comment>
+                                                </metal:description>
+                                            </span>
+                                        </span>
+                                    </dt>
+                                    
+                                    <dd>
+                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </span> 
+                                        <span tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </span>
+                                    </dd>
+                                       
+                                </tal:block>
+                            </tal:entry>
+                        </dl>
+                    </div>
+					
 
      <div id="press-contacts"
                          tal:condition="showContacts"
@@ -319,9 +406,6 @@
             
                     </div>
                     
-                
-                 
-                
 
     </metal:main-macro>
     </div>
