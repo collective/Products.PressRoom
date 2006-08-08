@@ -116,7 +116,7 @@
                         </dl>
 						
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
-							 class="addItem">
+							 class="addPressRoomItem">
 							<a href="../press-room/press-contacts/createObject?type_name=PressContact">
 							Add Press Contact
 							</a>
@@ -221,6 +221,12 @@
                            i18n:translate="description_no_items_in_folder">
                             There are currently no press releases.
                         </p>
+						
+						<div class="morePressRoomItems">
+							<a href="../press-room/press-releases>
+							More Press Releases
+							</a>
+						</div>
 						
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addItem">
@@ -330,6 +336,12 @@
                            i18n:translate="description_no_items_in_folder">
                             There are currently no press clips.
                         </p>
+
+						<div class="morePressRoomItems">
+							<a href="../press-room/press-clips>
+							More Press Clips
+							</a>
+						</div>
 						
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addItem">
