@@ -49,10 +49,12 @@
                                                        item_id item/getId|item/id;
                                                        item_title_or_id item/pretty_title_or_id;
                                                        item_description item/Description;
+													   item_subhead item/getSubhead;
                                                        item_type item/portal_type;
                                                        item_type_title item/Type;
                                                        item_modified item/ModificationDate;
                                                        item_created item/CreationDate;
+													   item_effective item/EffectiveDate;
                                                        item_type_class python: 'contenttype-' + normalizeString(item_type);
                                                        item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
@@ -67,6 +69,11 @@
                                                 Item Title
                                             </a>
                                             
+											<span class="itemDate"
+												  tal:content="python:toLocalizedTime(item_effective)">
+											 August 8, 2006
+											</span>
+											
                                             <span class="documentByLine"
                                                   tal:condition="show_about">
                     
@@ -103,12 +110,17 @@
                                     </dt>
                                     
                                     <dd>
-                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
+										<div tal:condition="item_subhead"
+											 tal:content="item_subhead">
+											Subheading
+										</div>
+	
+                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
                                             &nbsp; 
-                                        </span> 
-                                        <span tal:omit-tag="" tal:content="item_description"> 
+                                        </div> 
+                                        <div tal:omit-tag="" tal:content="item_description"> 
                                             description 
-                                        </span>
+                                        </div> 
                                     </dd>
                                        
                                 </tal:block>
