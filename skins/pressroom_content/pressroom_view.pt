@@ -125,7 +125,7 @@
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addPressRoomItem">
 							<a href="../press-room/press-contacts/createObject?type_name=PressContact">
-							Add Press Contact
+							[Add Press Contact]
 							</a>
 						</div>
                     </div>   
@@ -250,7 +250,7 @@
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addItem">
 							<a href="../press-room/press-releases/createObject?type_name=PressRelease">
-							Add Press Release
+							[Add Press Release]
 							</a>
 						</div>  
 						
@@ -365,7 +365,7 @@
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addItem">
 							<a href="../press-room/press-clips/createObject?type_name=PressClip">
-							Add Press Clip
+							[Add Press Clip]
 							</a>
 						</div>  
 						            
