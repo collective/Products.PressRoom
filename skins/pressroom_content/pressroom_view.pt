@@ -333,7 +333,7 @@
 						
 						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addItem">
-							<a href="../press-room/press-releases/createObject?type_name=PressClip">
+							<a href="../press-room/press-clips/createObject?type_name=PressClip">
 							Add Press Clip
 							</a>
 						</div>  
