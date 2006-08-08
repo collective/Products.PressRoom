@@ -182,6 +182,11 @@
                                             Item Title
                                         </a>
                                         </span>
+										
+										<span class="itemDate"
+										       tal:content="python:toLocalizedTime(item_effective)">
+											August 8, 2006
+										</span>
                 
                                         <span class="documentByLine"
                                               tal:condition="show_about">
