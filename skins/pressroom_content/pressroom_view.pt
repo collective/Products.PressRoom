@@ -37,8 +37,8 @@
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
                                      show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
                                      pressContacts python:context.portal_catalog.searchResults(meta_type='PressContact',
-                                                                                               review_state='published',
-                                                                                               path=path,);">
+																							   review_state='published',
+																							   path=path,);">
                         <h2 class="documentFirstHeading">
                             Press Contacts
                         </h2>
