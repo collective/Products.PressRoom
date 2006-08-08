@@ -22,5 +22,10 @@
 .releaseTiming { text-transform: uppercase; font-weight: bold; }
 .companyName { font-weight: bold; }
 
+#press-contacts {
+ width: 150px;
+ float: right;
+ padding: 5px
+}
 
 /* </dtml-with> */
