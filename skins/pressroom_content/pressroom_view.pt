@@ -114,6 +114,13 @@
                                 </tal:block>
                             </tal:entry>
                         </dl>
+						
+						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+							 class="addItem">
+							<a href="../press-room/press-contacts/createObject?type_name=PressContact">
+							Add Press Contact
+							</a>
+						</div>
                     </div>   
         
        
@@ -214,7 +221,14 @@
                            i18n:translate="description_no_items_in_folder">
                             There are currently no press releases.
                         </p>
-            
+						
+						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+							 class="addItem">
+							<a href="../press-room/press-releases/createObject?type_name=PressRelease">
+							Add Press Release
+							</a>
+						</div>  
+						
                     </div>
                     
                     
@@ -316,7 +330,14 @@
                            i18n:translate="description_no_items_in_folder">
                             There are currently no press clips.
                         </p>
-            
+						
+						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+							 class="addItem">
+							<a href="../press-room/press-releases/createObject?type_name=PressClip">
+							Add Press Clip
+							</a>
+						</div>  
+						            
                     </div>
                     
 
