@@ -38,7 +38,7 @@ def install(self):
     # Install stylesheet
     portal_css = getToolByName(self, 'portal_css')
     portal_css.manage_addStylesheet(id = 'PressRoom.css',
-                                    expression = 'python:object.getTypeInfo().getId() in ("PressRelease","PressClip","PressContact")',
+                                    expression = 'python:object.getTypeInfo().getId() in ("PressRoom","PressRelease","PressClip","PressContact")',
                                     media = 'all',
                                     title = 'PressRoom styles',
                                     enabled = True)
