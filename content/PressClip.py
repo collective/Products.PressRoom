@@ -92,11 +92,5 @@ class PressClip(ATNewsItem):
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
     
-    def getPublication(self):
-        """fetch a list of the available publication types from the vocabulary
-        """
-        f = self.getField('publication')
-        result = self.collectKeywords('publication', f.accessor)
-        return tuple(result)
 
 registerType(PressClip)
