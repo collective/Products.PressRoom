@@ -25,22 +25,24 @@
 #press-contacts {
  width: 150px;
  float: right;
- padding: 5px
+ padding: 5px;
+ margin-left: 20px;
 }
 
 .addPressRoomItem {
  margin: .5em;
- font-size: 90%;
+ font-size: 8pt;
  font-style: normal;
 }
 
 .addPressRoomItem a {
- background: #FF9;
+ background: #FFA;
+ text-decoration: underline;
 }
 
 
 .morePressRoomItems {
- margin-left: .5em;
+ margin: .5em 0 2em 4em;
  font-size: 90%;
 }
 
