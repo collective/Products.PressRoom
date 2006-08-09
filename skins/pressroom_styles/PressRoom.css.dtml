@@ -23,7 +23,7 @@
 .companyName { font-weight: bold; }
 
 .pressroomSubhead {
- font-style: italics;
+ font-style: italic;
 }
 
 #press-contacts {
