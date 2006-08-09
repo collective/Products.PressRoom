@@ -35,7 +35,8 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
     - Add i18N tags to PTs
 
 - Add license (NB - It'll be GPL'ed) and author information to the product
-
+ - in tracker
+ 
 - Skins improvements
     - Register a new (or a few new) selectable views with page and set the default on for an auto added page to /press-room (Create a nice composity type view for the default "Press Room" view)
 
@@ -91,18 +92,22 @@ Other random stuff from Jon's testing
 
 [X] if no items and not manager, don't show the div at all.
 	[ ] add explicit checkbox to control showing items, separate from number.
-
+ - in tracker
 	
 [ ] file bug to change my hacky manager code to a python script that:
 	checks to see if the destination exists
 	checks to see if the user has permission to add content to that folder
+	- in tracker
 	
 [ ] dont end name with .html (looks weird with slash)
-	
-don't show releases clips & contacts in navigation -- there could be lots
-
-[ ] restrict ability to add press room content types outside of subfolders
+ - in tracker
  
+[ ]don't show releases clips & contacts in navigation -- there could be lots
+ - in tracker
+ 
+[ ] restrict ability to add press room content types outside of subfolders
+  - in tracker
+  
  in press room view, listings should show:
   [X] Press Releases
    [X] Headline - Press Release Date
@@ -110,16 +115,19 @@ don't show releases clips & contacts in navigation -- there could be lots
 	 [ ] author + modified date info
 	
 [ ]  Press Clips
-   Headline - Story Date
+ [ ]  Headline - Story Date
    [ ] Publication	
     [ ] author + modified date info
 	
+	 - in tracker
+	 
 [ ]  Press Contacts
    []Person
     []Job Title
 	 []Email
 	 []Phone
 	 
+	 - in tracker
 	 
    ? Don't show author & modified date to managers -- it's not important
    
@@ -127,13 +135,15 @@ don't show releases clips & contacts in navigation -- there could be lots
 [X] Need a "story date" field for Press Clips
 
 [ ] Make story date field avaiable to smartfolders (presumably by adding to catalog)
-
+ - in tracker
+ 
 [ ] Add "cell phone" field to press contact
-
+ - in tracker
 
 [ ] Press contact view
 	get rid of ugly headings, more compact display
+	- in tracker
 	
 [ ] Press clip view
 	Not sure if linking to original story on publication name is clear
-	
+	- in tracker
