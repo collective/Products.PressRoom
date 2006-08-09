@@ -32,13 +32,14 @@ schema += Schema((
                         description_msgid = "help_reporter_name",
                         i18n_domain = "pressroom",),
                 ),
-    StringField('publication',
+    LinesField('publication',
                 required=0,
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
                 index="FieldIndex:brains",
                 widget=KeywordWidget(
+                        size=6,
                         label='Name of Publication',
                         label_msgid = "label_publication_name",
                         description='Provide the name of the publication (i.e. name of newspaper, magazine, book, etc.).  Previously used publications can be selected in the left column.  New publications should be added one-per-line in the right column.',
@@ -90,5 +91,12 @@ class PressClip(ATNewsItem):
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
+    
+    def getPublication(self):
+        """fetch a list of the available publication types from the vocabulary
+        """
+        f = self.getField('publication')
+        result = self.collectKeywords('publication', f.accessor)
+        return tuple(result)
 
 registerType(PressClip)
