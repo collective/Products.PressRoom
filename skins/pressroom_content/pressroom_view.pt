@@ -135,11 +135,7 @@
         
 				  <tal:block 
 					  tal:define="path python:'/'.join(context.getPhysicalPath());
-                                                      pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
-                                                                                                                review_state='published',
-                                                                                                                sort_order='reverse',
-                                                                                                                path=path,
-                                                                                                                sort_on='Date',)[:viewReleaseAmt]">
+                                                      pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',review_state='published',sort_order='reverse',path=path,sort_on='Date',)[:viewReleaseAmt]">
                     <div id='press-releases'
                      tal:condition="pressReleases">
 
@@ -263,11 +259,7 @@
                     
 				<tal:block
 				 tal:define=""path python:'/'.join(context.getPhysicalPath());
-                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',
-                                                                                            review_state='published',
-                                                                                            sort_order='reverse',
-                                                                                            path=path,
-                                                                                            sort_on='Date',)[:viewClipAmt];">
+                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',review_state='published',sort_order='reverse',path=path,sort_on='Date',)[:viewClipAmt];">
             
                     <div id="press-clips"
 					 tal:condition="pressClips">
