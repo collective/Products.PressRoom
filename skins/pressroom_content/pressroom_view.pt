@@ -41,12 +41,12 @@
 						<h2 class="documentFirstHeading">
                             Press Contacts
 							
-						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+						<span tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addPressRoomItem">
 							<a href="../press-room/press-contacts/createObject?type_name=PressContact">
 							[Add Press Contact]
 							</a>
-						</div>
+						</span>
                         </h2>
                         
                         <dl>
@@ -145,12 +145,12 @@
                         <h2 class="documentFirstHeading">
                             Recent Press Releases
 							
-						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+						<span tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addPressRoomItem">
 							<a href="../press-room/press-releases/createObject?type_name=PressRelease">
 							[Add Press Release]
 							</a>
-						</div> 
+						</span> 
                         </h2>
                 
                         <tal:listing condition="pressReleases"
@@ -274,12 +274,12 @@
                         <h2 class="documentFirstHeading">
                             Recent Press Clips
 							
-						<div tal:condition="python:'Manager' in member.getRolesInContext(here)" 
+						<span tal:condition="python:'Manager' in member.getRolesInContext(here)" 
 							 class="addPressRoomItem">
 							<a href="../press-room/press-clips/createObject?type_name=PressClip">
 							[Add Press Clip]
 							</a>
-						</div>  
+						</span>  
                         </h2>
                 
                         <tal:listing condition="pressClips"
