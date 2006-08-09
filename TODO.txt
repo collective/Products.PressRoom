@@ -89,14 +89,15 @@ To be determined:
 Other random stuff from Jon's testing 
 -=-=-=-=-=-=-=-=-=-=
 
-[ ] if anonymous, or no items,  don't show the div at all.
-	[ ] add explicit checkbox, separate from number.
+[X] if no items and not manager, don't show the div at all.
+	[ ] add explicit checkbox to control showing items, separate from number.
 
-[ ] dont end name with .html (looks weird with slash)
-
+	
 [ ] file bug to change my hacky manager code to a python script that:
 	checks to see if the destination exists
 	checks to see if the user has permission to add content to that folder
+	
+[ ] dont end name with .html (looks weird with slash)
 	
 don't show releases clips & contacts in navigation -- there could be lots
 
@@ -104,22 +105,23 @@ don't show releases clips & contacts in navigation -- there could be lots
  
  in press room view, listings should show:
   [X] Press Releases
-   Headline - Press Release Date
-    Subheadline
-	 author + modified date info
+   [X] Headline - Press Release Date
+    [X]Subheadline
+	 [ ] author + modified date info
 	
 [ ]  Press Clips
    Headline - Story Date
-    Publication	
+   [ ] Publication	
+    [ ] author + modified date info
 	
 [ ]  Press Contacts
-   Person
-    Job Title
-	 Email
-	 Phone
+   []Person
+    []Job Title
+	 []Email
+	 []Phone
 	 
 	 
-   Don't show author & modified date to managers -- it's not important
+   ? Don't show author & modified date to managers -- it's not important
    
    
 [X] Need a "story date" field for Press Clips
