@@ -113,7 +113,8 @@
                                     
                                     <dd>
 										<div tal:condition="item_subhead"
-											 tal:content="item_subhead">
+											 tal:content="item_subhead"
+											 class="pressroomSubhead">
 											Subheading
 										</div>
 	
@@ -229,7 +230,8 @@
                 
                                     <dd>
 										<div tal:condition="item_subhead"
-										     tal:content="item_subhead">
+										     tal:content="item_subhead"
+											 class="pressroomSubhead">
 											Subheading
 										</div>
 	
