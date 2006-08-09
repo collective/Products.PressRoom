@@ -258,7 +258,7 @@
                     
                     
 				<tal:block
-				 tal:define=""path python:'/'.join(context.getPhysicalPath());
+				 tal:define="path python:'/'.join(context.getPhysicalPath());
                                      pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',review_state='published',sort_order='reverse',path=path,sort_on='Date',)[:viewClipAmt];">
             
                     <div id="press-clips"
