@@ -133,15 +133,15 @@
 
                     </div>   
         
-       
+				  <tal:block 
+					  tal:define="path python:'/'.join(context.getPhysicalPath());
+                                                      pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
+                                                                                                                review_state='published',
+                                                                                                                sort_order='reverse',
+                                                                                                                path=path,
+                                                                                                                sort_on='Date',)[:viewReleaseAmt]">
                     <div id='press-releases'
-                         tal:define="path python:'/'.join(context.getPhysicalPath());
-                                     pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
-                                                                                               review_state='published',
-                                                                                               sort_order='reverse',
-                                                                                               path=path,
-                                                                                               sort_on='Date',)[:viewReleaseAmt]">
-
+                     tal:condition="pressReleases">
 
                         <h2 class="documentFirstHeading">
                             Recent Press Releases
@@ -257,22 +257,20 @@
 							More Press Releases
 							</a>
 						</div>
-						
- 
-						
                     </div>
+                 </tal:block>   
                     
                     
-                    
-
-                    <div id='press-clips'
-                         tal:define="path python:'/'.join(context.getPhysicalPath());
+				<tal:block
+				 tal:define=""path python:'/'.join(context.getPhysicalPath());
                                      pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',
                                                                                             review_state='published',
                                                                                             sort_order='reverse',
                                                                                             path=path,
                                                                                             sort_on='Date',)[:viewClipAmt];">
             
+                    <div id="press-clips"
+					 tal:condition="pressClips">
                         <h2 class="documentFirstHeading">
                             Recent Press Clips
 							
@@ -374,10 +372,8 @@
 							More Press Clips
 							</a>
 						</div>
-						
-
-						            
                     </div>
+                 </tal:block> 
                     
 
     </metal:main-macro>
