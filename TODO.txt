@@ -46,7 +46,7 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
         - fix "Press Room" text at the bottom of release
     - press clip - 
     - press contact - disable rss on press contact smart folder
-    - press room - default release first view, clip second, contacts to the right view
+    X press room - default release first view, clip second, contacts to the right view
 
 - Minor tweaks
     X - Press Room shouldn't be addable by members, since by definition, you only want 1 per site
@@ -59,7 +59,7 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
     - Press Room
         X - Add path query to each press room smart folder on creation, so we're not pulling releases from everywhere on the site
         X - Add a rich body to the PressRoom content type
-        - On a press room by press room basis, users should be able to decide how many per type items there will be
+        X On a press room by press room basis, users should be able to decide how many per type items there will be
         - checkbox for group by view
         - widget querying for unique values of type w/in that path
         - Determine how easy it is to globally disallow the press* types, but then allow them within the pressroom section + every other type
@@ -72,11 +72,7 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
 
 Intermediate term use:
 -=-=-=-=-=-=-=-=-=-=
-- Get some additional views in place
-    - Jon had the idea to create a dynamic view which:
-        - Query the catalog at root + path/to/press/room for all uniqueValues for Type
-        - Loop through each of those unque values and say: "latest images","latest files", "latest press releases", etc.
-    - I think initial clients for the press room will drive demand here
+
 - Come up with some good content icons for PressClip & PressRelease
 - Documentation for how to administer Press Items (everything else is still too undefined)
 - More Tests!
@@ -88,3 +84,54 @@ To be determined:
 
 - News Item - Disable this on installation? Still not sure.  My gut says no, but when you potentialy have an option to add a Press Release, Press Clip, News Item (and possibly a Blog Entry), will unsophisticated users get confused
 - Subheadline - fields should be longer, like description-length, never underestimate the ability for long headlines and subheadlines in press releases :)
+
+
+Other random stuff from Jon's testing 
+-=-=-=-=-=-=-=-=-=-=
+
+[ ] if anonymous, or no items,  don't show the div at all.
+	[ ] add explicit checkbox, separate from number.
+
+[ ] dont end name with .html (looks weird with slash)
+
+[ ] file bug to change my hacky manager code to a python script that:
+	checks to see if the destination exists
+	checks to see if the user has permission to add content to that folder
+	
+don't show releases clips & contacts in navigation -- there could be lots
+
+[ ] restrict ability to add press room content types outside of subfolders
+ 
+ in press room view, listings should show:
+  [X] Press Releases
+   Headline - Press Release Date
+    Subheadline
+	 author + modified date info
+	
+[ ]  Press Clips
+   Headline - Story Date
+    Publication	
+	
+[ ]  Press Contacts
+   Person
+    Job Title
+	 Email
+	 Phone
+	 
+	 
+   Don't show author & modified date to managers -- it's not important
+   
+   
+[X] Need a "story date" field for Press Clips
+
+[ ] Make story date field avaiable to smartfolders (presumably by adding to catalog)
+
+[ ] Add "cell phone" field to press contact
+
+
+[ ] Press contact view
+	get rid of ugly headings, more compact display
+	
+[ ] Press clip view
+	Not sure if linking to original story on publication name is clear
+	
