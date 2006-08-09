@@ -24,7 +24,7 @@
               tal:replace="python: ', '.join(publication)" /> 
         <a tal:condition="here/permalink | nothing" tal:content="python: ', '.join(publication)" tal:attributes="href here/permalink" /> <br /></span>
         <span tal:condition="here/storydate | nothing"
-              tal:define="storyDate here/storydate"><span tal:replace="python:storyDate.strftime('%m/%d/%Y')" />  <br /></span>
+              tal:define="storyDate here/storydate"><span tal:replace="python:storyDate.strftime('%M %d, %Y')" />  <br /></span>
 
         <p class="documentDescription"
            tal:content="here/Description"
