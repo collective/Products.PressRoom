@@ -28,4 +28,20 @@
  padding: 5px
 }
 
+.addPressRoomItem {
+ margin: .5em;
+ font-size: 90%;
+ font-style: normal;
+}
+
+.addPressRoomItem a {
+ background: #FF9;
+}
+
+
+.morePressRoomItems {
+ margin-left: .5em;
+ font-size: 90%;
+}
+
 /* </dtml-with> */
