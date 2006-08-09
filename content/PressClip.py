@@ -54,6 +54,15 @@ schema += Schema((
                         description_msgid = "help_pressclip_url",
                         i18n_domain = "pressroom",),
                 ),
+	DateTimeField('storydate',
+                index="FieldIndex:brains",
+                widget=CalendarWidget(
+                        label='Story Date',
+                        label_msgid = "label_pressclip_storydate",
+                        description='The date the story was originally published',
+                        description_msgid = "help_pressclip_storydate",
+                        i18n_domain = "pressroom",),
+                ),				
     ))
 
 finalizeATCTSchema(schema)
