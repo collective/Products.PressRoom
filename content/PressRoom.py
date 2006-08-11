@@ -40,7 +40,17 @@ from Products.PressRoom.config import *
 
 ATPressRoomSchema = ATContentTypeSchema.copy() + ConstrainTypesMixinSchema
 ATPressRoomSchema += Schema((
-    
+    BooleanField('show_releases',
+            required=0,
+            default=True,
+            widget = BooleanWidget(
+                        label = "Display Releases?",
+                        label_msgid = "label_show_releases",
+                        description = "If this is checked, your published releases will appear.",
+                        description_msgid = "help_show_release",
+                        i18n_domain = "pressroom",),
+            ),
+                
     IntegerField('num_releases',
             required=0,
             default=4,
@@ -49,6 +59,17 @@ ATPressRoomSchema += Schema((
                         label_msgid = "label_num_releases",
                         description = "What is the maximum number of press releases that should appear in the press room default view?",
                         description_msgid = "help_num_releases",
+                        i18n_domain = "pressroom",),
+            ),
+            
+    BooleanField('show_clips',
+            required=0,
+            default=True,
+            widget = BooleanWidget(
+                        label = "Display clips?",
+                        label_msgid = "label_show_clips",
+                        description = "If this is checked, your published clips will appear.",
+                        description_msgid = "help_show_clips",
                         i18n_domain = "pressroom",),
             ),
 
@@ -69,7 +90,7 @@ ATPressRoomSchema += Schema((
             widget = BooleanWidget(
                         label = "Display contacts?",
                         label_msgid = "label_show_contacts",
-                        description = "If this is checked, a box listing your published contacts will appear.",
+                        description = "If this is checked, your published contacts will appear.",
                         description_msgid = "help_show_contacts",
                         i18n_domain = "pressroom",),
             ),

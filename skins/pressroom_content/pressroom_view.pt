@@ -10,7 +10,9 @@
                       tal:define='toLocalizedTime nocall:here/toLocalizedTime;
                                   viewReleaseAmt context/getNum_releases | nothing;
                                   viewClipAmt context/getNum_clips | nothing;
-                                  showContacts context/getShow_contacts;'>
+                                  showContacts context/getShow_contacts;
+                                  showReleases context/getShow_releases;
+                                  showClips context/getShow_clips;'>
 
         <div metal:use-macro="here/document_actions/macros/document_actions">
             Document actions (print, sendto etc)
@@ -40,7 +42,9 @@
                                                                                                review_state='published',
                                                                                                sort_order='reverse',
                                                                                                path=path,
-                                                                                               sort_on='Date',)[:viewReleaseAmt]">
+                                                                                               sort_on='Date',)[:viewReleaseAmt]"
+                        tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
+                        
                         <h2 class="documentFirstHeading">
                             Recent Press Releases
                         </h2>
@@ -141,7 +145,8 @@
                                                                                             review_state='published',
                                                                                             sort_order='reverse',
                                                                                             path=path,
-                                                                                            sort_on='Date',)[:viewClipAmt];">
+                                                                                            sort_on='Date',)[:viewClipAmt];"
+                        tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
             
                         <h2 class="documentFirstHeading">
                             Recent Press Clips
@@ -217,14 +222,14 @@
                 </td>
                 <td valign='top'>
                     <div id='press-contacts'
-                         tal:condition='showContacts'
                          tal:define="path python:'/'.join(context.getPhysicalPath());
                                      testStr python: 'testValue';
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
                                      show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
                                      pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact',
                                                                                                review_state='published',
-                                                                                               path=path,);">
+                                                                                               path=path,);"
+                         tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
                         <h2 class="documentFirstHeading">
                             Press Contacts
                         </h2>
