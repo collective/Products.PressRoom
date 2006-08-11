@@ -112,6 +112,8 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
     assocMimetypes = ()
     assocFileExt   = ()
     cmf_edit_kws   = ()
+    
+    allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
 
     __implements__ = (ATCTOrderedFolder.__implements__, IATFolder,
                      AutoOrderSupport.__implements__)
