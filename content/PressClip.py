@@ -82,6 +82,7 @@ class PressClip(ATNewsItem):
     typeDescription = """For organization's press clips."""
     typeDescMsgId  = """Press_clip_description_edit"""
     schema         = schema
+    exclude_from_nav = True
     
     _at_rename_after_creation = True
     

@@ -35,8 +35,11 @@
             />
         </tal:nopub>
         
-        <span tal:condition="context/storydate | nothing"
-              tal:define="storyDate context/storydate"><span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  <br /></span>
+        <span tal:condition="context/getStorydate"
+              tal:define="storyDate context/getStorydate">
+              <span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  
+              <br />
+        </span>
 
         <p class="documentDescription"
            tal:content="context/Description"

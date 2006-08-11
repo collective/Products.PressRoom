@@ -116,6 +116,7 @@ class PressContact(ATCTContent):
     typeDescription = """Contact information for your press contacts"""
     typeDescMsgId  = """Press_contact_description_edit"""
     schema         = schema
+    exclude_from_nav = True
     
     _at_rename_after_creation = True
 

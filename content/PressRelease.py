@@ -144,5 +144,6 @@ class PressRelease(ATNewsItem):
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
+    exclude_from_nav = True
 
 registerType(PressRelease)
