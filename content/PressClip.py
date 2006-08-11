@@ -1,3 +1,5 @@
+from types import StringType
+
 try:
   from Products.LinguaPlone.public import *
 except ImportError:
@@ -5,6 +7,7 @@ except ImportError:
   from Products.Archetypes.public import *
 
 from Products.ATContentTypes.content.newsitem import ATNewsItem, ATNewsItemSchema, finalizeATCTSchema
+from Products.ATContentTypes.interfaces import IATEvent
 
 from Products.CMFCore import CMFCorePermissions
 from Products.CMFCore.utils import getToolByName
@@ -32,14 +35,15 @@ schema += Schema((
                         description_msgid = "help_reporter_name",
                         i18n_domain = "pressroom",),
                 ),
-    LinesField('publication',
+
+    StringField('publication',
                 required=0,
-                searchable=0,
-                primary=False,
-                languageIndependent=0,
+                searchable=1,
+                primary=0,
+                languageIndependent=1,
+                Multivalues=1,
                 index="FieldIndex:brains",
-                widget=KeywordWidget(
-                        size=6,
+                widget=StringWidget(
                         label='Name of Publication',
                         label_msgid = "label_publication_name",
                         description='Provide the name of the publication (i.e. name of newspaper, magazine, book, etc.).  Previously used publications can be selected in the left column.  New publications should be added one-per-line in the right column.',
@@ -87,10 +91,10 @@ class PressClip(ATNewsItem):
     # Make sure we get all the interface declarations from ATDocument,
     # which includes support for ISelectableBrowserDefault to get the
     # 'display' menu to work, IHistoryAware and other standard interfaces.
-    __implements__ = ATNewsItem.__implements__
+    __implements__ = (ATNewsItem.__implements__,)
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
-    
+
 
 registerType(PressClip)

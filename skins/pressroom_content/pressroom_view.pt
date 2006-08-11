@@ -157,9 +157,11 @@
                                                        item_id item/getId|item/id;
                                                        item_title_or_id item/pretty_title_or_id;
                                                        item_description item/Description;
+                                                       item_publication item/getPublication;
                                                        item_type item/portal_type;
                                                        item_type_title item/Type;
                                                        item_modified item/ModificationDate;
+                                                       item_storydate item/getStorydate;
                                                        item_created item/CreationDate;
                                                        item_type_class python: 'contenttype-' + normalizeString(item_type);
                                                        item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
@@ -178,48 +180,26 @@
                                         </a>
                                         </span>
                 
-                                        <span class="documentByLine"
-                                              tal:condition="show_about">
-                
-                                            <tal:name tal:condition="item_creator"
-                                                tal:define="author python:mtool.getMemberInfo(item_creator)">
-                                              <span i18n:translate="label_by_author">
-                                                by
-                                              <a href="#"
-                                                 tal:attributes="href string:${portal_url}/author/${item_creator}"
-                                                 tal:content="python:author and author['fullname'] or item_creator"
-                                                 tal:omit-tag="not:author"
-                                                 i18n:name="author">
-                                                Bob Dobalina
-                                              </a>
-                                              </span>
-                
-                                            </tal:name>
-                
+                                        <span class="clip-storeydate">
+
                                             &mdash;
-                                            <tal:mod i18n:translate="box_last_modified">
-                                              last modified
-                                            </tal:mod>
-                                            <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+                                            
+                                            <span tal:replace="python:toLocalizedTime(item_storydate)">
                                               August 16, 2001 at 23:35:59
                                             </span>
-                
-                                            <metal:description define-slot="description_slot">
-                                                <tal:comment replace="nothing"> 
-                                                    Place custom listing info for custom types here
-                                                </tal:comment>
-                                            </metal:description>
                                         </span>
                 
                                     </dt>
-                
-                                    <dd>
-                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
-                                            &nbsp; 
-                                        </span> 
-                                        <span tal:omit-tag="" tal:content="item_description"> 
+                                    <dd> 
+                                        <div tal:condition="item_publication" tal:content="item_publication">
+                                            Elle Magazine
+                                        </div>
+                                        <div tal:content="item_description"> 
                                             description 
-                                        </span> 
+                                        </div>
+                                        <div tal:omit-tag="" tal:condition="python: not (item_description or item_publication)"> 
+                                            &nbsp;
+                                        </div>
                                     </dd>
                                 </tal:block>
                                 </tal:entry>
