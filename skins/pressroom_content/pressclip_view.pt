@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
 <body>
 
@@ -10,7 +10,7 @@
                       len_text python:len(text.strip())">
 
 
-        <div metal:use-macro="here/document_actions/macros/document_actions">
+        <div metal:use-macro="context/document_actions/macros/document_actions">
             Document actions (print, sendto etc)
         </div>
 
@@ -18,28 +18,40 @@
             Title or id
         </h1>
 
-        <span tal:condition="here/reporter | nothing">By <span tal:replace="here/reporter" /> <br /></span>
-        <span tal:condition="here/publication | nothing" tal:define="publication python:test(here['publication'] and not here['publication'][-1],here['publication'][:-1],here['publication'])"> 
-        <span tal:condition="not: here/permalink | nothing" 
-              tal:replace="python: ', '.join(publication)" /> 
-        <a tal:condition="here/permalink | nothing" tal:content="python: ', '.join(publication)" tal:attributes="href here/permalink" /> <br /></span>
-        <span tal:condition="here/storydate | nothing"
-              tal:define="storyDate here/storydate"><span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  <br /></span>
+        <span tal:condition="context/reporter | nothing">By <span tal:replace="context/reporter" /> <br /></span>
+        
+        <tal:pub condition="context/getPublication">
+            <a tal:condition="context/getPermalink"
+               tal:attributes="href context/getPermalink"
+               tal:content="context/getPublication"
+            />
+            <span tal:condition="not:context/getPermalink"
+                  tal:content="string:${context/getPublication}, ">
+            </span>
+        </tal:pub>
+        <tal:nopub condition="python: (not context.getPublication()) and context.getPermalink()">
+            <a tal:attributes="href context/getPermalink"
+               tal:content="context/getPermalink"
+            />
+        </tal:nopub>
+        
+        <span tal:condition="context/storydate | nothing"
+              tal:define="storyDate context/storydate"><span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  <br /></span>
 
         <p class="documentDescription"
-           tal:content="here/Description"
-           tal:condition="here/Description">
+           tal:content="context/Description"
+           tal:condition="context/Description">
             News summary
         </p>
 
         <div class="newsImageContainer"
-             tal:condition="here/image_mini|nothing">
+             tal:condition="context/image_mini|nothing">
             <a href="#"
                tal:attributes="href string:$here_url/image/image_view_fullscreen">
                <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
             </a>
             <p class="discreet"
-                  tal:content="here/getImageCaption">Image Caption</p>
+                  tal:content="context/getImageCaption">Image Caption</p>
         </div>
 
         <p tal:condition="python: not len_text and is_editable"
@@ -54,7 +66,7 @@
             <div tal:replace="structure text" />
         </div>
 
-        <div metal:use-macro="here/document_byline/macros/byline">
+        <div metal:use-macro="context/document_byline/macros/byline">
             Get the byline - contains details about author and modification date.
         </div>
         
