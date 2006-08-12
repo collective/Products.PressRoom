@@ -30,7 +30,17 @@
                                                 class string: $item_wf_state_class visualIconPadding"
                                 tal:content="item/pretty_title_or_id">
                                 Related Item
-                            </a>
+                            </a> 
+                             <span class="contactPhone" 
+                                   tal:condition="item/phone" 
+                                   tal:content="item/phone">
+                                Phone
+                             </span>
+                             <span class="contactEmail"
+                                   tal:condition="item/email" 
+                                   tal:content="item/email">
+                                 Email
+                             </span>
                             </span>
                         </li>
                     </tal:related>
