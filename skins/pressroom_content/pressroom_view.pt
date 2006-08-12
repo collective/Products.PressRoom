@@ -77,7 +77,31 @@
                                                 Item Title
                                             </a>
                                                        
-                                            <span class="documentByLine"
+                                           
+                                                <metal:description define-slot="description_slot">
+                                                    <tal:comment replace="nothing"> 
+                                                        Place custom listing info for custom types here
+                                                    </tal:comment>
+                                                </metal:description>
+                                        </span>
+                                    </dt>
+                                    
+                                    <dd>
+                                                  <div tal:condition="item_subhead"
+                                                        tal:content="item_subhead"
+                                                        class="pressroomSubhead">
+                                                       Subheading
+                                                  </div>
+     
+                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </div> 
+                                        <div tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </div> 
+                                    </dd>
+
+                                                <span class="documentByLine"
                                                   tal:condition="show_about">
                     
                                                 <tal:name tal:condition="item_creator"
@@ -102,31 +126,7 @@
                                                 <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
                                                   August 16, 2001 at 23:35:59
                                                 </span>
-                    
-                                                <metal:description define-slot="description_slot">
-                                                    <tal:comment replace="nothing"> 
-                                                        Place custom listing info for custom types here
-                                                    </tal:comment>
-                                                </metal:description>
                                             </span>
-                                        </span>
-                                    </dt>
-                                    
-                                    <dd>
-                                                  <div tal:condition="item_subhead"
-                                                        tal:content="item_subhead"
-                                                        class="pressroomSubhead">
-                                                       Subheading
-                                                  </div>
-     
-                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
-                                            &nbsp; 
-                                        </div> 
-                                        <div tal:omit-tag="" tal:content="item_description"> 
-                                            description 
-                                        </div> 
-                                    </dd>
-                                       
                                 </tal:block>
                             </tal:entry>
                         </dl>
@@ -190,7 +190,30 @@
                                                        August 8, 2006
                                                   </span>
                 
-                                        <span class="documentByLine"
+                                        
+                                            <metal:description define-slot="description_slot">
+                                                <tal:comment replace="nothing"> 
+                                                    Place custom listing info for custom types here
+                                                </tal:comment>
+                                            </metal:description>
+                                    </dt>
+                
+                                    <dd>
+                                                  <div tal:condition="item_subhead"
+                                                       tal:content="item_subhead"
+                                                        class="pressroomSubhead">
+                                                       Subheading
+                                                  </div>
+     
+                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </div> 
+                                        <div tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </div> 
+                                    </dd>
+
+                                             <span class="documentByLine"
                                               tal:condition="show_about">
                 
                                             <tal:name tal:condition="item_creator"
@@ -215,30 +238,7 @@
                                             <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
                                               August 16, 2001 at 23:35:59
                                             </span>
-                
-                                            <metal:description define-slot="description_slot">
-                                                <tal:comment replace="nothing"> 
-                                                    Place custom listing info for custom types here
-                                                </tal:comment>
-                                            </metal:description>
-                                        </span>
-                
-                                    </dt>
-                
-                                    <dd>
-                                                  <div tal:condition="item_subhead"
-                                                       tal:content="item_subhead"
-                                                        class="pressroomSubhead">
-                                                       Subheading
-                                                  </div>
-     
-                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
-                                            &nbsp; 
-                                        </div> 
-                                        <div tal:omit-tag="" tal:content="item_description"> 
-                                            description 
-                                        </div> 
-                                    </dd>
+                                           </span>
                                 </tal:block>
                                 </tal:entry>
                             </dl>
@@ -305,7 +305,19 @@
                                         </a>
                                         </span>
                 
-                                        <span class="documentByLine"
+                                        
+                
+                                    </dt>
+                
+                                    <dd>
+                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </span> 
+                                        <span tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </span> 
+                                    </dd>
+                                            <span class="documentByLine"
                                               tal:condition="show_about">
                 
                                             <tal:name tal:condition="item_creator"
@@ -337,17 +349,6 @@
                                                 </tal:comment>
                                             </metal:description>
                                         </span>
-                
-                                    </dt>
-                
-                                    <dd>
-                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
-                                            &nbsp; 
-                                        </span> 
-                                        <span tal:omit-tag="" tal:content="item_description"> 
-                                            description 
-                                        </span> 
-                                    </dd>
                                 </tal:block>
                                 </tal:entry>
                             </dl>
