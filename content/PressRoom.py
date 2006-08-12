@@ -150,6 +150,10 @@ class PressRoom(AutoOrderSupport, ATCTOrderedFolder):
         if 'press-releases' not in self.objectIds():
             self.invokeFactory('Folder','press-releases') # XXX Make large plone folder
             obj = self['press-releases']
+            obj.setConstrainTypesMode(1)
+            obj.setImmediatelyAddableTypes(["PressRelease",])
+            obj.setLocallyAllowedTypes(["Topic","PressRelease",])
+            
             obj.setTitle(self.translate(
                     msgid='pr_press_releases_title',
                     domain='pressroom',
