@@ -70,16 +70,6 @@
             Show related items if they exist
         </div>
 
-        <p class="companyInformation">
-            <span class="companyName" tal:content="portal_properties/title">Plone</span> 
-                - 
-            <span tal:condition="portal_properties/description"
-			      tal:replace="portal_properties/description">
-                A user-friendly and powerful open source Content Management System
-            </span>
-        </p>
-
-
         <p class='release-hashes'>
             ###
         </p>
