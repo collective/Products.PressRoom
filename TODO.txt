@@ -1,7 +1,52 @@
-Press Room TODO:
+Press Room TODO
 
-Before initial use:
+Some good ideas
 -=-=-=-=-=-=-=-=-=-=
+
+[ ] Add i18N tags to PTs
+
+- Press Contact
+    [ ] add image field for portrait of contacts
+        
+
+[ ] Create configlet
+    [ ] End characters for press release "###" the default
+    [ ] Where contacts should show up (i.e. before, after text) ?
+    
+[ ] Make story date field avaiable to smartfolders (presumably by adding to catalog)
+ - in tracker
+ 
+[ ] Add "cell phone" field to press contact
+ - in tracker
+ 	
+[ ] Press clip view
+	Not sure if linking to original story on publication name is clear
+	- in tracker
+    
+[ ] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
+
+Intermediate term use:
+-----------------------
+
+- Come up with some good content icons for PressClip & PressRelease
+- Documentation for how to administer Press Items (everything else is still too undefined)
+- More Tests!
+- Look into possibly more suitable widgets for the reuse of publication sources
+- Is there a reason that the 'browse contacts' form can't just show all the contacts on the site automatically?
+
+To be determined:
+-----------------------
+
+- News Item - Disable this on installation? Still not sure.  My gut says no, but when you potentialy have an option to add a Press Release, Press Clip, News Item (and possibly a Blog Entry), will unsophisticated users get confused
+- Subheadline - fields should be longer, like description-length, never underestimate the ability for long headlines and subheadlines in press releases :)
+
+
+
+
+Stuff that's already been done
+(this is only here for historical purposes)
+-=-=-=-=-=-=-=-=-=-=
+
 
 X - Register a stylesheet with the product that can be expanded upon as needed
 
@@ -32,20 +77,15 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
 - Add in multi-lingual support:
     X - LinguaPlone support (attention to Schema needed?)
     X - Add msgids to AT Schema fields
-    - Add i18N tags to PTs
-
-- Add license (NB - It'll be GPL'ed) and author information to the product
- - in tracker
  
-- Skins improvements
-    - Register a new (or a few new) selectable views with page and set the default on for an auto added page to /press-room (Create a nice composity type view for the default "Press Room" view)
+ 
 
 - Refine the views for 
-    - press release - 
+    S press release - 
         - I think we should be able to google for some guidlines here, 
-        - contacts need to appear to be part of the view not seperate from
-        - fix "Press Room" text at the bottom of release
-    - press clip - 
+        X contacts need to appear to be part of the view not seperate from
+        X fix "Press Room" text at the bottom of release
+    X press clip - 
     - press contact - disable rss on press contact smart folder
     X press room - default release first view, clip second, contacts to the right view
 
@@ -61,89 +101,47 @@ X - Come up with some good sensible defaults for how the PressRoom is useful OOT
         X - Add path query to each press room smart folder on creation, so we're not pulling releases from everywhere on the site
         X - Add a rich body to the PressRoom content type
         X On a press room by press room basis, users should be able to decide how many per type items there will be
-        - checkbox for group by view
-        - widget querying for unique values of type w/in that path
-        - Determine how easy it is to globally disallow the press* types, but then allow them within the pressroom section + every other type
-    - Press Contact
-        - add image field for portrait of contacts
-        
-- Create configlet
-    - End characters for press release "###" the default
-    - Where contacts should show up (i.e. before, after text)
+       
+ 
 
-Intermediate term use:
--=-=-=-=-=-=-=-=-=-=
-
-- Come up with some good content icons for PressClip & PressRelease
-- Documentation for how to administer Press Items (everything else is still too undefined)
-- More Tests!
-- Look into possibly more suitable widgets for the reuse of publication sources
-- Is there a reason that the 'browse contacts' form can't just show all the contacts on the site automatically?
-
-To be determined:
--=-=-=-=-=-=-=-=-=-=
-
-- News Item - Disable this on installation? Still not sure.  My gut says no, but when you potentialy have an option to add a Press Release, Press Clip, News Item (and possibly a Blog Entry), will unsophisticated users get confused
-- Subheadline - fields should be longer, like description-length, never underestimate the ability for long headlines and subheadlines in press releases :)
-
-
-Other random stuff from Jon's testing 
--=-=-=-=-=-=-=-=-=-=
+Random stuff from Jon's testing 
+---------------------------------
 
 [X] if no items and not manager, don't show the div at all.
-	[ ] add explicit checkbox to control showing items, separate from number.
+	[X] add explicit checkbox to control showing items, separate from number.
  - in tracker
 	
-[ ] file bug to change my hacky manager code to a python script that:
+[X] file bug to change my hacky manager code to a python script that:
 	checks to see if the destination exists
 	checks to see if the user has permission to add content to that folder
 	- in tracker
-	
-[ ] dont end name with .html (looks weird with slash)
+
+[X]don't show releases clips & contacts in navigation -- there could be lots
  - in tracker
  
-[ ]don't show releases clips & contacts in navigation -- there could be lots
- - in tracker
- 
-[ ] restrict ability to add press room content types outside of subfolders
+[X] restrict ability to add press room content types outside of subfolders
   - in tracker
   
  in press room view, listings should show:
   [X] Press Releases
    [X] Headline - Press Release Date
     [X]Subheadline
-	 [ ] author + modified date info
+	 [X] author + modified date info
 	
-[ ]  Press Clips
- [ ]  Headline - Story Date
-   [ ] Publication	
-    [ ] author + modified date info
+[X]  Press Clips
+ [X]  Headline - Story Date
+   [X] Publication	
+    [X] author + modified date info
 	
 	 - in tracker
 	 
-[ ]  Press Contacts
-   []Person
-    []Job Title
-	 []Email
-	 []Phone
-	 
-	 - in tracker
-	 
-   ? Don't show author & modified date to managers -- it's not important
-   
+	    
    
 [X] Need a "story date" field for Press Clips
 
-[ ] Make story date field avaiable to smartfolders (presumably by adding to catalog)
- - in tracker
- 
-[ ] Add "cell phone" field to press contact
- - in tracker
 
-[ ] Press contact view
+
+[X] Press contact view
 	get rid of ugly headings, more compact display
 	- in tracker
-	
-[ ] Press clip view
-	Not sure if linking to original story on publication name is clear
-	- in tracker
+
