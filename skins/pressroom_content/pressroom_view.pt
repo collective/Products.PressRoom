@@ -27,26 +27,130 @@
            tal:condition="here/Description">
             Description
         </p>
-
         <div class="stx">
             <div tal:replace="structure here/getText | nothing" />
         </div>
-        
-        <table border='0' cellspacing='0' cellpadding='0'>
-            <tr>
-                <td>
-
-                    <div id='press-releases'
+                
+ 
+     <div id="press-contacts"
                          tal:define="path python:'/'.join(context.getPhysicalPath());
-                                     pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',
+                                     testStr python: 'testValue';
+                                     use_view_action site_properties/typesUseViewActionInListings|python:();
+                                     show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
+                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact',
                                                                                                review_state='published',
-                                                                                               sort_order='reverse',
-                                                                                               path=path,
-                                                                                               sort_on='Date',)[:viewReleaseAmt]"
-                        tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
+                                                                                               path=path,);"
+                         tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
+                              <h2 class="documentFirstHeading">
+                            Press Contacts
+                                   
+                              <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
+                                    class="addPressRoomItem">
+                                   <a href="../press-room/press-contacts/createObject?type_name=PressContact">
+                                   [Add Press Contact]
+                                   </a>
+                              </span>
+                        </h2>
                         
+                        <dl>
+                            <tal:entry tal:condition="pressContacts" 
+                                       tal:repeat="item pressContacts">
+                                <tal:block tal:define="item_url item/getURL|item/absolute_url;
+                                                       item_id item/getId|item/id;
+                                                       item_title_or_id item/pretty_title_or_id;
+                                                       item_description item/Description;
+                                                                    item_subhead item/getSubhead;
+                                                       item_type item/portal_type;
+                                                       item_type_title item/Type;
+                                                       item_modified item/ModificationDate;
+                                                       item_created item/CreationDate;
+                                                                    item_effective item/EffectiveDate;
+                                                       item_type_class python: 'contenttype-' + normalizeString(item_type);
+                                                       item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
+                                                       item_creator item/Creator;">
+                                    
+                                    <dt metal:define-macro='contactlist'>
+                                        <span tal:attributes="class item_type_class">
+                                            <a href="#" 
+                                               tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                                               class string:$item_wf_state_class visualIconPadding"
+                                               tal:content="item_title_or_id">
+                                                Item Title
+                                            </a>
+                                                       
+                                            <span class="documentByLine"
+                                                  tal:condition="show_about">
+                    
+                                                <tal:name tal:condition="item_creator"
+                                                    tal:define="author python:mtool.getMemberInfo(item_creator)">
+                                                  <span i18n:translate="label_by_author">
+                                                    by
+                                                  <a href="#"
+                                                     tal:attributes="href string:${portal_url}/author/${item_creator}"
+                                                     tal:content="python:author and author['fullname'] or item_creator"
+                                                     tal:omit-tag="not:author"
+                                                     i18n:name="author">
+                                                    Bob Dobalina
+                                                  </a>
+                                                  </span>
+                    
+                                                </tal:name>
+                    
+                                                &mdash;
+                                                <tal:mod i18n:translate="box_last_modified">
+                                                  last modified
+                                                </tal:mod>
+                                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+                                                  August 16, 2001 at 23:35:59
+                                                </span>
+                    
+                                                <metal:description define-slot="description_slot">
+                                                    <tal:comment replace="nothing"> 
+                                                        Place custom listing info for custom types here
+                                                    </tal:comment>
+                                                </metal:description>
+                                            </span>
+                                        </span>
+                                    </dt>
+                                    
+                                    <dd>
+                                                  <div tal:condition="item_subhead"
+                                                        tal:content="item_subhead"
+                                                        class="pressroomSubhead">
+                                                       Subheading
+                                                  </div>
+     
+                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </div> 
+                                        <div tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </div> 
+                                    </dd>
+                                       
+                                </tal:block>
+                            </tal:entry>
+                        </dl>
+                              
+
+                    </div>   
+        
+                      <tal:block 
+                           tal:define="path python:'/'.join(context.getPhysicalPath());
+                                                      pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',review_state='published',sort_order='reverse',path=path,sort_on='Date',)[:viewReleaseAmt]">
+                    <div id='press-releases'
+                        tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
+                          
                         <h2 class="documentFirstHeading">
                             Recent Press Releases
+                                   
+                              <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
+                                    class="addPressRoomItem">
+                                   <a href="../press-room/press-releases/createObject?type_name=PressRelease">
+                                   [Add Press Release]
+                                   </a>
+                              </span> 
                         </h2>
                 
                         <tal:listing condition="pressReleases"
@@ -56,6 +160,128 @@
                 
                             <dl>
                                 <tal:entry tal:repeat="item pressReleases">
+                                <tal:block tal:define="item_url item/getURL|item/absolute_url;
+                                                       item_id item/getId|item/id;
+                                                       item_title_or_id item/pretty_title_or_id;
+                                                       item_description item/Description;
+                                                                    item_subhead item/getSubhead;
+                                                       item_type item/portal_type;
+                                                       item_type_title item/Type;
+                                                       item_modified item/ModificationDate;
+                                                       item_created item/CreationDate;
+                                                                    item_effective item/EffectiveDate;
+                                                       item_type_class python: 'contenttype-' + normalizeString(item_type);
+                                                       item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
+                                                       item_creator item/Creator;
+                                                   ">
+                
+                                    <dt metal:define-macro="releaselistitem">
+                
+                                        <span tal:attributes="class item_type_class">
+                                        <a href="#" 
+                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                                           class string:$item_wf_state_class visualIconPadding"
+                                           tal:content="item_title_or_id">
+                                            Item Title
+                                        </a>
+                                        </span>
+                                                  
+                                                  <span class="itemDate"
+                                                         tal:content="python:toLocalizedTime(item_effective)">
+                                                       August 8, 2006
+                                                  </span>
+                
+                                        <span class="documentByLine"
+                                              tal:condition="show_about">
+                
+                                            <tal:name tal:condition="item_creator"
+                                                tal:define="author python:mtool.getMemberInfo(item_creator)">
+                                              <span i18n:translate="label_by_author">
+                                                by
+                                              <a href="#"
+                                                 tal:attributes="href string:${portal_url}/author/${item_creator}"
+                                                 tal:content="python:author and author['fullname'] or item_creator"
+                                                 tal:omit-tag="not:author"
+                                                 i18n:name="author">
+                                                Bob Dobalina
+                                              </a>
+                                              </span>
+                
+                                            </tal:name>
+                
+                                            &mdash;
+                                            <tal:mod i18n:translate="box_last_modified">
+                                              last modified
+                                            </tal:mod>
+                                            <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+                                              August 16, 2001 at 23:35:59
+                                            </span>
+                
+                                            <metal:description define-slot="description_slot">
+                                                <tal:comment replace="nothing"> 
+                                                    Place custom listing info for custom types here
+                                                </tal:comment>
+                                            </metal:description>
+                                        </span>
+                
+                                    </dt>
+                
+                                    <dd>
+                                                  <div tal:condition="item_subhead"
+                                                       tal:content="item_subhead"
+                                                        class="pressroomSubhead">
+                                                       Subheading
+                                                  </div>
+     
+                                        <div tal:omit-tag="" tal:condition="not:item_description"> 
+                                            &nbsp; 
+                                        </div> 
+                                        <div tal:omit-tag="" tal:content="item_description"> 
+                                            description 
+                                        </div> 
+                                    </dd>
+                                </tal:block>
+                                </tal:entry>
+                            </dl>
+                        </tal:listing>
+                        <p class="discreet"
+                           tal:condition="not:pressReleases"
+                           i18n:translate="description_no_items_in_folder">
+                            There are currently no press releases.
+                        </p>
+                              
+                              <div class="morePressRoomItems">
+                                   <a href="../press-room/press-releases">
+                                   More Press Releases
+                                   </a>
+                              </div>
+                    </div>
+                 </tal:block>   
+                    
+                    
+                    <tal:block
+                     tal:define="path python:'/'.join(context.getPhysicalPath());
+                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',review_state='published',sort_order='reverse',path=path,sort_on='Date',)[:viewClipAmt];">
+            
+                    <div id="press-clips"
+                       tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
+                            <h2 class="documentFirstHeading">Recent Press Clips
+                                   
+                              <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
+                                    class="addPressRoomItem">
+                                   <a href="../press-room/press-clips/createObject?type_name=PressClip">
+                                   [Add Press Clip]
+                                   </a>
+                              </span>  
+                        </h2>
+                
+                        <tal:listing condition="pressClips"
+                                     define="use_view_action site_properties/typesUseViewActionInListings|python:();
+                                             show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
+                
+                            <dl>
+                                <tal:entry tal:repeat="item pressClips">
                                 <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                                        item_id item/getId|item/id;
                                                        item_title_or_id item/pretty_title_or_id;
@@ -70,7 +296,7 @@
                                                        item_creator item/Creator;
                                                    ">
                 
-                                    <dt metal:define-macro="releaselistitem">
+                                    <dt metal:define-macro="cliplistitem">
                 
                                         <span tal:attributes="class item_type_class">
                                         <a href="#" 
@@ -128,188 +354,21 @@
                                 </tal:entry>
                             </dl>
                         </tal:listing>
-                        <p class="discreet"
-                           tal:condition="not:pressReleases"
-                           i18n:translate="description_no_items_in_folder">
-                            There are currently no press releases.
-                        </p>
-            
-                    </div>
-                    
-                    
-                    
-
-                    <div id='press-clips'
-                         tal:define="path python:'/'.join(context.getPhysicalPath());
-                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',
-                                                                                            review_state='published',
-                                                                                            sort_order='reverse',
-                                                                                            path=path,
-                                                                                            sort_on='Date',)[:viewClipAmt];"
-                        tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
-            
-                        <h2 class="documentFirstHeading">
-                            Recent Press Clips
-                        </h2>
-                
-                        <tal:listing condition="pressClips"
-                                     define="use_view_action site_properties/typesUseViewActionInListings|python:();
-                                             show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
-                
-                            <dl>
-                                <tal:entry tal:repeat="item pressClips">
-                                <tal:block tal:define="item_url item/getURL|item/absolute_url;
-                                                       item_id item/getId|item/id;
-                                                       item_title_or_id item/pretty_title_or_id;
-                                                       item_description item/Description;
-                                                       item_publication item/getPublication;
-                                                       item_type item/portal_type;
-                                                       item_type_title item/Type;
-                                                       item_modified item/ModificationDate;
-                                                       item_storydate item/getStorydate;
-                                                       item_created item/CreationDate;
-                                                       item_type_class python: 'contenttype-' + normalizeString(item_type);
-                                                       item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
-                                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                                       item_creator item/Creator;
-                                                   ">
-                
-                                    <dt metal:define-macro="cliplistitem">
-                
-                                        <span tal:attributes="class item_type_class">
-                                        <a href="#" 
-                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
-                                                           class string:$item_wf_state_class visualIconPadding"
-                                           tal:content="item_title_or_id">
-                                            Item Title
-                                        </a>
-                                        </span>
-                
-                                        <span class="clip-storeydate">
-
-                                            &mdash;
-                                            
-                                            <span tal:replace="python:toLocalizedTime(item_storydate)">
-                                              August 16, 2001 at 23:35:59
-                                            </span>
-                                        </span>
-                
-                                    </dt>
-                                    <dd> 
-                                        <div tal:condition="item_publication" tal:content="item_publication">
-                                            Elle Magazine
-                                        </div>
-                                        <div tal:content="item_description"> 
-                                            description 
-                                        </div>
-                                        <div tal:omit-tag="" tal:condition="python: not (item_description or item_publication)"> 
-                                            &nbsp;
-                                        </div>
-                                    </dd>
-                                </tal:block>
-                                </tal:entry>
-                            </dl>
-                        </tal:listing>
                     
                         <p class="discreet"
                            tal:condition="not:pressClips"
                            i18n:translate="description_no_items_in_folder">
                             There are currently no press clips.
                         </p>
-            
+
+                              <div class="morePressRoomItems">
+                                   <a href="../press-room/press-clips">
+                                   More Press Clips
+                                   </a>
+                              </div>
                     </div>
+                 </tal:block> 
                     
-                </td>
-                <td valign='top'>
-                    <div id='press-contacts'
-                         tal:define="path python:'/'.join(context.getPhysicalPath());
-                                     testStr python: 'testValue';
-                                     use_view_action site_properties/typesUseViewActionInListings|python:();
-                                     show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
-                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact',
-                                                                                               review_state='published',
-                                                                                               path=path,);"
-                         tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
-                        <h2 class="documentFirstHeading">
-                            Press Contacts
-                        </h2>
-                        
-                        <dl>
-                            <tal:entry tal:condition="pressContacts" 
-                                       tal:repeat="item pressContacts">
-                                <tal:block tal:define="item_url item/getURL|item/absolute_url;
-                                                       item_id item/getId|item/id;
-                                                       item_title_or_id item/pretty_title_or_id;
-                                                       item_description item/Description;
-                                                       item_type item/portal_type;
-                                                       item_type_title item/Type;
-                                                       item_modified item/ModificationDate;
-                                                       item_created item/CreationDate;
-                                                       item_type_class python: 'contenttype-' + normalizeString(item_type);
-                                                       item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
-                                                       item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                                       item_creator item/Creator;">
-                                    
-                                    <dt metal:define-macro='contactlist'>
-                                        <span tal:attributes="class item_type_class">
-                                            <a href="#" 
-                                               tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
-                                                               class string:$item_wf_state_class visualIconPadding"
-                                               tal:content="item_title_or_id">
-                                                Item Title
-                                            </a>
-                                            
-                                            <span class="documentByLine"
-                                                  tal:condition="show_about">
-                    
-                                                <tal:name tal:condition="item_creator"
-                                                    tal:define="author python:mtool.getMemberInfo(item_creator)">
-                                                  <span i18n:translate="label_by_author">
-                                                    by
-                                                  <a href="#"
-                                                     tal:attributes="href string:${portal_url}/author/${item_creator}"
-                                                     tal:content="python:author and author['fullname'] or item_creator"
-                                                     tal:omit-tag="not:author"
-                                                     i18n:name="author">
-                                                    Bob Dobalina
-                                                  </a>
-                                                  </span>
-                    
-                                                </tal:name>
-                    
-                                                &mdash;
-                                                <tal:mod i18n:translate="box_last_modified">
-                                                  last modified
-                                                </tal:mod>
-                                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                                  August 16, 2001 at 23:35:59
-                                                </span>
-                    
-                                                <metal:description define-slot="description_slot">
-                                                    <tal:comment replace="nothing"> 
-                                                        Place custom listing info for custom types here
-                                                    </tal:comment>
-                                                </metal:description>
-                                            </span>
-                                        </span>
-                                    </dt>
-                                    
-                                    <dd>
-                                        <span tal:omit-tag="" tal:condition="not:item_description"> 
-                                            &nbsp; 
-                                        </span> 
-                                        <span tal:omit-tag="" tal:content="item_description"> 
-                                            description 
-                                        </span>
-                                    </dd>
-                                       
-                                </tal:block>
-                            </tal:entry>
-                        </dl>
-                    </div>
-                </td>
-            </tr>
-        </table>
 
     </metal:main-macro>
     </div>
