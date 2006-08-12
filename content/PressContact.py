@@ -110,8 +110,8 @@ class PressContact(ATCTContent):
     """Contact information for your press contacts. Can be referenced in press releases."""
     meta_type = portal_type = 'PressContact'
     archetype_name = 'Press Contact'
-    immediate_view = 'base_view'
-    default_view   = 'base_view'
+    immediate_view = 'presscontact_view'
+    default_view   = 'presscontact_view'
     content_icon   = 'user.gif'
     typeDescription = """Contact information for your press contacts"""
     typeDescMsgId  = """Press_contact_description_edit"""
