@@ -37,9 +37,7 @@
                                      testStr python: 'testValue';
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
                                      show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
-                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact',
-                                                                                               review_state='published',
-                                                                                               path=path,);"
+                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact', review_state='published', path=path,);"
                          tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
                               <h2 class="documentFirstHeading">
                             Press Contacts
