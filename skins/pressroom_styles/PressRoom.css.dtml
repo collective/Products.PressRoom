@@ -23,12 +23,18 @@
  font-size: 110%;
 }
 
+.itemDate {
+ color: #666;
+ font-weight: normal;
+ margin-left: 1em;
+}
+
 #press-contacts {
  width: 150px;
  float: right;
  padding: 0 5px 5px 5px;
  margin-left: 20px;
- border: 1px solid;
+ border: 1px solid #CCC;
  padding: 10px;
  background: &dtml-helpBackgroundColor;; 
 }

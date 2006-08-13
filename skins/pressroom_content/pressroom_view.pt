@@ -155,11 +155,11 @@
                                             Item Title
                                         </a>
                                         </span>
-                                                  
-                                                  <span class="itemDate"
-                                                         tal:content="python:toLocalizedTime(item_effective)">
-                                                       August 8, 2006
-                                                  </span>
+                                         -         
+                                        <span class="itemDate"
+                                         tal:content="python:toLocalizedTime(item_effective)">
+                                         August 8, 2006
+                                        </span>
                 
                                         
                                             <metal:description define-slot="description_slot">
@@ -232,6 +232,7 @@
                                                        item_type_title item/Type;
                                                        item_modified item/ModificationDate;
                                                        item_created item/CreationDate;
+                                                       item_storydate item/getStorydate
                                                        item_type_class python: 'contenttype-' + normalizeString(item_type);
                                                        item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
@@ -247,6 +248,11 @@
                                            tal:content="item_title_or_id">
                                             Item Title
                                         </a>
+                                        </span>
+                                         - 
+                                        <span class="itemDate"
+                                         tal:content="item_storydate">
+                                         Story Date
                                         </span>
                 
                                         
