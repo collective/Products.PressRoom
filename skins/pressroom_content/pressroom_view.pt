@@ -232,7 +232,7 @@
                                                        item_type_title item/Type;
                                                        item_modified item/ModificationDate;
                                                        item_created item/CreationDate;
-                                                       item_storydate item/getStorydate
+                                                       item_storydate item/getStorydate;
                                                        item_type_class python: 'contenttype-' + normalizeString(item_type);
                                                        item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
