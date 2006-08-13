@@ -10,16 +10,16 @@ Some good ideas
  for a hint about how to do this
  
 - Press Room view 
-   [ ] Underline on headers looks bad in Plone 2.5. (Why the heck did this style change anyway?)
-   [ ] Less indenting on Press Contact description, smaller text.
-   [ ] Think about how to handle this view better when screen is narrow.
-   
+   [X] Underline on headers looks bad in Plone 2.5. 
+   [X] Less indenting on Press Contact description, smaller text.   
 
 - Press Contact
     [ ] add image field for portrait of contacts
+    [ ] Add "cell phone" field to press contact, and show in pressrelease and presscontact views
+        - in tracker
         
 - Press Release
-    [ ] Make image fit in nicer
+    [X] Make image fit in nicer - clip is fine.
  
 
 [ ] Create configlet for global variables (or maybe just configure per-pressroom in its edit form?)
@@ -28,9 +28,7 @@ Some good ideas
     
 [ ] Make story date field avaiable to smartfolders
  - in tracker
- 
-[ ] Add "cell phone" field to press contact
- - in tracker
+
  	
 [ ] Press clip view
 	Not sure if linking to original story on publication name is clear
