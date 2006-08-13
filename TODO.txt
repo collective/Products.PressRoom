@@ -3,8 +3,12 @@ Press Room TODO
 Some good ideas
 -=-=-=-=-=-=-=-=-=-=
 
-[ ] Add i18N tags to PTs
+[ ] Add i18N tags to PTs 
 
+[ ] Make Press Release and Press Clip subfolders into Large Plone Folders, see 
+ http://sourceforge.net/mailarchive/message.php?msg_id=12305437 
+ for a hint about how to do this
+ 
 - Press Room view 
    [ ] Underline on headers looks bad in Plone 2.5. (Why the heck did this style change anyway?)
    [ ] Less indenting on Press Contact description, smaller text.
