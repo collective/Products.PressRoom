@@ -5,15 +5,24 @@ Some good ideas
 
 [ ] Add i18N tags to PTs
 
+- Press Room view 
+   [ ] Underline on headers looks bad in Plone 2.5. (Why the heck did this style change anyway?)
+   [ ] Less indenting on Press Contact description, smaller text.
+   [ ] Think about how to handle this view better when screen is narrow.
+   
+
 - Press Contact
     [ ] add image field for portrait of contacts
         
+- Press Release
+    [ ] Make image fit in nicer
+ 
 
-[ ] Create configlet
+[ ] Create configlet for global variables (or maybe just configure per-pressroom in its edit form?)
     [ ] End characters for press release "###" the default
     [ ] Where contacts should show up (i.e. before, after text) ?
     
-[ ] Make story date field avaiable to smartfolders (presumably by adding to catalog)
+[ ] Make story date field avaiable to smartfolders
  - in tracker
  
 [ ] Add "cell phone" field to press contact
