@@ -19,7 +19,8 @@
 /* -=-=-=- Press Release Styles -=-=-=- */
 
 .pressroomSubhead {
- font-style: italic;
+ font-style: italic
+ font-size: 110%;
 }
 
 #press-contacts {
@@ -36,6 +37,7 @@
 #press-releases dd,
 #press-clips dd {
  margin-left: 1.5em;
+ font-size: 90%;
 }
 
 .addPressRoomItem {
