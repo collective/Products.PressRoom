@@ -100,38 +100,9 @@
                                             description 
                                         </div> 
                                     </dd>
-
-                                                <span class="documentByLine"
-                                                  tal:condition="show_about">
-                    
-                                                <tal:name tal:condition="item_creator"
-                                                    tal:define="author python:mtool.getMemberInfo(item_creator)">
-                                                  <span i18n:translate="label_by_author">
-                                                    by
-                                                  <a href="#"
-                                                     tal:attributes="href string:${portal_url}/author/${item_creator}"
-                                                     tal:content="python:author and author['fullname'] or item_creator"
-                                                     tal:omit-tag="not:author"
-                                                     i18n:name="author">
-                                                    Bob Dobalina
-                                                  </a>
-                                                  </span>
-                    
-                                                </tal:name>
-                    
-                                                &mdash;
-                                                <tal:mod i18n:translate="box_last_modified">
-                                                  last modified
-                                                </tal:mod>
-                                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                                  August 16, 2001 at 23:35:59
-                                                </span>
-                                            </span>
-                                </tal:block>
-                            </tal:entry>
-                        </dl>
-                              
-
+                                    </tal:block>
+                                </tal:entry>
+                            </dl>
                     </div>   
         
                       <tal:block 
@@ -212,34 +183,7 @@
                                             description 
                                         </div> 
                                     </dd>
-
-                                             <span class="documentByLine"
-                                              tal:condition="show_about">
-                
-                                            <tal:name tal:condition="item_creator"
-                                                tal:define="author python:mtool.getMemberInfo(item_creator)">
-                                              <span i18n:translate="label_by_author">
-                                                by
-                                              <a href="#"
-                                                 tal:attributes="href string:${portal_url}/author/${item_creator}"
-                                                 tal:content="python:author and author['fullname'] or item_creator"
-                                                 tal:omit-tag="not:author"
-                                                 i18n:name="author">
-                                                Bob Dobalina
-                                              </a>
-                                              </span>
-                
-                                            </tal:name>
-                
-                                            &mdash;
-                                            <tal:mod i18n:translate="box_last_modified">
-                                              last modified
-                                            </tal:mod>
-                                            <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                              August 16, 2001 at 23:35:59
-                                            </span>
-                                           </span>
-                                </tal:block>
+                                  </tal:block>
                                 </tal:entry>
                             </dl>
                         </tal:listing>
@@ -317,38 +261,7 @@
                                             description 
                                         </span> 
                                     </dd>
-                                            <span class="documentByLine"
-                                              tal:condition="show_about">
-                
-                                            <tal:name tal:condition="item_creator"
-                                                tal:define="author python:mtool.getMemberInfo(item_creator)">
-                                              <span i18n:translate="label_by_author">
-                                                by
-                                              <a href="#"
-                                                 tal:attributes="href string:${portal_url}/author/${item_creator}"
-                                                 tal:content="python:author and author['fullname'] or item_creator"
-                                                 tal:omit-tag="not:author"
-                                                 i18n:name="author">
-                                                Bob Dobalina
-                                              </a>
-                                              </span>
-                
-                                            </tal:name>
-                
-                                            &mdash;
-                                            <tal:mod i18n:translate="box_last_modified">
-                                              last modified
-                                            </tal:mod>
-                                            <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                              August 16, 2001 at 23:35:59
-                                            </span>
-                
-                                            <metal:description define-slot="description_slot">
-                                                <tal:comment replace="nothing"> 
-                                                    Place custom listing info for custom types here
-                                                </tal:comment>
-                                            </metal:description>
-                                        </span>
+    
                                 </tal:block>
                                 </tal:entry>
                             </dl>
