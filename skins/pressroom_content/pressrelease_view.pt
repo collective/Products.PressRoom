@@ -24,7 +24,7 @@
 
         <h3 class="subtitle" tal:condition="here/getSubhead" tal:content="here/getSubhead | nothing">
             Subtitle
-        </h2>
+        </h3>
 
         <div metal:use-macro="here/document_byline/macros/byline">
             Get the byline - contains details about author and modification date.
