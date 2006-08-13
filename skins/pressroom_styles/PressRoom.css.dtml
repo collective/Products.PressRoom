@@ -62,8 +62,21 @@
  font-size: 90%;
 }
 
-.release-hashes { text-align: center; }
+.release-hashes { 
+ text-align: center; 
+}
 
-.releaseTiming { text-transform: uppercase; font-weight: bold; }
+.releaseTiming { 
+ text-transform: uppercase; 
+ font-weight: bold; 
+}
 
-/* </dtml-with> */
+.releaseLocation {
+ text-transform: uppercase;
+ font-weight: bold;
+}
+
+.releaseDate {
+ margin-left: 1em;
+ font-weight: bold;
+}/* </dtml-with> */
