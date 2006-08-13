@@ -22,7 +22,7 @@
             Title or id
         </h1>
 
-        <h2 class="subtitle" tal:condition="here/getSubhead" tal:content="here/getSubhead | nothing">
+        <h3 class="subtitle" tal:condition="here/getSubhead" tal:content="here/getSubhead | nothing">
             Subtitle
         </h2>
 
