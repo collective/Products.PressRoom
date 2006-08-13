@@ -50,9 +50,11 @@
             Show related items if they exist
         </div>
 
-        <span tal:replace="here/getLocation">SEATTLE, WA</span>
+        <span class="releaseLocation"
+         tal:content="here/getLocation">SEATTLE, WA</span>
 
-        <span tal:replace="python:here.toLocalizedTime(here.getReleaseDate())">05/02/2006</span>
+        <span class="releaseDate"
+         tal:content="python:here.toLocalizedTime(here.getReleaseDate())">05/02/2006</span>
 
         <p tal:condition="python: not len_text and is_editable"
            i18n:translate="no_body_text"
