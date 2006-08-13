@@ -19,7 +19,7 @@
 /* -=-=-=- Press Release Styles -=-=-=- */
 
 .pressroomSubhead {
- font-style: italic
+ font-style: italic;
  font-size: 110%;
 }
 
