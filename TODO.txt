@@ -12,6 +12,7 @@ Some good ideas
 - Press Room view 
    [X] Underline on headers looks bad in Plone 2.5. 
    [X] Less indenting on Press Contact description, smaller text.   
+   [ ] Make subfolder links relative (ugh!)
 
 - Press Contact
     [ ] add image field for portrait of contacts
@@ -35,6 +36,8 @@ Some good ideas
 	- in tracker
     
 [ ] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
+ - this requires creating custom templates and then somehow choosing these templates as the default
+ view for the folders as they are instantiated.
 
 Intermediate term use:
 -----------------------
