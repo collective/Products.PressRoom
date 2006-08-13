@@ -39,7 +39,7 @@
                                      show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
                                      pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact', review_state='published', path=path,);"
                          tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
-                              <h2 class="documentFirstHeading">
+                              <h3 class="pressroomSection">
                             Press Contacts
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
@@ -48,7 +48,7 @@
                                    [Add Press Contact]
                                    </a>
                               </span>
-                        </h2>
+                        </h3>
                         
                         <dl>
                             <tal:entry tal:condition="pressContacts" 
@@ -140,7 +140,7 @@
                     <div id='press-releases'
                         tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
                           
-                        <h2 class="documentFirstHeading">
+                        <h3 class="pressroomSection">
                             Recent Press Releases
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
@@ -149,7 +149,7 @@
                                    [Add Press Release]
                                    </a>
                               </span> 
-                        </h2>
+                        </h3>
                 
                         <tal:listing condition="pressReleases"
                                      define="use_view_action site_properties/typesUseViewActionInListings|python:();
@@ -264,7 +264,7 @@
             
                     <div id="press-clips"
                        tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
-                            <h2 class="documentFirstHeading">Recent Press Clips
+                            <h3 class="pressroomSection">Recent Press Clips
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
@@ -272,7 +272,7 @@
                                    [Add Press Clip]
                                    </a>
                               </span>  
-                        </h2>
+                        </h3>
                 
                         <tal:listing condition="pressClips"
                                      define="use_view_action site_properties/typesUseViewActionInListings|python:();
