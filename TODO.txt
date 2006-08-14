@@ -12,7 +12,7 @@ Some good ideas
 - Press Room view 
    [X] Underline on headers looks bad in Plone 2.5. 
    [X] Less indenting on Press Contact description, smaller text.   
-   [ ] Make subfolder links relative (ugh!)
+   [X] Make subfolder links relative (ugh!)
 
 - Press Contact
     [ ] add image field for portrait of contacts
@@ -32,7 +32,9 @@ Some good ideas
 
  	
 [ ] Press clip view
-	Not sure if linking to original story on publication name is clear
+	Not sure if linking to original story on publication name is clear. Need to clean up this
+	view a little, make styles nicer.
+	
 	- in tracker
     
 [ ] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
