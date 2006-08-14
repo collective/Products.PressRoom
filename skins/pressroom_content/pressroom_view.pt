@@ -44,7 +44,7 @@
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a href="../press-room/press-contacts/createObject?type_name=PressContact">
+                                   <a href="./press-contacts/createObject?type_name=PressContact">
                                    [Add Press Contact]
                                    </a>
                               </span>
@@ -116,7 +116,7 @@
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a href="../press-room/press-releases/createObject?type_name=PressRelease">
+                                   <a href="./press-releases/createObject?type_name=PressRelease">
                                    [Add Press Release]
                                    </a>
                               </span> 
@@ -212,7 +212,7 @@
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a href="../press-room/press-clips/createObject?type_name=PressClip">
+                                   <a href="./press-clips/createObject?type_name=PressClip">
                                    [Add Press Clip]
                                    </a>
                               </span>  
