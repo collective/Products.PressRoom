@@ -20,12 +20,11 @@ from AccessControl import ClassSecurityInfo
 from Globals import package_home
 
 # AT
-# jon commented this out to try to fix issue 18
-# try:
-#  from Products.LinguaPlone.public import *
-# except ImportError:
+try:
+ from Products.LinguaPlone.public import *
+except ImportError:
   # No multilingual support
-from Products.Archetypes.public import *
+ from Products.Archetypes.public import *
 
 # ATCT
 from Products.ATContentTypes.content.folder import ATFolderSchema
