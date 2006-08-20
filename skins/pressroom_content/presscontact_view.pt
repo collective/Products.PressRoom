@@ -17,7 +17,7 @@
         </h1>
 
         <p>
-            <span tal:condition="here/jobtitle | nothing"><strong>Job title:</strong><span tal:replace="here/jobtitle" /><br /></span>
+            <span tal:condition="here/jobtitle | nothing"><strong>Job title:</strong> <span tal:replace="here/jobtitle" /><br /></span>
             <span tal:condition="here/organization | nothing"><strong>Organization:</strong> <span tal:replace="here/organization" /><br /></span>
             <span tal:condition="here/city | nothing"><strong>Location:</strong> <span tal:replace="here/city" /></span><span tal:condition="here/stateOrProvince | nothing" tal:replace="string:, ${here/stateOrProvince}"></span><br />
             <span tal:condition="here/email | nothing"><strong>Email:</strong> <a tal:content="here/email" tal:attributes="href string:mailto:${here/email}" /><br /></span>
