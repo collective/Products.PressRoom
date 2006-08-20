@@ -194,7 +194,7 @@
                         </p>
                               
                               <div class="morePressRoomItems">
-                                   <a href="../press-room/press-releases">
+                                   <a href="./press-releases">
                                    More Press Releases
                                    </a>
                               </div>
@@ -280,7 +280,7 @@
                         </p>
 
                               <div class="morePressRoomItems">
-                                   <a href="../press-room/press-clips">
+                                   <a href="./press-clips">
                                    More Press Clips
                                    </a>
                               </div>
