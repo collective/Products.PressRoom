@@ -51,6 +51,14 @@ Some good ideas
 [ ] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
  - this requires creating custom templates and then somehow choosing these templates as the default
  view for the folders as they are instantiated.
+   steps
+   1) create view templates. 
+   2) register as a default view (via portal_types)
+   3) designate view upon creation of folder.
+   
+   Make sure the view uses phrase like this:
+   <tal:content="here/reporter" tal:condition="here/reporter | nothing">
+   so that it degrades nicely if you try to render a non-pressromm content item in it.
 
 Intermediate term use:
 -----------------------

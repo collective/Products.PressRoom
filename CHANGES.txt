@@ -1,4 +1,4 @@
-HEAD (release # TBD)
+0.8.1
 
  - Resolved compatibility issues with LinguaPlone and PressRoom due to subclassing of i18N-unaware type for the PressRoom type
  - 
