@@ -74,11 +74,6 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         for k,v in self.childFolderMapping.items():
             self.failUnless(v in self.pressroom[k].objectIds())
             
-    def testSupplPressRoomViews(self):
-        self.failUnless(self.pressroom.getLayout() == 'pressroom_view')
-        self.pressroom.setLayout('pressroom_no_contacts_view') 
-        self.failUnless(self.pressroom.getLayout() == 'pressroom_no_contacts_view')
-
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
