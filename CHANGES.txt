@@ -1,7 +1,7 @@
 HEAD (release # TBD)
 
+ - Resolved compatibility issues with LinguaPlone and PressRoom due to subclassing of i18N-unaware type for the PressRoom type
  - 
-
 
 0.8 
 
