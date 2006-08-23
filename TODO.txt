@@ -3,11 +3,18 @@ Press Room TODO
 Some good ideas
 -=-=-=-=-=-=-=-=-=-=
 
-[ ] Add i18N tags to PTs 
+- [ ] After some permissions jockeying, Press Rooms, Press Contacts, Press Clips, and Press Releases are not addable by the common members.  
+      The latter two should be, which would introduce the following high-level permission structure still needing to be finished:
+      
+        - PressRoom - addable only by managers (frequently only want 1 per site, also requires smart folders, which member can and shouldn't be able to create)
+        - PressContact - addable only b managers (pretty obvious why)
+        - PressClip - should be addable by members -- i.e. have them help you farm the web for relevant info about your organization
+        - PressRelease - debatable, but in a community site, this could be helpful
+        
+- [ ] Add i18N tags to PTs 
 
-[ ] Make Press Release and Press Clip subfolders into Large Plone Folders, see 
- http://sourceforge.net/mailarchive/message.php?msg_id=12305437 
- for a hint about how to do this
+- [ ] Make Press Release and Press Clip subfolders into Large Plone Folders, see 
+      http://sourceforge.net/mailarchive/message.php?msg_id=12305437 for a hint about how to do this
  
 - Press Room view 
    [X] Underline on headers looks bad in Plone 2.5. 
@@ -17,6 +24,7 @@ Some good ideas
 - Press Contact
     [ ] add image field for portrait of contacts
     [ ] Add "cell phone" field to press contact, and show in pressrelease and presscontact views
+
         - in tracker
         
 - Press Release
@@ -31,10 +39,13 @@ Some good ideas
  - in tracker
 
  	
+
 [ ] Press clip view
+
 	Not sure if linking to original story on publication name is clear. Need to clean up this
 	view a little, make styles nicer.
 	
+
 	- in tracker
     
 [ ] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
@@ -124,40 +135,69 @@ Random stuff from Jon's testing
 ---------------------------------
 
 [X] if no items and not manager, don't show the div at all.
+
 	[X] add explicit checkbox to control showing items, separate from number.
+
  - in tracker
 	
+
 [X] file bug to change my hacky manager code to a python script that:
+
 	checks to see if the destination exists
+
 	checks to see if the user has permission to add content to that folder
 	- in tracker
 
+
 [X]don't show releases clips & contacts in navigation -- there could be lots
+
  - in tracker
  
+
 [X] restrict ability to add press room content types outside of subfolders
+
   - in tracker
   
+
  in press room view, listings should show:
+
   [X] Press Releases
+
    [X] Headline - Press Release Date
+
     [X]Subheadline
+
 	 [X] author + modified date info
+
 	
+
 [X]  Press Clips
+
  [X]  Headline - Story Date
+
    [X] Publication	
     [X] author + modified date info
+
 	
 	 - in tracker
 	 
+
 	    
+
    
+
 [X] Need a "story date" field for Press Clips
 
 
 
+
+
+
+
 [X] Press contact view
+
 	get rid of ugly headings, more compact display
+
 	- in tracker
+
 
