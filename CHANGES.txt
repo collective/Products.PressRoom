@@ -1,0 +1,13 @@
+HEAD (release # TBD)
+
+ - 
+
+
+0.8 
+
+ - Initial release to plone.org products area (CHANGES regime not in place so do the following: "svn diff --verbose -r 23865:27132" against the collective repository to determine what has changed 
+
+0.1 
+
+ - Initial release and migration to Collective 
+
