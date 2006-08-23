@@ -74,6 +74,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
     """Ensure content types can be created and edited"""
 
     def afterSetUp(self):
+        self.setRoles(['Manager'])
         self.folder.invokeFactory('PressRelease', 'pr1')
         self.pr1 = getattr(self.folder, 'pr1')
 
