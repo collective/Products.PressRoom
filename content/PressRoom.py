@@ -172,6 +172,7 @@ class PressRoom(OrderedBaseFolder):
                     msgid='pr_press_releases_description',
                     domain='pressroom',
                     default='These are our press releases'))
+            smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
             
             state_crit = smart_obj.addCriterion('review_state',
@@ -220,6 +221,7 @@ class PressRoom(OrderedBaseFolder):
                     msgid='pr_press_clips_description',
                     domain='pressroom',
                     default='See us in the news!'))
+            smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
             
             state_crit = smart_obj.addCriterion('review_state',
@@ -264,6 +266,7 @@ class PressRoom(OrderedBaseFolder):
                     msgid='pr_press_contacts_description',
                     domain='pressroom',
                     default='Contact these people for more information'))
+            smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
 
             # set the criteria published, type, public, and ordering

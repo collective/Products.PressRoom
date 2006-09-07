@@ -101,6 +101,9 @@ def install(self):
                                    'old_type'      : 'collection',
                                    'portal_types'  :  collection},))
     print >> out, "Added PressRoom types to kupu's linkable types, PressRoom type to collection"
+    
+    # Assign folder_listing_pressroom to smart folder type
+    
 
     # enable key fields with portal_atct tool
     smart_folder_tool = getToolByName(self, 'portal_atct')
@@ -126,5 +129,16 @@ def install(self):
     smart_folder_tool.addIndex(enabled=True, **typeIndex_def)
 
     print >> out, "Enabling the getObjPositionInParent and getPublic index fields, updating settings on the Type index field with the portal_atct tool"
+    
+    #Adding folder_listing_pressroom view to topic view methods
+    types_tool = getToolByName(self, 'portal_types')
+    topicFTI = types_tool.getTypeInfo('Topic')
+    if topicFTI:
+        view_methods = list(topicFTI.view_methods)
+        if 'folder_listing_pressroom' not in view_methods:
+            view_methods.append('folder_listing_pressroom')
+            topicFTI.view_methods = tuple(view_methods)
+    print >> out, "Added folder_listing_pressroom view to topic view methods"
+    
 
     return out.getvalue()
