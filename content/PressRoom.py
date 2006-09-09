@@ -27,7 +27,7 @@ except ImportError:
  from Products.Archetypes.public import *
 
 # ATCT
-from Products.ATContentTypes.content.folder import ATFolderSchema
+from Products.ATContentTypes.content.folder import ATFolderSchema, ATFolder
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.interfaces import IATFolder
@@ -35,7 +35,7 @@ from Products.ATContentTypes.interfaces import IATFolder
 # PR
 from Products.PressRoom.config import *
 
-ATPressRoomSchema = ATContentTypeSchema.copy()
+ATPressRoomSchema = ATFolderSchema.copy()
 ATPressRoomSchema += Schema((
     BooleanField('show_releases',
             required=0,
@@ -112,7 +112,7 @@ ATPressRoomSchema += Schema((
 
 finalizeATCTSchema(ATPressRoomSchema, folderish=True, moveDiscussion=False)
 
-class PressRoom(OrderedBaseFolder):
+class PressRoom(ATFolder):
     """A folder where all the press related materials in the site live"""
     schema = ATPressRoomSchema
 
@@ -121,7 +121,6 @@ class PressRoom(OrderedBaseFolder):
     archetype_name = 'Press Room'
     meta_type = portal_type = 'PressRoom'
     _at_rename_after_creation = True
-
     default_view = 'pressroom_view'
     immediate_view = 'pressroom_view'
     typeDescription= """A folder where all the press related materials in the site live"""
@@ -132,7 +131,7 @@ class PressRoom(OrderedBaseFolder):
     
     allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
 
-    __implements__ = (OrderedBaseFolder.__implements__, IATFolder,)
+    __implements__ = (IATFolder,)
 
     # Enable marshalling via WebDAV/FTP/ExternalEditor.
     __dav_marshall__ = True
@@ -140,7 +139,7 @@ class PressRoom(OrderedBaseFolder):
     def initializeArchetype(self, **kwargs):
         """Pre-populate the press room folder with its basic folders.
         """
-        OrderedBaseFolder.initializeArchetype(self,**kwargs)
+        ATFolder.initializeArchetype(self,**kwargs)
 
         if 'press-releases' not in self.objectIds():
             self.invokeFactory('Folder','press-releases') # XXX Make large plone folder
@@ -285,8 +284,8 @@ class PressRoom(OrderedBaseFolder):
         get_transaction().commit(1)
 
     def manage_afterAdd(self, item, container):
-        OrderedBaseFolder.manage_afterAdd(self, item, container)
-        OrderedBaseFolder.manage_afterAdd(self, item, container)
+        ATFolder.manage_afterAdd(self, item, container)
+        ATFolder.manage_afterAdd(self, item, container)
 
     security = ClassSecurityInfo()
 
