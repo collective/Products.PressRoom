@@ -1,3 +1,7 @@
+1.0 beta
+ - Subclassed ATFolder instead of OrderedBaseFolder so that display menu works properly [jonstahl]
+ - Added views for clip, release, contact folders [burbank]
+
 0.8.1
 
  - Resolved compatibility issues with LinguaPlone and PressRoom due to subclassing of i18N-unaware type for the PressRoom type
