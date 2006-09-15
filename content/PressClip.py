@@ -60,7 +60,7 @@ schema += Schema((
                         i18n_domain = "pressroom",),
                 ),
 	DateTimeField('storydate',
-                index="FieldIndex:brains",
+                index="DateIndex:brains",
                 widget=CalendarWidget(
                         label='Story Date',
                         label_msgid = "label_pressclip_storydate",

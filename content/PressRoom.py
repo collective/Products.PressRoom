@@ -187,7 +187,7 @@ class PressRoom(ATFolder):
             path_crit.setValue(self.UID())
             path_crit.setRecurse(True)
 
-            sort_crit = smart_obj.addCriterion('effective','ATSortCriterion')
+            sort_crit = smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
             smart_obj.getSortCriterion().setReversed(True)
 
         if 'press-clips' not in self.objectIds():
@@ -229,7 +229,7 @@ class PressRoom(ATFolder):
             type_crit = smart_obj.addCriterion('Type',
                                          'ATPortalTypeCriterion')
             type_crit.setValue('Press Clip')
-            sort_crit = smart_obj.addCriterion('effective','ATSortCriterion')
+            sort_crit = smart_obj.addCriterion('getStoryDate','ATSortCriterion')
             path_crit = smart_obj.addCriterion('path',
                                          'ATPathCriterion')
             path_crit.setValue(self.UID())
