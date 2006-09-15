@@ -190,6 +190,17 @@ class PressRoom(ATFolder):
             sort_crit = smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
             smart_obj.getSortCriterion().setReversed(True)
 
+            # Update Smart Folder settings           
+            smart_folder_tool = self.portal.portal_atct
+            try:
+              smart_folder_tool.addIndex("getReleaseDate", "Release Date", "The date of the press release", enabled=True)
+            except:
+              pass
+            try:
+              smart_folder_tool.addMetadata("getReleaseDate", "Release Date", "The date of the press release", enabled=True)
+            except:
+              pass
+
         if 'press-clips' not in self.objectIds():
             self.invokeFactory('Folder','press-clips') # XXX Make large plone folder
             obj = self['press-clips']
@@ -235,6 +246,17 @@ class PressRoom(ATFolder):
             path_crit.setValue(self.UID())
             path_crit.setRecurse(True)
             smart_obj.getSortCriterion().setReversed(True)
+
+            # Update Smart Folder settings           
+            try:
+              smart_folder_tool.addIndex("getStoryDate", "Story Date", "The date of the news story", enabled=True)
+            except:
+              pass
+            try:
+              smart_folder_tool.addMetadata("getStoryDate", "Story Date", "The date of the news story", enabled=True)
+            except:
+              pass
+
 
         if 'press-contacts' not in self.objectIds():
             self.invokeFactory('Folder','press-contacts')
