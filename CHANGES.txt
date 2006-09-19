@@ -1,5 +1,7 @@
+1.0.2
+ - Fixed a missing global define.  [jonstahl]
 1.0.1
- - Fixed dumb tab issue.
+ - Fixed dumb tab issue. [jonstahl]
 
 1.0 final 
  - Fixed smart folder index fields to include getReleaseDate and getStoryDate
