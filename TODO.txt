@@ -35,7 +35,7 @@ Some good ideas
     [ ] End characters for press release "###" the default
     [ ] Where contacts should show up (i.e. before, after text) ?
     
-[ ] Make story date field avaiable to smartfolders
+[X] Make story date field avaiable to smartfolders
  - in tracker
 
  	

@@ -34,9 +34,7 @@ Installation
  Known Issues and Potential Improvements
 
     * Internationalization is weak at this point, but intended to be added asap
-    
-    * Need better listing views for Releases, Clips & Contacts subfolders.
-        
+            
     * More issues listed in TODO.txt
     
     * Suggestions welcome!  (Code even more welcome!)
