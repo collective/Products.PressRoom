@@ -25,7 +25,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.childFolderMapping = {
                                     'press-releases':'all-press-releases',
                                     'press-clips':'all-press-clips',
-                                    'press-contacts':'roster',
+                                    'press-contacts':'press-contacts',
                                   }
 
     def testCreatePressRoom(self):

@@ -29,12 +29,12 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.allclips = getattr(self.pressclips, 'all-press-clips')
 
         self.presscontacts = getattr(self.pressroom, 'press-contacts')
-        self.contactroster = getattr(self.presscontacts, 'roster')
+        self.contactroster = getattr(self.presscontacts, 'press-contacts')
         
         self.childFolderMapping = {
                                     'press-releases':'all-press-releases',
                                     'press-clips':'all-press-clips',
-                                    'press-contacts':'roster',
+                                    'press-contacts':'press-contacts',
                                   }
 
     # test press release smart folders
@@ -63,7 +63,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
 
     def testContactRosterCriteria(self):
         # Press Contact topic is in place as default view and has a criterion to show
-        # only Press Contacts with the public checkbox set for appearance in roster listing.
+        # only Press Contacts with the public checkbox set for appearance in press-contact listing.
         self.assertEqual(self.contactroster._getPortalTypeName(), 'Topic')
         self.assertEqual(self.contactroster.buildQuery()['Type'], ('Press Contact',))
         self.assertEqual(self.contactroster.buildQuery()['review_state'], 'published')
@@ -72,8 +72,8 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.contactroster.getSortCriterion().field,'getObjPositionInParent')
 
     def testAllPressReleasesCriteria(self):
-        # Press Contact topic is in place as default view and has a criterion to show
-        # only Press Contacts with the public checkbox set for appearance in roster listing.
+        # Press Release topic is in place as default view and has a criterion to show
+        # only published Press Contacts within the current press room object
         self.assertEqual(self.allreleases._getPortalTypeName(), 'Topic')
         self.assertEqual(self.allreleases.buildQuery()['Type'], ('Press Release',))
         self.assertEqual(self.allreleases.buildQuery()['review_state'], 'published')

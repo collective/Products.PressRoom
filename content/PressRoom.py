@@ -280,10 +280,10 @@ class PressRoom(ATFolder):
             obj.reindexObject()
 
             # create Smart Folder to be this folder's default page
-            obj.invokeFactory('Topic','roster')
-            obj.setDefaultPage('roster')
+            obj.invokeFactory('Topic','press-contacts')
+            obj.setDefaultPage('press-contacts')
 
-            smart_obj = obj['roster']
+            smart_obj = obj['press-contacts']
             smart_obj.setTitle(self.translate(
                     msgid='pr_press_contacts_title',
                     domain='pressroom',
