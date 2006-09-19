@@ -190,19 +190,17 @@ class PressRoom(ATFolder):
             sort_crit = smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
             smart_obj.getSortCriterion().setReversed(True)
 
-           # Update Smart Folder settings
-            smart_folder_tool = getToolByName(self, 'portal_atct')
-            if 'getReleaseDate' not in smart_folder_tool.getIndexes(enabledOnly$
-             smart_folder_tool.addIndex("getReleaseDate", "Release Date", "The $
+            # Update Smart Folder settings  
+            if 'getReleaseDate' not in smart_folder_tool.getIndexes(enabledOnly=True):     
+             smart_folder_tool.addIndex("getReleaseDate", "Release Date", "The date of the press release", enabled=True) 
             elif 'getReleaseDate' not in smart_folder_tool.getIndexes():
-             # index exists, but is disabled
+             # index exists, but is disabled 
              smart_folder_tool.updateIndex('getReleaseDate', enabled=True)
-            if 'getReleaseDate' not in smart_folder_tool.getAllMetadata(enabled$
-              smart_folder_tool.addMetadata("getReleaseDate", "Release Date", "$
-            elif 'getReleaseDate' not in smart_folder_tool.getAllMetadata():
-              # metadata exist, but are disabled
-              smart_folder_tool.updateMetadata('getReleaseDate', enabled=True)
-
+            if 'getReleaseDate' not in smart_folder_tool.getAllMetadata(enabledOnly=True):
+             smart_folder_tool.addMetadata("getReleaseDate", "Release Date", "The date of the press release", enabled=True)
+            elif 'getReleaseDate' not in smart_folder_tool.getAllMetadata():     
+             # metadata exist, but are disabled     
+             smart_folder_tool.updateMetadata('getReleaseDate', enabled=True) 
 
         if 'press-clips' not in self.objectIds():
             self.invokeFactory('Folder','press-clips') # XXX Make large plone folder
@@ -250,17 +248,17 @@ class PressRoom(ATFolder):
             path_crit.setRecurse(True)
             smart_obj.getSortCriterion().setReversed(True)
 
-            # Update Smart Folder settings
-            if 'getStorydate' not in smart_folder_tool.getIndexes(enabledOnly=T$
-             smart_folder_tool.addIndex("getStorydate", "Story Date", "The date$
+            # Update Smart Folder settings  
+            if 'getStorydate' not in smart_folder_tool.getIndexes(enabledOnly=True):     
+             smart_folder_tool.addIndex("getStorydate", "Story Date", "The date of the press clip", enabled=True) 
             elif 'getStorydate' not in smart_folder_tool.getIndexes():
-             # index exists, but is disabled
+             # index exists, but is disabled 
              smart_folder_tool.updateIndex('getStorydate', enabled=True)
-            if 'getStorydate' not in smart_folder_tool.getAllMetadata(enabledOn$
-             smart_folder_tool.addMetadata("getStorydate", "Story Date", "The d$
-            elif 'getStorydate' not in smart_folder_tool.getAllMetadata():
-             # metadata exist, but are disabled
-             smart_folder_tool.updateMetadata('getStorydate', enabled=True)
+            if 'getStorydate' not in smart_folder_tool.getAllMetadata(enabledOnly=True):
+             smart_folder_tool.addMetadata("getStorydate", "Release Date", "The date of the press clip", enabled=True)
+            elif 'getStorydate' not in smart_folder_tool.getAllMetadata(): 
+             # metadata exist, but are disabled     
+             smart_folder_tool.updateMetadata('getStorydate', enabled=True)     
 
 
 
