@@ -191,6 +191,7 @@ class PressRoom(ATFolder):
             smart_obj.getSortCriterion().setReversed(True)
 
             # Update Smart Folder settings  
+            smart_folder_tool = getToolByName(self, 'portal_atct') 
             if 'getReleaseDate' not in smart_folder_tool.getIndexes(enabledOnly=True):     
              smart_folder_tool.addIndex("getReleaseDate", "Release Date", "The date of the press release", enabled=True) 
             elif 'getReleaseDate' not in smart_folder_tool.getIndexes():
