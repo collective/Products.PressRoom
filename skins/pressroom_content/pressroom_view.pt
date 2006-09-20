@@ -107,7 +107,7 @@
         
                       <tal:block 
                            tal:define="path python:'/'.join(context.getPhysicalPath());
-                                                      pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',review_state='published',sort_order='reverse',path=path,sort_on='getReleaseDate',)[:viewReleaseAmt]">
+                                       pressReleases python:context.portal_catalog.searchResults(meta_type = 'PressRelease',review_state='published',sort_order='reverse',path=path,sort_on='getReleaseDate',)">
                     <div id='press-releases'
                         tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
                           
@@ -128,7 +128,7 @@
                                             ">
                 
                             <dl>
-                                <tal:entry tal:repeat="item pressReleases">
+                                <tal:entry tal:repeat="item python:pressReleases[:viewReleaseAmt]">
                                 <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                                        item_id item/getId|item/id;
                                                        item_title_or_id item/pretty_title_or_id;
@@ -193,7 +193,8 @@
                             There are currently no press releases.
                         </p>
                               
-                              <div class="morePressRoomItems">
+                              <div class="morePressRoomItems"
+                                   tal:condition="python:len(pressReleases) > viewReleaseAmt">
                                    <a href="./press-releases">
                                    More Press Releases
                                    </a>
@@ -204,7 +205,7 @@
                     
                     <tal:block
                      tal:define="path python:'/'.join(context.getPhysicalPath());
-                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',review_state='published',sort_order='reverse',path=path,sort_on='getStorydate',)[:viewClipAmt];">
+                                     pressClips python:context.portal_catalog.searchResults(meta_type = 'PressClip',review_state='published',sort_order='reverse',path=path,sort_on='getStorydate',);">
             
                     <div id="press-clips"
                        tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
@@ -223,7 +224,7 @@
                                              show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
                 
                             <dl>
-                                <tal:entry tal:repeat="item pressClips">
+                                <tal:entry tal:repeat="item python:pressClips[:viewClipAmt]">
                                 <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                                        item_id item/getId|item/id;
                                                        item_title_or_id item/pretty_title_or_id;
@@ -279,7 +280,8 @@
                             There are currently no press clips.
                         </p>
 
-                              <div class="morePressRoomItems">
+                              <div class="morePressRoomItems"
+                                   tal:condition="python:len(pressClips) > viewClipAmt">
                                    <a href="./press-clips">
                                    More Press Clips
                                    </a>
