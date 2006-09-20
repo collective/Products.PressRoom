@@ -1,5 +1,10 @@
+For next release
+ - Changed the id on the created press contact smart folder from "roster" to "press-contacts" due to the former being a reserver id within the context of a member folder.  Fixes issue #26 [andrewb]
+ 
+
 1.0.2
  - Fixed a missing global define.  [jonstahl]
+
 1.0.1
  - Fixed dumb tab issue. [jonstahl]
 
