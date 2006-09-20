@@ -42,23 +42,38 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         n = 3
         
         # create 3 press releases
-        for i in range(3):
+        for i in range(n):
             i += 1    
             self.pressreleases.invokeFactory('PressRelease', id="release%s" % i, title="Press Release %s" % i)
-    
+
+        # make sure we've successfully created all 3 of our PressRelease objects
         self.assertEqual(len(self.pressreleases.objectIds("PressRelease")),n)
         
-        # see how many topic results we've got
+        # see how many topic results we've got, should be 0 because none have been published
         self.assertEqual(len(self.allreleases.queryCatalog()),0)
         
         # now publish all releases and test length of topic
         workflow = self.portal.portal_workflow
 
-        for i in range(3):
+        for i in range(n):
             i += 1    
             self.releaseObj = getattr(self.pressreleases, "release%s" % i)
             workflow.doActionFor(self.releaseObj,"publish")
-        
+
+        # see how many topic results we've got, *still* should be 0 because none have a releaseDate value, which is the sort order criteria
+        self.assertEqual(len(self.allreleases.queryCatalog()),0)
+
+        # now add a releaseDate value to each
+        from DateTime import DateTime
+
+        for i in range(n):
+            now = DateTime()
+            i += 1    
+            self.releaseObj = getattr(self.pressreleases, "release%s" % i)
+            self.releaseObj.setReleaseDate(now)
+            self.releaseObj.reindexObject()
+
+        # finally, we should have n items        
         self.assertEqual(len(self.allreleases.queryCatalog()),n)
 
     def testContactRosterCriteria(self):
@@ -79,25 +94,26 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.allreleases.buildQuery()['review_state'], 'published')
         self.assertEqual(self.allreleases.buildQuery()['path']['query'][0],"/".join(self.pressroom.getPhysicalPath()))
         self.assertEqual(self.allreleases.buildQuery()['path']['depth'],-1)
-        self.assertEqual(self.allreleases.getSortCriterion().field,'effective')
+        self.assertEqual(self.allreleases.getSortCriterion().field,'getReleaseDate')
         self.assertEqual(self.allreleases.getSortCriterion().getReversed(),True)
 
     def testAllPressClipCriteria(self):
-        # Press Contact topic is in place as default view and has a criterion to show
-        # only Press Contacts with the public checkbox set for appearance in roster listing.
+        # Press Clip topic is in place as default view and has a criterion to show
+        # only Press Clips with published press clips within the appropriate path location
         self.assertEqual(self.allclips._getPortalTypeName(), 'Topic')
         self.assertEqual(self.allclips.buildQuery()['Type'], ('Press Clip',))
         self.assertEqual(self.allclips.buildQuery()['review_state'], 'published')
         self.assertEqual(self.allclips.buildQuery()['path']['query'][0],"/".join(self.pressroom.getPhysicalPath()))
         self.assertEqual(self.allclips.buildQuery()['path']['depth'],-1)
-        self.assertEqual(self.allclips.getSortCriterion().field,'effective')
+        self.assertEqual(self.allclips.getSortCriterion().field,'getStorydate')
         self.assertEqual(self.allclips.getSortCriterion().getReversed(),True)
 
+if __name__ == '__main__':
+    framework()
+    
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
     suite.addTest(makeSuite(TestPressRoomCreation))
     return suite
 
-if __name__ == '__main__':
-    framework()
