@@ -1,6 +1,9 @@
-For next release
+1.0.3 (SVN/UNRELEASED)
+
  - Changed the id on the created press contact smart folder from "roster" to "press-contacts" due to the former being a reserver id within the context of a member folder.  Fixes issue #26 [andrewb]
- 
+ - Changing some tests that were based on the assumption that we were ordering catalog results on effective rather than the more logical storydate and releaseDate schema fields [andrewb]
+ - Adding test coverage to prove that a storydate and releaseDate *should* be required on the PressRelease & PressClip content types due to the sorting that's done in the default catalog queries [andrewb]
+ - Making storydate and releaseDate required fields within the schema declaration per the testing coverage in the previous line [andrewb]
 
 1.0.2
  - Fixed a missing global define.  [jonstahl]
@@ -26,5 +29,4 @@ For next release
 
 0.1 
 
- - Initial release and migration to Collective 
-
+ - Initial release and migration to Collective

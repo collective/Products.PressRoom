@@ -77,7 +77,7 @@ schema = schema + Schema((
                     i18n_domain = "pressroom",),
                 ),
     DateTimeField('releaseDate',
-                required=0,
+                required=1,
                 searchable=0,
                 primary=False,
                 languageIndependent=0,

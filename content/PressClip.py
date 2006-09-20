@@ -61,10 +61,11 @@ schema += Schema((
                 ),
     DateTimeField('storydate',
                 index="DateIndex:brains",
+                required=1,
                 widget=CalendarWidget(
                         label='Story Date',
                         label_msgid = "label_pressclip_storydate",
-                        description='The date the story was originally published',
+                        description='The date the clip was originally published',
                         description_msgid = "help_pressclip_storydate",
                         i18n_domain = "pressroom",),
                 ),              
