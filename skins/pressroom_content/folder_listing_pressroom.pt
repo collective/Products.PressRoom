@@ -85,13 +85,13 @@
 
                             <span class="itemDate"
                                  tal:condition="item_releasedate"
-                                 tal:content="python:' - ' + toLocalizedTime(item_releasedate)">
+                                 tal:content="python:' - ' + context.toLocalizedTime(item_releasedate)">
                                  August 8, 2006
                             </span>
                             
                             <span class="itemDate"
                                  tal:condition="item_storydate"
-                                 tal:content="python:' - ' + toLocalizedTime(item_storydate)">
+                                 tal:content="python:' - ' + context.toLocalizedTime(item_storydate)">
                                  August 8, 2006
                             </span>
                             
