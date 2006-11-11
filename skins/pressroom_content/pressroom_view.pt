@@ -71,7 +71,7 @@
                                     <dt metal:define-macro='contactlist'>
                                         <span tal:attributes="class item_type_class">
                                             <a href="#" 
-                                               tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                               tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);
                                                                class string:$item_wf_state_class visualIconPadding"
                                                tal:content="item_title_or_id">
                                                 Item Title
@@ -149,7 +149,7 @@
                 
                                         <span tal:attributes="class item_type_class">
                                         <a href="#" 
-                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);
                                                            class string:$item_wf_state_class visualIconPadding"
                                            tal:content="item_title_or_id">
                                             Item Title
@@ -244,7 +244,7 @@
                 
                                         <span tal:attributes="class item_type_class">
                                         <a href="#" 
-                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');
+                                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);
                                                            class string:$item_wf_state_class visualIconPadding"
                                            tal:content="item_title_or_id">
                                             Item Title
