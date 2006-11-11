@@ -16,9 +16,8 @@ Press Room
 
 Current Status of Press Room
 
-    This is beta quality code!  Please do not use this on anything other than a test/sandbox 
-    instance.  Please do give feedback about what you want to see to make Press Room production quality!
-
+    We have Press Room in production on a number of sites.  Nevertheless, it is likely that there are small bugs.
+    Please do report any issues to http://plone.org/products/pressroom/issues.
 
 Installation
 
@@ -29,15 +28,18 @@ Installation
         - click install (alternately: used the QuickInstaller tool in the Zope Management Interface)
 
     Tested with Plone 2.1.3 + Archetypes 1.3.9-final and Plone 2.5 + Archetypes 1.4.0 final. 
-    We believe it should also work with Plone 2.1, 2.1.1 and 2.1.2, but have not tested.
+    We believe it should also work with Plone 2.1, 2.1.1 and 2.1.2, but have not tested with these versions.
+    Press Room has only been tested with Zope 2.8.4+, and we have received several bug reports from users who have tested
+    it under Zope 2.8.1.
 
  Known Issues and Potential Improvements
 
-    * Internationalization is weak at this point, but intended to be added asap
+    * Internationalization is weak at this point, but intended to be added ASAP.  We'd love help!
             
-    * More issues listed in TODO.txt
+    * Known bugs and issues are listed at http://plone.org/products/pressroom/issues
     
     * Suggestions welcome!  (Code even more welcome!)
+      http://plone.org/products/pressroom/roadmap
 
 Usage
 
