@@ -10,55 +10,33 @@ Some good ideas
         - PressContact - addable only b managers (pretty obvious why)
         - PressClip - should be addable by members -- i.e. have them help you farm the web for relevant info about your organization
         - PressRelease - debatable, but in a community site, this could be helpful
+    IN ROADMAP
         
 - [ ] Add i18N tags to PTs 
+      IN ROADMAP
 
 - [ ] Make Press Release and Press Clip subfolders into Large Plone Folders, see 
       http://sourceforge.net/mailarchive/message.php?msg_id=12305437 for a hint about how to do this
+      IN ROADMAP
  
-- Press Room view 
-   [X] Underline on headers looks bad in Plone 2.5. 
-   [X] Less indenting on Press Contact description, smaller text.   
-   [X] Make subfolder links relative (ugh!)
-
 - Press Contact
     [ ] add image field for portrait of contacts
     [ ] Add "cell phone" field to press contact, and show in pressrelease and presscontact views
 
         - in tracker
         
-- Press Release
-    [X] Make image fit in nicer - clip is fine.
- 
-
 [ ] Create configlet for global variables (or maybe just configure per-pressroom in its edit form?)
     [ ] End characters for press release "###" the default
     [ ] Where contacts should show up (i.e. before, after text) ?
     
-[X] Make story date field avaiable to smartfolders
- - in tracker
-
- 	
 
 [ ]  Press clip view
 
 	Not sure if linking to original story on publication name is clear. Need to clean up this
 	view a little, make styles nicer.
-	
 
 	- in tracker
     
-[X] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
- - this requires creating custom templates and then somehow choosing these templates as the default
- view for the folders as they are instantiated.
-   steps
-   1) create view templates. 
-   2) register as a default view (via portal_types)
-   3) designate view upon creation of folder.
-   
-   Make sure the view uses phrase like this:
-   <tal:content="here/reporter" tal:condition="here/reporter | nothing">
-   so that it degrades nicely if you try to render a non-pressromm content item in it.
 
 Intermediate term use:
 -----------------------
@@ -81,7 +59,29 @@ To be determined:
 Stuff that's already been done
 (this is only here for historical purposes)
 -=-=-=-=-=-=-=-=-=-=
+- Press Room view 
+   [X] Underline on headers looks bad in Plone 2.5. 
+   [X] Less indenting on Press Contact description, smaller text.   
+   [X] Make subfolder links relative (ugh!)
 
+
+- Press Release
+    [X] Make image fit in nicer - clip is fine.
+ 
+
+[X] Better smartfolder listing views for releases, clips & contacts (need to show dates, etc)
+ - this requires creating custom templates and then somehow choosing these templates as the default
+ view for the folders as they are instantiated.
+   steps
+   1) create view templates. 
+   2) register as a default view (via portal_types)
+   3) designate view upon creation of folder.
+   
+   Make sure the view uses phrase like this:
+   <tal:content="here/reporter" tal:condition="here/reporter | nothing">
+   so that it degrades nicely if you try to render a non-pressromm content item in it.
+
+[X] Make story date field avaiable to smartfolders
 
 X - Register a stylesheet with the product that can be expanded upon as needed
 
