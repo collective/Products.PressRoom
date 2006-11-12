@@ -32,7 +32,7 @@
         </div>
                 
  
-     <div id="press-contacts"
+     <div id="press-contacts-box"
                          tal:define="path python:'/'.join(context.getPhysicalPath());
                                      testStr python: 'testValue';
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
