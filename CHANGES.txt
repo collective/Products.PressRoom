@@ -1,4 +1,7 @@
-1.0.3 (SVN/UNRELEASED)
+1.0.4 (SVN/UNRELEASED)
+
+
+1.0.3
 
  - Changed the id on the created press contact smart folder from "roster" to "press-contacts" due to the former being a reserver id within the context of a member folder.  Fixes issue #26 [andrewb]
  - Changing some tests that were based on the assumption that we were ordering catalog results on effective rather than the more logical storydate and releaseDate schema fields [andrewb]
