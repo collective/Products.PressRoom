@@ -34,11 +34,10 @@
                                    tal:condition="item/phone" 
                                    tal:content="item/phone">
                                 Phone
-                             </span>
+                             </span> | 
                              <span class="contactEmail"
-                                   tal:condition="item/email" 
-                                   tal:content="item/email">
-                                 Email
+                                   tal:condition="item/email">
+                              <a tal:define="email item/email" tal:replace="structure python: here.spamProtect(email)" />
                              </span>
                             </span>
                         </li>
