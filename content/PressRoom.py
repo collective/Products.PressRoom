@@ -312,7 +312,6 @@ class PressRoom(ATFolder):
 
     def manage_afterAdd(self, item, container):
         ATFolder.manage_afterAdd(self, item, container)
-        ATFolder.manage_afterAdd(self, item, container)
 
     security = ClassSecurityInfo()
 
