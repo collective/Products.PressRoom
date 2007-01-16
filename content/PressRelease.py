@@ -7,6 +7,7 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.permissions import View
 
 #Arch
 try:
@@ -146,4 +147,11 @@ class PressRelease(ATNewsItem):
     PUT = ATNewsItem.PUT
     exclude_from_nav = True
 
+    security       = ClassSecurityInfo()
+
+    security.declareProtected(View, 'getStoryDate')
+    def getStoryDate(self):
+        """To bring Releases and Clips into synch in terms of date fields"""
+        return self.getReleaseDate()
+        
 registerType(PressRelease)
