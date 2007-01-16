@@ -150,7 +150,7 @@ class PressRelease(ATNewsItem):
     security       = ClassSecurityInfo()
 
     security.declareProtected(View, 'getStoryDate')
-    def getStoryDate(self):
+    def getStorydate(self):
         """To bring Releases and Clips into synch in terms of date fields"""
         return self.getReleaseDate()
         
