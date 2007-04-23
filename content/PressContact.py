@@ -10,6 +10,8 @@ from Products.ATContentTypes.content.base import ATCTContent
 from Products.CMFCore import CMFCorePermissions
 from Products.PressRoom.config import *
 
+from Products.PressRoom import PressRoomMessageFactory as _
+
 # set Base Schema as the schema
 schema = BaseSchema.copy()
 
@@ -120,7 +122,7 @@ class PressContact(ATCTContent):
     default_view   = 'presscontact_view'
     content_icon   = 'user.gif'
     typeDescription = """Contact information for your press contacts"""
-    typeDescMsgId  = """Press_contact_description_edit"""
+    typeDescMsgId  = """press_contact_description_edit"""
     schema         = schema
     exclude_from_nav = True
     

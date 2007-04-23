@@ -27,8 +27,7 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 # PC
 from Products.PressRoom.config import *
 
-#qi = getToolByName("portal_quickinstaller")
-
+from Products.PressRoom import PressRoomMessageFactory as _
 
 # Schema declaration
 schema = ATNewsItemSchema.copy()
@@ -129,7 +128,7 @@ class PressRelease(ATNewsItem):
     default_view    = 'pressrelease_view'
     content_icon    = 'pressrelease_icon.gif'
     typeDescription = """For an organization's original press release documents"""
-    typeDescMsgId   = """Press_release_description_edit"""
+    typeDescMsgId   = """press_release_description_edit"""
     schema          = schema
     
     # Make sure we get title-to-id generation when an object is created

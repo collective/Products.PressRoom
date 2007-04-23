@@ -80,8 +80,7 @@
                             </a>
                         </span>
 
-                        <span class="documentByLine"
-                              tal:condition="show_about">
+                        <span class="documentByLine">
 
                             <span class="itemDate"
                                  tal:condition="item_releasedate"

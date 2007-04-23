@@ -16,6 +16,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.Marshall import PrimaryFieldMarshaller
 from Products.PressRoom.config import *
 
+from Products.PressRoom import PressRoomMessageFactory as _
+
 schema = ATNewsItemSchema.copy()
 
 # text field not required for clips
@@ -81,7 +83,7 @@ class PressClip(ATNewsItem):
     default_view   = 'pressclip_view'
     content_icon   = 'pressclip_icon.gif'
     typeDescription = """For organization's press clips."""
-    typeDescMsgId  = """Press_clip_description_edit"""
+    typeDescMsgId  = """press_clip_description_edit"""
     schema         = schema
     exclude_from_nav = True
     

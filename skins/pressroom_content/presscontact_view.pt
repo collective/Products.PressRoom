@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="pressroom">
 
 <body>
 
@@ -17,13 +17,13 @@
         </h1>
 
         <p>
-            <span tal:condition="here/jobtitle | nothing"><strong>Job title:</strong> <span tal:replace="here/jobtitle" /><br /></span>
-            <span tal:condition="here/organization | nothing"><strong>Organization:</strong> <span tal:replace="here/organization" /><br /></span>
-            <span tal:condition="here/city | nothing"><strong>Location:</strong> <span tal:replace="here/city" /></span><span tal:condition="here/stateOrProvince | nothing" tal:replace="string:, ${here/stateOrProvince}"></span><br />
-            <span tal:condition="here/email | nothing"><strong>Email:</strong>
+            <span tal:condition="here/jobtitle | nothing"><strong i18n:translate="label_job_title">Job title:</strong> <span tal:replace="here/jobtitle" /><br /></span>
+            <span tal:condition="here/organization | nothing"><strong i18n:translate="label_organization">Organization:</strong> <span tal:replace="here/organization" /><br /></span>
+            <span tal:condition="here/city | nothing"><strong i18n:translate="label_location">Location:</strong> <span tal:replace="here/city" /></span><span tal:condition="here/stateOrProvince | nothing" tal:replace="string:, ${here/stateOrProvince}" /><br />
+            <span tal:condition="here/email | nothing"><strong i18n:translate="label_email">Email:</strong>
                <a tal:define="email here/email" tal:replace="structure python: here.spamProtect(email)" /><br /></span>
-            <span tal:condition="here/phone | nothing"><strong>Phone:</strong> <span tal:replace="here/phone" /><br /></span>
-            <span tal:condition="here/public | nothing"><strong>Public contact:</strong> <span tal:replace="python:test(here['public'],'yes','no')" /><br /></span>
+            <span tal:condition="here/phone | nothing"><strong i18n:translate="label_phone">Phone:</strong> <span tal:replace="here/phone" /><br /></span>
+            <span tal:condition="here/public | nothing"><strong i18n:translate="label_public_contact">Public contact:</strong> <span tal:replace="python:test(here['public'],'yes','no')" /><br />            </span>
             <!--<span tal:condition="here/topics | nothing"><strong>Topic(s):</strong> <span tal:define="topics python:test(here['topics'] and not here['topics'][-1],here['topics'][:-1],here['topics'])" tal:replace="python: ', '.join(topics)" /> <br /></span>
         -->
         </p>

@@ -1,0 +1,327 @@
+# PressRoom manual pot.
+# Radim Novotny <novotny.radim@gmail.com>, 2007
+msgid ""
+msgstr ""
+"Project-Id-Version: PressRoom\n"
+"POT-Creation-Date: 2007-03-15 18:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: pressroom\n"
+
+#: ../content/PressRoom.py:248
+msgid "Contact these people for more information"
+msgstr ""
+
+#: ../content/PressRoom.py:200
+msgid "Press Clips"
+msgstr ""
+
+#: ../content/PressRoom.py:256
+msgid "Press Contacts"
+msgstr ""
+
+#: ../content/PressRoom.py:150
+msgid "Press Releases"
+msgstr ""
+
+#: ../content/PressRoom.py:210
+msgid "See us in the news!"
+msgstr ""
+
+#: ../content/PressRoom.py:160
+msgid "These are our press releases"
+msgstr ""
+
+#. Default: "There are currently no press clips."
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "description_no_press_clips"
+msgstr ""
+
+#. Default: "There are currently no press releases."
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "description_no_releases"
+msgstr ""
+
+#. Default: "Press Contacts"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "heading_press_contacts"
+msgstr ""
+
+#. Default: "Recent Press Clips"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "heading_recent_clips"
+msgstr ""
+
+#. Default: "Recent Press Releases"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "heading_recent_releases"
+msgstr ""
+
+#. Default: "Provide the city for this press contact"
+#: Content Type: PressContact, Field: city
+msgid "help_city"
+msgstr ""
+
+#. Default: "A description of the press contact (such as their focus areas, job responsibilities, expertise, etc.)"
+#: Content Type: PressContact, Field: description
+msgid "help_description"
+msgstr ""
+
+#. Default: "Provide the email address for this press contact"
+#: Content Type: PressContact, Field: email
+msgid "help_email_address"
+msgstr ""
+
+#. Default: "Enter the official job title of the press contact (i.e. Chief Technology Officer, Executive Director, Director of Human Resources)"
+#: Content Type: PressContact, Field: jobtitle
+msgid "help_job_title"
+msgstr ""
+
+#. Default: "Typically press releases have an associated location in a common format (i.e. City, State)"
+#: Content Type: PressRelease, Field: location
+msgid "help_location"
+msgstr ""
+
+#. Default: "What is the maximum number of press clips that should appear in the press room default view?"
+#: Content Type: PressRoom, Field: num_clips
+msgid "help_num_clips"
+msgstr ""
+
+#. Default: "What is the maximum number of press releases that should appear in the press room default view?"
+#: Content Type: PressRoom, Field: num_releases
+msgid "help_num_releases"
+msgstr ""
+
+#. Default: "With which organization is this press contact affiliated."
+#: Content Type: PressContact, Field: organization
+msgid "help_organization"
+msgstr ""
+
+#. Default: "The date the clip was originally published"
+#: Content Type: PressClip, Field: storydate
+msgid "help_pressclip_storydate"
+msgstr ""
+
+#. Default: "Provide the URL to the Press Clip"
+#: Content Type: PressClip, Field: permalink
+msgid "help_pressclip_url"
+msgstr ""
+
+#. Default: "Provide the name of the publication (i.e. name of newspaper, magazine, book, etc.).  Previously used publications can be selected in the left column.  New publications should be added one-per-line in the right column."
+#: Content Type: PressClip, Field: publication
+msgid "help_publication_name"
+msgstr ""
+
+#. Default: "Contact with assigned release contacts will be encouraged for further information"
+#: Content Type: PressRelease, Field: releaseContacts
+msgid "help_release_contacts"
+msgstr ""
+
+#. Default: "Provide a date for when this press relase will be distributed"
+#: Content Type: PressRelease, Field: releaseDate
+msgid "help_release_date"
+msgstr ""
+
+#. Default: "When should this release be distributed (e.g. FOR IMMEDIATE RELEASE and HOLD FOR RELEASE UNTIL MM/DD/YYYY)"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "help_release_timing"
+msgstr ""
+
+#. Default: "Provide the name of the reporter"
+#: Content Type: PressClip, Field: reporter
+msgid "help_reporter_name"
+msgstr ""
+
+#. Default: "If this is checked, your published clips will appear."
+#: Content Type: PressRoom, Field: show_clips
+msgid "help_show_clips"
+msgstr ""
+
+#. Default: "If this is checked, your published contacts will appear."
+#: Content Type: PressRoom, Field: show_contacts
+msgid "help_show_contacts"
+msgstr ""
+
+#. Default: "If this is checked, your published releases will appear."
+#: Content Type: PressRoom, Field: show_releases
+msgid "help_show_release"
+msgstr ""
+
+#. Default: "Provide the state or province for this press contact"
+#: Content Type: PressContact, Field: stateOrProvince
+msgid "help_state_or_province"
+msgstr ""
+
+#. Default: "Please provide a subheadline for your press release"
+#: Content Type: PressRelease, Field: subhead
+msgid "help_subheadline"
+msgstr ""
+
+#. Default: "Provide a telephone number for this press contact."
+#: Content Type: PressContact, Field: phone
+msgid "help_telephone_number"
+msgstr ""
+
+#. Default: "[Add Press Clip]"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "label_add_clip"
+msgstr ""
+
+#. Default: "[Add Press Contact]"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "label_add_press_contact"
+msgstr ""
+
+#. Default: "[Add Press Release]"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "label_add_release"
+msgstr ""
+
+#. Default: "Body Text"
+#: Content Type: PressRoom, Field: text
+msgid "label_body_text"
+msgstr ""
+
+#. Default: "City"
+#: Content Type: PressContact, Field: city
+msgid "label_city"
+msgstr ""
+
+#. Default: "Description"
+#: Content Type: PressContact, Field: description
+msgid "label_description"
+msgstr ""
+
+#. Default: "Email:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_email"
+msgstr ""
+
+#. Default: "Email Address"
+#: Content Type: PressContact, Field: email
+msgid "label_email_address"
+msgstr ""
+
+#. Default: "Job title:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_job_title"
+msgstr ""
+
+#. Default: "Location:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_location"
+msgstr ""
+
+#. Default: "More Press Clips"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "label_more_clips"
+msgstr ""
+
+#. Default: "More Press Releases"
+#: ../skins/pressroom_content/pressroom_view.pt
+msgid "label_more_releases"
+msgstr ""
+
+#. Default: "Number of press clips"
+#: Content Type: PressRoom, Field: num_clips
+msgid "label_num_clips"
+msgstr ""
+
+#. Default: "Number of press releases"
+#: Content Type: PressRoom, Field: num_releases
+msgid "label_num_releases"
+msgstr ""
+
+#. Default: "Organization:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_organization"
+msgstr ""
+
+#. Default: "Phone:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_phone"
+msgstr ""
+
+#. Default: "Story Date"
+#: Content Type: PressClip, Field: storydate
+msgid "label_pressclip_storydate"
+msgstr ""
+
+#. Default: "URL of Press Clip"
+#: Content Type: PressClip, Field: permalink
+msgid "label_pressclip_url"
+msgstr ""
+
+#. Default: "Public contact:"
+#: ../skins/pressroom_content/presscontact_view.pt
+msgid "label_public_contact"
+msgstr ""
+
+#. Default: "Name of Publication"
+#: Content Type: PressClip, Field: publication
+msgid "label_publication_name"
+msgstr ""
+
+#. Default: "Release Contact(s)"
+#: Content Type: PressRelease, Field: releaseContacts
+msgid "label_release_contacts"
+msgstr ""
+
+#. Default: "Press release date"
+#: Content Type: PressRelease, Field: releaseDate
+msgid "label_release_date"
+msgstr ""
+
+#. Default: "Release timing"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "label_release_timing"
+msgstr ""
+
+#. Default: "Reporter's Name"
+#: Content Type: PressClip, Field: reporter
+msgid "label_reporter_name"
+msgstr ""
+
+#. Default: "Display clips?"
+#: Content Type: PressRoom, Field: show_clips
+msgid "label_show_clips"
+msgstr ""
+
+#. Default: "Display contacts?"
+#: Content Type: PressRoom, Field: show_contacts
+msgid "label_show_contacts"
+msgstr ""
+
+#. Default: "Display Releases?"
+#: Content Type: PressRoom, Field: show_releases
+msgid "label_show_releases"
+msgstr ""
+
+#. Default: "State or Province"
+#: Content Type: PressContact, Field: stateOrProvince
+msgid "label_state_or_province"
+msgstr ""
+
+#. Default: "Subheadline"
+#: Content Type: PressRelease, Field: subhead
+msgid "label_subheadline"
+msgstr ""
+
+#. Default: "Telephone Number"
+#: Content Type: PressContact, Field: phone
+msgid "label_telephone_number"
+msgstr ""
+
+#. Default: "Headline"
+#: Content Type: PressRelease, Field: title
+msgid "label_title"
+msgstr ""
+
