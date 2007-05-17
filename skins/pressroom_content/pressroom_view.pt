@@ -37,14 +37,14 @@
                                      testStr python: 'testValue';
                                      use_view_action site_properties/typesUseViewActionInListings|python:();
                                      show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
-                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact', review_state='published', sort_on='getObjPositionInParent', path=path,);"
+                                     pressContacts python:context.portal_catalog.searchResults(meta_type = 'PressContact', review_state='published', path=path,);"
                          tal:condition="python: (pressContacts and showContacts) or (showContacts and checkPermission('Add_Portal_Content', context))">
-						<h3 class="pressroomSection">
-                            <tal:text i18n:translate="heading_press_contacts" >Press Contacts</tal:text>
+                              <h3 class="pressroomSection">
+                            Press Contacts
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a i18n:translate="label_add_press_contact" href="./press-contacts/createObject?type_name=PressContact">
+                                   <a href="./press-contacts/createObject?type_name=PressContact">
                                    [Add Press Contact]
                                    </a>
                               </span>
@@ -112,13 +112,12 @@
                         tal:condition="python: (pressReleases and showReleases) or (showReleases and checkPermission('Add_Portal_Content', context))">
                           
                         <h3 class="pressroomSection">
-                            <tal:text i18n:translate="heading_recent_releases" >Recent Press Releases</tal:text>
-                            
+                            Recent Press Releases
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a i18n:translate="label_add_release" href="./press-releases/createObject?type_name=PressRelease">
-								   [Add Press Release]
+                                   <a href="./press-releases/createObject?type_name=PressRelease">
+                                   [Add Press Release]
                                    </a>
                               </span> 
                         </h3>
@@ -190,14 +189,14 @@
                         </tal:listing>
                         <p class="discreet"
                            tal:condition="not:pressReleases"
-                           i18n:translate="description_no_releases">
+                           i18n:translate="description_no_items_in_folder">
                             There are currently no press releases.
                         </p>
                               
                               <div class="morePressRoomItems"
                                    tal:condition="python:len(pressReleases) > viewReleaseAmt">
-                                   <a i18n:translate="label_more_releases" href="./press-releases">
-								   More Press Releases
+                                   <a href="./press-releases">
+                                   More Press Releases
                                    </a>
                               </div>
                     </div>
@@ -210,13 +209,12 @@
             
                     <div id="press-clips"
                        tal:condition="python: (pressClips and showClips) or (showClips and checkPermission('Add_Portal_Content', context))">
-						<h3 class="pressroomSection">
-                            <tal:text i18n:translate="heading_recent_clips" >Recent Press Clips</tal:text>
+                            <h3 class="pressroomSection">Recent Press Clips
                                    
                               <span tal:condition="python:checkPermission('Add_Portal_Content', context)" 
                                     class="addPressRoomItem">
-                                   <a i18n:translate="label_add_clip" href="./press-clips/createObject?type_name=PressClip">
-								   [Add Press Clip]
+                                   <a href="./press-clips/createObject?type_name=PressClip">
+                                   [Add Press Clip]
                                    </a>
                               </span>  
                         </h3>
@@ -278,13 +276,13 @@
                     
                         <p class="discreet"
                            tal:condition="not:pressClips"
-                           i18n:translate="description_no_press_clips">
+                           i18n:translate="description_no_items_in_folder">
                             There are currently no press clips.
                         </p>
 
                               <div class="morePressRoomItems"
                                    tal:condition="python:len(pressClips) > viewClipAmt">
-                                   <a i18n:translate="label_more_clips" href="./press-clips">
+                                   <a href="./press-clips">
                                    More Press Clips
                                    </a>
                               </div>
@@ -297,4 +295,3 @@
 
 </body>
 </html>
-
