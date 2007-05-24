@@ -1,6 +1,6 @@
 1.0.4 (SVN/UNRELEASED)
+- Added uninstall method to remove PR cruft. [jbaldivieso]
 - Made master Press Room view listing of contacts respect contacts' order in the contacts folder [jonstahl]
-
 - added i18n for the plone domain (content type names) and fixed translation
   in the Press room default subfolder titles and descriptions
 - added i18n in pressroom domain, added Czech translation [naro]
