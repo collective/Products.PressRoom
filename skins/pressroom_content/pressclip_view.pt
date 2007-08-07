@@ -21,19 +21,10 @@
         <span tal:condition="context/reporter | nothing">By <span tal:replace="context/reporter" /> <br /></span>
         
         <tal:pub condition="context/getPublication">
-            <a tal:condition="context/getPermalink"
-               tal:attributes="href context/getPermalink"
-               tal:content="context/getPublication"
-            />
             <span tal:condition="not:context/getPermalink"
                   tal:content="string:${context/getPublication}, ">
             </span>
         </tal:pub>
-        <tal:nopub condition="python: (not context.getPublication()) and context.getPermalink()">
-            <a tal:attributes="href context/getPermalink"
-               tal:content="context/getPermalink"
-            />
-        </tal:nopub>
         
         <span tal:condition="context/getStorydate"
               tal:define="storyDate context/getStorydate">
@@ -69,6 +60,11 @@
             <div tal:replace="structure text" />
         </div>
 
+		<a tal:condition="context/getPermalink"
+           tal:attributes="href context/getPermalink">
+			Read the full story
+		</a>
+			
         <div metal:use-macro="context/document_byline/macros/byline">
             Get the byline - contains details about author and modification date.
         </div>
