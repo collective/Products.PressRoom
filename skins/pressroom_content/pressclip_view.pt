@@ -18,25 +18,26 @@
             Title or id
         </h1>
 
-        <span tal:condition="context/reporter | nothing">By <span tal:replace="context/reporter" /> <br /></span>
-        
-        <tal:pub condition="context/getPublication">
-            <span tal:condition="not:context/getPermalink"
-                  tal:content="string:${context/getPublication}, ">
-            </span>
-        </tal:pub>
-        
-        <span tal:condition="context/getStorydate"
-              tal:define="storyDate context/getStorydate">
-              <span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  
-              <br />
-        </span>
-
         <p class="documentDescription"
            tal:content="context/Description"
            tal:condition="context/Description">
             News summary
         </p>
+
+
+        <div class="reporter" tal:condition="context/reporter | nothing">By <span tal:replace="context/reporter" /></div>
+        
+        <div tal:condition="context/getPublication"
+             tal:content="context/getPublication"
+             class="publication">
+        </div>
+        
+        <div tal:condition="context/getStorydate"
+              tal:define="storyDate context/getStorydate"
+              class="storydate">
+              <span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  
+        </div>
+
 
         <div class="newsImageContainer"
              tal:condition="context/image_mini|nothing">
@@ -62,7 +63,7 @@
 
 		<a tal:condition="context/getPermalink"
            tal:attributes="href context/getPermalink">
-			Read the full story
+			Read the original story
 		</a>
 			
         <div metal:use-macro="context/document_byline/macros/byline">

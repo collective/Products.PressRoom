@@ -79,4 +79,11 @@
 .releaseDate {
  margin-left: 1em;
  font-weight: bold;
-}/* </dtml-with> */
+}
+
+.storydate {
+ margin-bottom: 1em;
+}
+
+/* </dtml-with> */
+

@@ -1,5 +1,7 @@
-1.0.4 (SVN/UNRELEASED)
+1.1 (SVN/UNRELEASED)
 - Italian translation file [rlemmi - thanks!]
+- Corrected help text on press clip publication [jonstahl]
+- Moved press clip description above byline [jonstahl]
 - Nicer handling of link to press clip original story. [jonstahl]
 - Added uninstall method to remove PR cruft. [jbaldivieso]
 - Made master Press Room view listing of contacts respect contacts' order in the contacts folder [jonstahl]

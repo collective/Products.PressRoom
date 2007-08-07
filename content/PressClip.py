@@ -48,7 +48,7 @@ schema += Schema((
                 widget=StringWidget(
                         label='Name of Publication',
                         label_msgid = "label_publication_name",
-                        description='Provide the name of the publication (i.e. name of newspaper, magazine, book, etc.).  Previously used publications can be selected in the left column.  New publications should be added one-per-line in the right column.',
+                        description='Provide the name of the publication (i.e. name of newspaper, magazine, book, website, etc.).',
                         description_msgid = "help_publication_name",
                         i18n_domain = "pressroom",),
                 ),
