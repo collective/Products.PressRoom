@@ -4,6 +4,7 @@ Trey Beck - trey.beck@ohtogo.com
 Andrew Burkhalter - andrewb@onenw.org
 Johnpaul Burbank - jpburbank@tegus.ca
 Jon Stahl - jon@onenw.org
+Jon Baldivieso - jonb@onenw.org
 
 naro - i18n work, Czech translation
 

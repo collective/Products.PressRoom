@@ -4,17 +4,14 @@ Some good ideas
 -=-=-=-=-=-=-=-=-=-=
 
 - [ ] After some permissions jockeying, Press Rooms, Press Contacts, Press Clips, and Press Releases are not addable by the common members.  
-      The latter two should be, which would introduce the following high-level permission structure still needing to be finished:
+      The latter two should be, which would require the following permissions:
       
-        - PressRoom - addable only by managers (frequently only want 1 per site, also requires smart folders, which member can and shouldn't be able to create)
-        - PressContact - addable only b managers (pretty obvious why)
-        - PressClip - should be addable by members -- i.e. have them help you farm the web for relevant info about your organization
-        - PressRelease - debatable, but in a community site, this could be helpful
+        - PressRoom - Add Portal Content
+        - PressContact - Add Portal Content
+        - PressClip - PressRoom: Add PressClip (given by default to members -- i.e. have them help you farm the web for relevant info about your organization)
+        - PressRelease - PressRoom: Add PressRelease (given by default to managers)
     IN ROADMAP
         
-- [ ] Add i18N tags to PTs 
-      IN ROADMAP
-
 - [ ] Make Press Release and Press Clip subfolders into Large Plone Folders, see 
       http://sourceforge.net/mailarchive/message.php?msg_id=12305437 for a hint about how to do this
       IN ROADMAP
@@ -38,7 +35,7 @@ Some good ideas
 	- in tracker
     
 
-Intermediate term use:
+Intermediate term:
 -----------------------
 
 - Come up with some good content icons for PressClip & PressRelease
@@ -59,6 +56,8 @@ To be determined:
 Stuff that's already been done
 (this is only here for historical purposes)
 -=-=-=-=-=-=-=-=-=-=
+- [X] i18n in templates
+
 - Press Room view 
    [X] Underline on headers looks bad in Plone 2.5. 
    [X] Less indenting on Press Contact description, smaller text.   

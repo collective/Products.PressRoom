@@ -16,8 +16,17 @@ Press Room
 
 Current Status of Press Room
 
-    We have Press Room in production on a number of sites.  Nevertheless, it is likely that there are small bugs.
-    Please do report any issues to http://plone.org/products/pressroom/issues.
+    Tested with Plone 2.1.3 + Archetypes 1.3.9-final and Plone 2.5 + Archetypes 1.4.0 final. 
+    We believe it should also work with Plone 2.1, 2.1.1 and 2.1.2, but have not tested with these
+    versions.  Press Room has only been tested with Zope 2.8.4+, and we have received several bug
+    reports from users who have tested it under Zope 2.8.1.
+
+    * Press Room has been in production on a number of sites for over a year.
+    
+    * Known bugs and issues are listed at http://plone.org/products/pressroom/issues
+    
+    * Suggestions welcome!  (Code even more welcome!)
+      http://plone.org/products/pressroom/roadmap
 
 Installation
 
@@ -25,21 +34,7 @@ Installation
 
         - Uncompressing Press Room in your Zope instances "products" directory
         - Browse to your plone site --> site setup --> add/remove products
-        - click install (alternately: used the QuickInstaller tool in the Zope Management Interface)
-
-    Tested with Plone 2.1.3 + Archetypes 1.3.9-final and Plone 2.5 + Archetypes 1.4.0 final. 
-    We believe it should also work with Plone 2.1, 2.1.1 and 2.1.2, but have not tested with these versions.
-    Press Room has only been tested with Zope 2.8.4+, and we have received several bug reports from users who have tested
-    it under Zope 2.8.1.
-
- Known Issues and Potential Improvements
-
-    * Internationalization is weak at this point, but intended to be added ASAP.  We'd love help!
-            
-    * Known bugs and issues are listed at http://plone.org/products/pressroom/issues
-    
-    * Suggestions welcome!  (Code even more welcome!)
-      http://plone.org/products/pressroom/roadmap
+        - Click install (or you can use the QuickInstaller tool in the Zope Management Interface)
 
 Usage
 
@@ -53,9 +48,13 @@ Usage
      
      You can also create Press Releases, Clips and Contacts elsewhere in your site,
      but these will not be shown in the Press Room view.
+     
+     You might find it useful to suppress the ability to add normal News Items if Press Room
+     replaces that need.  You can do that by going into the portal_types tool in the ZMI and
+     unchecking "implicitly addable" for News Items.
     
- Authors
+Authors
   
    See CREDITS.TXT
 
-   
+

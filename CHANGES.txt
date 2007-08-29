@@ -1,4 +1,7 @@
-1.1 (SVN/UNRELEASED)
+1.1.1
+-
+
+1.1
 - Italian translation file [rlemmi - thanks!]
 - Corrected help text on press clip publication [jonstahl]
 - Moved press clip description above byline [jonstahl]
