@@ -19,11 +19,13 @@
         </p>
 
         <h1 tal:content="object_title" class="documentFirstHeading">
-            Title or id
+            [Title or id]
         </h1>
 
-        <h3 class="subtitle" tal:condition="here/getSubhead" tal:content="here/getSubhead | nothing">
-            Subtitle
+        <h3 class="subtitle"
+            tal:condition="here/getSubhead"
+            tal:content="here/getSubhead | nothing">
+            [Subtitle]
         </h3>
 
         <div metal:use-macro="here/document_byline/macros/byline">
@@ -33,7 +35,7 @@
         <p class="documentDescription"
            tal:content="here/Description"
            tal:condition="here/Description">
-            Release summary
+            [Release summary]
         </p>
 
         <div class="newsImageContainer"
@@ -43,7 +45,7 @@
                <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
             </a>
             <p class="discreet"
-                  tal:content="here/getImageCaption">Image Caption</p>
+               tal:content="here/getImageCaption">Image Caption</p>
         </div>
 
         <div metal:use-macro="here/pressrelease_relatedcontacts/macros/releaseContacts">
@@ -51,10 +53,10 @@
         </div>
 
         <span class="releaseLocation"
-         tal:content="here/getLocation">SEATTLE, WA</span>
+              tal:content="here/getLocation">[SEATTLE, WA]</span>
 
         <span class="releaseDate"
-         tal:content="python:here.toLocalizedTime(here.getReleaseDate())">05/02/2006</span>
+         tal:content="python:here.toLocalizedTime(here.getReleaseDate())">[05/02/2006]</span>
 
         <p tal:condition="python: not len_text and is_editable"
            i18n:translate="no_body_text"
