@@ -1,11 +1,11 @@
-## Script (Python) "computeRelatedItems"
+## Script (Python) "computeReleaseContacts"
 ##bind container=container
 ##bind context=context
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
 ##parameters=
-##title=find related items for an object
+##title=find press contacts for a press release
 ##
 
 from AccessControl import Unauthorized

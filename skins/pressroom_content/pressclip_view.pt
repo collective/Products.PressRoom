@@ -1,80 +1,111 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      metal:use-macro="context/main_template/macros/master"
+      metal:use-macro="here/main_template/macros/master"
       i18n:domain="plone">
 <body>
 
 <div metal:fill-slot="main">
     <tal:main-macro metal:define-macro="main"
-          tal:define="text python:here.CookedBody(stx_level=2);
-                      len_text python:len(text.strip())">
+          tal:define="pub_name context/getPublication | nothing;
+                      permalink context/getPermalink | nothing;
+                      kssClassesView context/@@kss_field_decorator_view;
+                      getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                      templateId template/getId;
+                      text here/getText;">
 
 
-        <div metal:use-macro="context/document_actions/macros/document_actions">
-            Document actions (print, sendto etc)
-        </div>
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-        <h1 tal:content="object_title" class="documentFirstHeading">
+        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
             Title or id
         </h1>
 
-        <p class="documentDescription"
-           tal:content="context/Description"
-           tal:condition="context/Description">
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <span tal:condition="context/reporter | nothing">By 
+            <span metal:define-macro="reporter-field-view"
+                  tal:define="kss_class python:getKssClasses('reporter',
+                            templateId=templateId, macro='reporter-field-view');"
+                  id="parent-fieldname-reporter"
+                  tal:attributes="class string: summary$kss_class;">
+              <span metal:define-slot="inside" 
+                    tal:replace="here/reporter">Clark Kent</span>
+            </span>
+            
+            <br />
+        </span>
+        
+        <tal:pub condition="pub_name">
+            <a tal:condition="permalink"
+               tal:attributes="href permalink"
+               tal:content="pub_name">National Enquirer</a>
+            <span tal:condition="not:permalink"
+                  tal:content="string:${pub_name}, ">National Enquirer, </span>
+        </tal:pub>
+        <tal:nopub condition="python: not pub_name and permalink">
+            <a tal:attributes="href permalink"
+               tal:content="permalink"
+            />
+        </tal:nopub>
+        
+        <span metal:define-macro="storydate-field-view"
+              class="storydate"
+              id="parent-fieldname-storydate"
+              tal:define="kss_class python:getKssClasses('storydate',
+                          templateId=templateId, macro='storydate-field-view');
+                          storyDate context/getStorydate|nothing"
+              tal:condition="storyDate"
+              tal:attributes="class string:storydate summary$kss_class">
+              <span metal:define-slot="inside" 
+                    tal:content="python:storyDate.strftime('%B %d, %Y')">[05/02/2006]</span>
+              <br />
+        </span>
+
+        <p  metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
             News summary
         </p>
 
-
-        <div class="reporter" tal:condition="context/reporter | nothing">By <span tal:replace="context/reporter" /></div>
-        
-        <div tal:condition="context/getPublication"
-             tal:content="context/getPublication"
-             class="publication">
-        </div>
-        
-        <div tal:condition="context/getStorydate"
-              tal:define="storyDate context/getStorydate"
-              class="storydate">
-              <span tal:replace="python:storyDate.strftime('%B %d, %Y')" />  
-        </div>
-
+        <div tal:replace="structure provider:plone.abovecontentbody" />
 
         <div class="newsImageContainer"
-             tal:condition="context/image_mini|nothing">
+             tal:condition="here/image_mini|nothing">
             <a href="#"
-               tal:attributes="href string:$here_url/image/image_view_fullscreen">
+               tal:attributes="href string:$here_url/image/image_view_fullscreen"
+               id="parent-fieldname-image">
                <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
             </a>
-            <p class="discreet"
-                  tal:content="context/getImageCaption">Image Caption</p>
+            <p metal:define-macro="imageCaption-field-view"
+               class="discreet"
+               tal:define="kss_class python:getKssClasses('imageCaption',
+                           templateId=templateId, macro='imageCaption-field-view');"
+               id="parent-fieldname-imageCaption"
+               tal:attributes="class string:discreet summary$kss_class;">
+              <span metal:define-slot="inside" 
+                   tal:replace="here/getImageCaption">Image Caption</span></p>
         </div>
 
-        <p tal:condition="python: not len_text and is_editable"
-           i18n:translate="no_body_text"
-           class="discreet">
-            This item does not have any body text, click the edit tab to change it.
-        </p>
-
-        <div class="stx"
-             tal:condition="len_text"
-             tal:omit-tag="python:here.text_format != 'structured-text'">
-            <div tal:replace="structure text" />
-        </div>
-
-		<a tal:condition="context/getPermalink"
-           tal:attributes="href context/getPermalink">
-			Read the original story
-		</a>
-			
-        <div metal:use-macro="context/document_byline/macros/byline">
-            Get the byline - contains details about author and modification date.
+        <div metal:define-macro="text-field-view"
+             id="parent-fieldname-text" class="stx"
+             tal:define="kss_class python:getKssClasses('text',
+                         templateId=templateId, macro='text-field-view');
+                         text text|here/getText|nothing"
+             tal:condition="text"
+             tal:attributes="class python:test(here.Format() in ('text/structured',
+                                                   'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
+            <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
         
-        <div class="visualClear"></div>
+        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+            Show related items if they exist
+        </div>
+        
+        <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
 </div>
 
 </body>
 </html>
-

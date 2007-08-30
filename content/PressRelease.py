@@ -6,17 +6,14 @@ __docformat__ = 'plaintext'
 # Core
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import ModifyPortalContent
-from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.permissions import View
 
-#Arch
+# Arch
 try:
   from Products.LinguaPlone.public import *
 except ImportError:
   # No multilingual support
   from Products.Archetypes.public import *
-
-from Products.Archetypes.Marshall import PrimaryFieldMarshaller
 
 # ATCT
 from Products.ATContentTypes.content.newsitem import ATNewsItem
@@ -24,9 +21,8 @@ from Products.ATContentTypes.content.newsitem import ATNewsItemSchema
 from Products.ATContentTypes.content.newsitem import finalizeATCTSchema
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
-# PC
+# PR
 from Products.PressRoom.config import *
-
 from Products.PressRoom import PressRoomMessageFactory as _
 
 # Schema declaration
@@ -42,7 +38,7 @@ schema = schema + Schema((
                 primary=False,
                 default="FOR IMMEDIATE RELEASE",
                 languageIndependent=0,
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 widget=StringWidget(
                     label='Release timing',
                     label_msgid = "label_release_timing",
@@ -54,7 +50,7 @@ schema = schema + Schema((
                 required=0,
                 primary=False,
                 languageIndependent=1,
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 searchable=1,
                 widget=StringWidget(
                     label='Subheadline',
@@ -68,7 +64,7 @@ schema = schema + Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 widget=StringWidget(
                     label='Press release location',
                     label_msgid = "label_location",
@@ -81,7 +77,7 @@ schema = schema + Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                index="DateIndex:brains",
+                #index="DateIndex:brains",
                 widget=CalendarWidget(
                     label='Press release date',
                     label_msgid = "label_release_date",
@@ -95,7 +91,7 @@ schema = schema + Schema((
             isMetadata = True,
             allowed_types=('PressContact',),
             languageIndependent = False,
-            index = 'KeywordIndex',
+            #index = 'KeywordIndex',
             write_permission = ModifyPortalContent,
             widget = ReferenceBrowserWidget(
                         allow_search = True,
@@ -122,11 +118,11 @@ finalizeATCTSchema(schema)
 class PressRelease(ATNewsItem):
     """For an organization's original press release documents."""
     
-    meta_type = portal_type = 'PressRelease'
-    archetype_name  = 'Press Release'
-    immediate_view  = 'pressrelease_view'
-    default_view    = 'pressrelease_view'
-    content_icon    = 'pressrelease_icon.gif'
+    # meta_type = portal_type = 'PressRelease'
+    # archetype_name  = 'Press Release'
+    # immediate_view  = 'pressrelease_view'
+    # default_view    = 'pressrelease_view'
+    # content_icon    = 'pressrelease_icon.gif'
     typeDescription = """For an organization's original press release documents"""
     typeDescMsgId   = """press_release_description_edit"""
     schema          = schema

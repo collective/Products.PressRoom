@@ -1,21 +1,13 @@
-from types import StringType
-
 try:
   from Products.LinguaPlone.public import *
 except ImportError:
   # No multilingual support
   from Products.Archetypes.public import *
 
-from Products.ATContentTypes.content.newsitem import ATNewsItem, ATNewsItemSchema, finalizeATCTSchema
-from Products.ATContentTypes.interfaces import IATEvent
+from Products.ATContentTypes.content.newsitem import ATNewsItem, ATNewsItemSchema, \
+                                                     finalizeATCTSchema
 
-from Products.CMFCore import CMFCorePermissions
-from Products.CMFCore.utils import getToolByName
-#from AccessControl import ClassSecurityInfo
-
-from Products.Archetypes.Marshall import PrimaryFieldMarshaller
 from Products.PressRoom.config import *
-
 from Products.PressRoom import PressRoomMessageFactory as _
 
 schema = ATNewsItemSchema.copy()
@@ -29,7 +21,7 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Reporter\'s Name',
                         label_msgid = "label_reporter_name",
@@ -44,7 +36,7 @@ schema += Schema((
                 primary=0,
                 languageIndependent=1,
                 Multivalues=1,
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Name of Publication',
                         label_msgid = "label_publication_name",
@@ -53,7 +45,7 @@ schema += Schema((
                         i18n_domain = "pressroom",),
                 ),
     StringField('permalink',
-                index="FieldIndex:brains",
+                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='URL of Press Clip',
                         label_msgid = "label_pressclip_url",
@@ -62,7 +54,7 @@ schema += Schema((
                         i18n_domain = "pressroom",),
                 ),
     DateTimeField('storydate',
-                index="DateIndex:brains",
+                #index="DateIndex:brains",
                 required=1,
                 widget=CalendarWidget(
                         label='Story Date',
@@ -77,11 +69,11 @@ finalizeATCTSchema(schema)
 
 class PressClip(ATNewsItem):
     """For organization's press clips."""
-    meta_type = portal_type = 'PressClip'
-    archetype_name = 'Press Clip'
-    immediate_view = 'pressclip_view'
-    default_view   = 'pressclip_view'
-    content_icon   = 'pressclip_icon.gif'
+    # meta_type = portal_type = 'PressClip'
+    # archetype_name = 'Press Clip'    
+    # #immediate_view = 'pressclip_view'
+    #default_view   = 'pressclip_view'
+    #content_icon   = 'pressclip_icon.gif'
     typeDescription = """For organization's press clips."""
     typeDescMsgId  = """press_clip_description_edit"""
     schema         = schema

@@ -1,5 +1,5 @@
-from Products.CMFCore.CMFCorePermissions import setDefaultRoles
-from Products.CMFCore.CMFCorePermissions import AddPortalContent
+from Products.CMFCore.permissions import setDefaultRoles
+
 try:
   from Products.LinguaPlone.public import *
 except ImportError:

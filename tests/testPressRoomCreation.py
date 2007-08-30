@@ -8,7 +8,6 @@ if __name__ == '__main__':
 
 from Testing import ZopeTestCase
 from Products.PressRoom.tests import PressRoomTestCase
-from Products.CMFPlone import transaction
 
 
 if __name__ == '__main__':

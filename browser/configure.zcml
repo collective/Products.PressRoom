@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+        <browser:page
+              for="*"
+              name="pr_view"
+              class=".pressroom.PressRoom"
+              permission="zope2.View"
+              allowed_interface="..interfaces.pressroom.IPressRoom"
+              />
+
+</configure>

@@ -1,18 +1,19 @@
-from Globals import package_home
-from Products.CMFCore import utils, CMFCorePermissions, DirectoryView
-from Products.CMFPlone.PloneUtilities import ToolInit
+from Products.CMFCore import utils, DirectoryView
 from Products.Archetypes.public import *
 from Products.Archetypes import listTypes
-from Products.Archetypes.utils import capitalize
 
-import os, os.path, sys
+from Products.GenericSetup import EXTENSION
+from Products.GenericSetup import profile_registry
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 
 # Get configuration data, permissions
 from Products.PressRoom.config import *
 
 # Register skin directories so they can be added to portal_skins
+ 
 DirectoryView.registerDirectory('skins', product_globals)
 DirectoryView.registerDirectory('skins/pressroom_content', product_globals)
+DirectoryView.registerDirectory('skins/pressroom_content_2.5', product_globals)
 DirectoryView.registerDirectory('skins/pressroom_scripts', product_globals)
 DirectoryView.registerDirectory('skins/pressroom_styles', product_globals)
 
@@ -44,3 +45,22 @@ def initialize(context):
         extra_constructors = constructors,
         fti                = ftis,
         ).initialize(context)
+
+    # Register the extension profile
+    profile_registry.registerProfile('default',
+                                     'PressRoom',
+                                     'pressroom',
+                                     'profiles/default',
+                                     'PressRoom',
+                                     EXTENSION,
+                                     IPloneSiteRoot)
+
+# Parts of the installation process depend on the version of Plone.
+# This release supports Plone 2.5.3 and Plone 3.
+try:
+    from Products.CMFPlone.migrations import v3_0
+except ImportError:
+    HAS_PLONE30 = False
+else:
+    HAS_PLONE30 = True
+

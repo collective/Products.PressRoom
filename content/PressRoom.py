@@ -11,13 +11,11 @@
 # provide a sensible default view out-of-the-box, like the FAQ view.
 #
 
+import transaction
+
 # CMF/ZOPE
-from Products.CMFCore import CMFCorePermissions
-from Products.CMFCore.permissions import ModifyPortalContent
-from Products.CMFCore.WorkflowCore import WorkflowException
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
-from Globals import package_home
 
 # AT
 try:
@@ -28,7 +26,6 @@ except ImportError:
 
 # ATCT
 from Products.ATContentTypes.content.folder import ATFolderSchema, ATFolder
-from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 from Products.ATContentTypes.interfaces import IATFolder
 
@@ -114,21 +111,19 @@ finalizeATCTSchema(ATPressRoomSchema, folderish=True, moveDiscussion=False)
 class PressRoom(ATFolder):
     """A folder where all the press related materials in the site live"""
     schema = ATPressRoomSchema
-
-    content_icon = 'pressroom_icon.gif'
-
-    archetype_name = 'Press Room'
-    meta_type = portal_type = 'PressRoom'
     _at_rename_after_creation = True
-    default_view = 'pressroom_view'
-    immediate_view = 'pressroom_view'
+    # content_icon = 'pressroom_icon.gif'
+    # archetype_name = 'Press Room'
+    # meta_type = portal_type = 'PressRoom'
+    # default_view = 'pressroom_view'
+    # immediate_view = 'pressroom_view'
     typeDescription= """A folder where all the press related materials in the site live"""
     typeDescMsgId  = 'description_edit_press_room'
     assocMimetypes = ()
     assocFileExt   = ()
     cmf_edit_kws   = ()
     
-    allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
+    #allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
 
     __implements__ = (IATFolder,)
 
@@ -271,7 +266,7 @@ class PressRoom(ATFolder):
             path_crit.setRecurse(True)
             sort_crit = smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
             
-        get_transaction().commit(1)
+        transaction.commit(1)
 
     def manage_afterAdd(self, item, container):
         ATFolder.manage_afterAdd(self, item, container)

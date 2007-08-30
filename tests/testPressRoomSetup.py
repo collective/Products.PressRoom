@@ -3,12 +3,13 @@
 #
 
 import os, sys
+import string
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
 from Testing import ZopeTestCase
 from Products.PressRoom.tests import PressRoomTestCase
-from Products.CMFPlone import transaction
+from Products.PressRoom import HAS_PLONE30
 
 
 class TestInstallation(PressRoomTestCase.PressRoomTestCase):
@@ -27,9 +28,27 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         self.metaTypes = ('PressRoom','PressRelease', 'PressClip', 'PressContact')
     
     def testSkinLayersInstalled(self):
-        self.failUnless('pressroom_content' in self.skins.objectIds())
         self.failUnless('pressroom_scripts' in self.skins.objectIds())
         self.failUnless('pressroom_styles' in self.skins.objectIds())
+        self.failUnless('pressroom_content' in self.skins.objectIds())
+        self.failUnless('pressroom_content_2.5' in self.skins.objectIds())
+        
+    def testCorrectSkinLayerInPlace(self):
+        # which content skin layer is used is based on the version
+        # of Plone
+        if HAS_PLONE30:
+            good_skin = 'pressroom_content'
+            bad_skin  = 'pressroom_content_2.5'
+        else:
+            good_skin = 'pressroom_content_2.5'
+            bad_skin  = 'pressroom_content'
+
+        skins = self.skins.getSkinSelections()
+        for skin in skins:
+            path = self.skins.getSkinPath(skin)
+            path = map(string.strip, string.split(path,','))
+            self.failUnless(bad_skin not in path)
+            self.failUnless(good_skin in path)
         
     def testTypesInstalled(self):
         for t in self.metaTypes:
@@ -41,8 +60,11 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
                 self.failUnless(t in self.factory.getFactoryTypes())
 
     def testTypesNotSearched(self):
+        # PR originally wanted Press Contacts to be unsearchable, but that doesn't make
+        # sense -- people want to be able to find press contacts as quickly as possible
+        # this test now confirms only that PressContacts are indeed searchable
         types_not_searched = self.properties.site_properties.getProperty('types_not_searched')
-        self.failUnless('PressContact' in types_not_searched)
+        self.failUnless('PressContact' not in types_not_searched)
 
     def testCssInstalled(self):
         self.failUnless('PressRoom.css' in self.css.getResourceIds())
