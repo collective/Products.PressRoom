@@ -30,6 +30,30 @@
             News summary
         </p>
 
+        <dl class="portalMessage warning"
+            tal:condition="pr_view/showTwoStatePrivateWarning">
+            <dt i18n:translate="">
+                Warning
+            </dt>
+            <dd i18n:translate="text_infrastructure_not_published">
+            By default, Plone 3.0 creates content in the "private" state.  This is affecting
+			the set of folders that contain this Press Room's material.  Click this button to
+			publish this Press Room and its supporting infrastructure (actual clips, contacts,
+			and releases will not be published by doing this).
+			<strong i18n:name="private_infrastructure_warning">Until you do this,
+			this Press Room will not function properly.</strong>
+
+			<br />
+
+			<form tal:attributes="action string:${context/absolute_url}/@@pr_view/publishPressRoomInfrastructure">
+				<input type="submit"
+					   i18n:attributes="value button_publish_pr_infrastructure"
+					   value="Publish this Press Room and its supporting folders">
+			</form>
+            </dd>
+        </dl>
+
+
         <div metal:define-macro="text-field-view"
              id="parent-fieldname-text" class="stx"
              tal:define="kss_class python:getKssClasses('text',

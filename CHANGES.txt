@@ -4,6 +4,9 @@
   support KSS in 3.0 sites [jbaldivieso]
 - moved as much of the initialization into GenericSetup as possible, without sacrificing
   normal quickinstaller-based installation in Plone 2.5. [jbaldivieso]
+- created a workaround for PressRooms created using the new Simple Publication WF.  Users are warned
+  if the releases/clips/contacts folders are private, and a button is provided to publish the pressroom,
+  the three subfolders, and their respective Collections. [jbaldivieso]
 
 1.1
 - Italian translation file [rlemmi - thanks!]

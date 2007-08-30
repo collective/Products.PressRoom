@@ -1,5 +1,5 @@
 #
-# Test Press Room content type initialization
+# Test Press Room Topic (aka Smart Folder or Collection) setup
 #
 
 import os, sys
@@ -13,7 +13,7 @@ from Products.PressRoom.tests import PressRoomTestCase
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
+class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
     """Ensure content types can be created and edited"""
 
     def afterSetUp(self):
@@ -113,6 +113,6 @@ if __name__ == '__main__':
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(TestPressRoomCreation))
+    suite.addTest(makeSuite(TestTopicSetup))
     return suite
 

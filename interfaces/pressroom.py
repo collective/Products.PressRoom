@@ -23,3 +23,13 @@ class IPressRoom(Interface):
         
     def canAddPressClips():
         """Returns True if the current user has permission to add Press Clips"""
+
+    def showTwoStatePrivateWarning():
+        """Returns True if we're in Plone 3.0, the press room's supporting folders are private,
+           and the current user is someone who can do something about it."""
+    
+    def publishPressRoomInfrastructure():
+        """Publish the 3 content folders (clips, releases, contacts) and the Collections
+        that are their home folders"""
+    
+    
