@@ -219,6 +219,11 @@ msgstr "Inserire una intestazione secondaria per il comunicato stampa"
 msgid "help_release_timing"
 msgstr "Quando questo comunicato stampa dovrebbe essere diffuso (es DIFFUSIONE IMMEDIATA o TRATTENERE FINO A GG/MM/AAAA)"
 
+#. Default: "FOR IMMEDIATE RELEASE"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "field_default_for_immediate_release"
+msgstr "DIFFUSIONE IMMEDIATA"
+
 #. Default: "If this is checked, your published releases will appear."
 #: Content Type: PressRoom, Field: show_releases
 msgid "help_show_release"

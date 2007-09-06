@@ -25,7 +25,7 @@
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-        <span tal:condition="context/reporter | nothing">By 
+        <div class="reporter" tal:condition="context/reporter | nothing">By 
             <span metal:define-macro="reporter-field-view"
                   tal:define="kss_class python:getKssClasses('reporter',
                             templateId=templateId, macro='reporter-field-view');"
@@ -34,22 +34,18 @@
               <span metal:define-slot="inside" 
                     tal:replace="here/reporter">Clark Kent</span>
             </span>
-            
-            <br />
-        </span>
-        
-        <tal:pub condition="pub_name">
-            <a tal:condition="permalink"
-               tal:attributes="href permalink"
-               tal:content="pub_name">National Enquirer</a>
-            <span tal:condition="not:permalink"
-                  tal:content="string:${pub_name}, ">National Enquirer, </span>
-        </tal:pub>
-        <tal:nopub condition="python: not pub_name and permalink">
-            <a tal:attributes="href permalink"
-               tal:content="permalink"
-            />
-        </tal:nopub>
+        </div>
+
+        <div class="publication" tal:condition="here/getPublication | nothing">
+            <span metal:define-macro="publication-field-view"
+                  tal:define="kss_class python:getKssClasses('publication',
+                            templateId=templateId, macro='publication-field-view');"
+                  id="parent-fieldname-publication"
+                  tal:attributes="class string: summary$kss_class;">
+              <span metal:define-slot="inside" 
+                    tal:replace="here/getPublication">[Publication]</span>
+            </span>
+        </div>
         
         <span metal:define-macro="storydate-field-view"
               class="storydate"
@@ -64,7 +60,7 @@
               <br />
         </span>
 
-        <p  metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
+        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
             News summary
         </p>
 
@@ -97,6 +93,13 @@
                                                    'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
+
+        <a tal:condition="context/getPermalink"
+           tal:attributes="href context/getPermalink"
+           i18n:domain="pressroom"
+           i18n:translate="read_the_original_story">
+           Read the original story
+       </a>
         
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             Show related items if they exist

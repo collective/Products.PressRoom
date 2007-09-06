@@ -200,6 +200,11 @@ msgstr ""
 msgid "label_description"
 msgstr ""
 
+#. Default: "Read the original story:"
+#: ../skins/pressroom_content/pressclip_view.pt
+msgid "read_the_original_story"
+msgstr ""
+
 #. Default: "Email:"
 #: ../skins/pressroom_content/presscontact_view.pt
 msgid "label_email"
@@ -283,6 +288,11 @@ msgstr ""
 #. Default: "Release timing"
 #: Content Type: PressRelease, Field: releaseTiming
 msgid "label_release_timing"
+msgstr ""
+
+#. Default: "FOR IMMEDIATE RELEASE"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "field_default_for_immediate_release"
 msgstr ""
 
 #. Default: "Reporter's Name"

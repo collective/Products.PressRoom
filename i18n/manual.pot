@@ -81,6 +81,11 @@ msgstr ""
 msgid "label_release_timing"
 msgstr ""
 
+#. Default: "FOR IMMEDIATE RELEASE"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "field_default_for_immediate_release"
+msgstr ""
+
 #. Default: "Subheadline"
 #: Content Type: PressRelease, Field: subhead
 msgid "label_subheadline"

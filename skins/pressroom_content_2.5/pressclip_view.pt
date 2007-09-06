@@ -61,15 +61,17 @@
             <div tal:replace="structure text" />
         </div>
 
-		<a tal:condition="context/getPermalink"
-           tal:attributes="href context/getPermalink">
-			Read the original story
-		</a>
-			
+        <a tal:condition="context/getPermalink"
+           tal:attributes="href context/getPermalink"
+           i18n:domain="pressroom"
+           i18n:translate="read_the_original_story">
+           Read the original story
+       </a>
+
         <div metal:use-macro="context/document_byline/macros/byline">
             Get the byline - contains details about author and modification date.
         </div>
-        
+
         <div class="visualClear"></div>
 
     </tal:main-macro>
