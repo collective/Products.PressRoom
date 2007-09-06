@@ -67,8 +67,7 @@
                           id="parent-fieldname-city"
                           tal:attributes="class string: summary$kss_class;">
                       <span metal:define-slot="inside" 
-                            tal:replace="here/getCity">[City]</span>
-                    </span></tal:city><tal:province
+                            tal:replace="here/getCity">[City]</span></span></tal:city><tal:province
                     tal:condition="province">,
                         <span metal:define-macro="stateOrProvince-field-view"
                               tal:define="kss_class python:getKssClasses('stateOrProvince',
