@@ -56,7 +56,6 @@
                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                        
                                        item_storydate item/getStorydate|nothing;
-                                       item_releasedate item/getReleaseDate|nothing;
                                        item_location item/getLocation|nothing;
                                        item_publication item/getPublication|nothing;
                                        item_subhead item/getSubhead|nothing;
@@ -83,27 +82,21 @@
                         <span class="documentByLine">
 
                             <span class="itemDate"
-                                 tal:condition="item_releasedate"
-                                 tal:content="python:' - ' + context.toLocalizedTime(item_releasedate)">
-                                 August 8, 2006
-                            </span>
-                            
-                            <span class="itemDate"
                                  tal:condition="item_storydate"
                                  tal:content="python:' - ' + context.toLocalizedTime(item_storydate)">
-                                 August 8, 2006
+                                 - [Story date]
                             </span>
                             
                             <span class="itemLocation"
                                  tal:condition="item_location"
                                  tal:content="string: - ${item_location}">
-                                 August 8, 2006
+                                 - [Location]
                             </span>
                             
                             <span class="itemPublication"
                                  tal:condition="item_publication"
                                  tal:content="string: - ${item_publication}">
-                                 August 8, 2006
+                                 - [Publication]
                             </span>
 
                         </span>
