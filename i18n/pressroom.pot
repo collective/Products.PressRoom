@@ -292,7 +292,7 @@ msgstr ""
 
 #. Default: "FOR IMMEDIATE RELEASE"
 #: Content Type: PressRelease, Field: releaseTiming
-msgid "field_default_for_immediate_release"
+msgid "FOR IMMEDIATE RELEASE"
 msgstr ""
 
 #. Default: "Reporter's Name"
