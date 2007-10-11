@@ -220,7 +220,7 @@
                 </span>  
             </h3>
             
-            <dl condition="pressClips">
+            <dl tal:condition="pressClips">
                 <tal:entry tal:repeat="item python:pressClips[:viewClipAmt]">
                     <tal:block tal:define="item_description item/Description;
                                            item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
