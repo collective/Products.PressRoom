@@ -6,9 +6,7 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-from Testing import ZopeTestCase
 from Products.CMFCore.utils import getToolByName
-
 from Products.PressRoom.tests import PressRoomTestCase
 from Products.PressRoom import HAS_PLONE30
 from Products.PressRoom.browser.pressroom import PressRoom as PR_view # crowded namespace, no?

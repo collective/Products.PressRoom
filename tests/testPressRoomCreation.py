@@ -6,12 +6,10 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-from Testing import ZopeTestCase
-from Products.PressRoom.tests import PressRoomTestCase
-
-
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
+
+from Products.PressRoom.tests import PressRoomTestCase
 
 class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
     """Ensure content types can be created and edited"""
