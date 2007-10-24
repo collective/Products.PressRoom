@@ -31,7 +31,7 @@ Installation
 
     Install in the usual way, by:
 
-   * Uncompressing Press Room in your Zope instances "products" directory
+   * Uncompressing Press Room in your Zope instances "Products" directory
 
    * Browse to your plone site --> site setup --> add/remove products
 
@@ -53,6 +53,11 @@ Usage
     You might find it useful to suppress the ability to add normal News Items if Press Room
     replaces that need.  You can do that by going into the portal_types tool in the ZMI and
     unchecking "implicitly addable" for News Items.
+    
+    Note that in Plone 3.0, the infrastructure supporting each Press Room by default is created
+    as "private".  The Press Room provides a button to publish all of these.  That button will
+    NOT publish any actual Releases, Clips or Contacts -- just the folders that contain them and
+    the Collections that aggregate them.
     
 Authors
   
