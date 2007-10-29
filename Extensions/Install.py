@@ -1,6 +1,7 @@
 from StringIO import StringIO
 
 from Products.CMFCore.utils import getToolByName
+from Products.PressRoom import HAS_PLONE30
 from Products.PressRoom.config import *
 from Products.PressRoom.Extensions.utils import restoreKupuSettings, \
                                                 restorePropertiesSettings, \
@@ -14,10 +15,16 @@ def install(portal):
 
     print >> out, "Installing Press Room's Generic Setup profile"
     setup_tool = getToolByName(portal, 'portal_setup')
-    original_context = setup_tool.getImportContextID()
+    # we only need to restore the Import Context for 2.5 sites
+    # "getImportContextId, and the very concept of a stateful active import context, is deprecated"
+    if not HAS_PLONE30:
+        original_context = setup_tool.getImportContextID()
+    else:
+        original_context = None
     setup_tool.setImportContext('profile-PressRoom:default')
     setup_tool.runAllImportSteps()
-    setup_tool.setImportContext(original_context)
+    if original_context is not None:
+        setup_tool.setImportContext(original_context)
     return out.getvalue()
 
 def uninstall(portal, reinstall=False):
