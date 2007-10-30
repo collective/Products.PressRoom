@@ -240,3 +240,28 @@ msgstr ""
 #: Content Type: PressContact, Field: email
 msgid "help_email_address"
 msgstr ""
+
+#. Default: "Add this contact to your address book"
+#: Template: pressroom_view
+msgid "label_download_vcard"
+msgstr ""
+
+#. Default: "By default, Plone 3.0 creates content in the "private" state.  This is affecting the set of folders that contain this Press Room's material.  Click this button to publish this Press Room and its supporting infrastructure (actual clips, contacts, and releases will not be published by doing this)."
+#: Template: pressroom_view
+msgid "text_infrastructure_not_published"
+msgstr ""
+
+#. Default: "Until you do this, this Press Room will not function properly."
+#: Template: pressroom_view
+msgid "text_infrastructure_not_published_warning"
+msgstr ""
+
+#. Default: "Publish this Press Room and its supporting folders"
+#: Template: pressroom_view
+msgid "button_publish_pr_infrastructure"
+msgstr ""
+
+#. Default: "Cell:"
+#: Template: various
+msgid "label_cellphone"
+msgstr ""
