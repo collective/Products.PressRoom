@@ -61,6 +61,7 @@
 <column value="getStateOrProvince"/>
 <column value="getOrganization"/>
 <column value="getPhone"/>
+<column value="getCellphone"/>
 <column value="getReleaseTiming"/>
 <column value="getSubhead"/>
 <column value="getLocation"/>

@@ -157,6 +157,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
         self.pcont1.setStateOrProvince('WA')
         self.pcont1.setOrganization('Plone Foundation')
         self.pcont1.setPhone('555-555-1234')
+        self.pcont1.setCellphone('666-666-1234')
 
         self.assertEqual(self.pcont1.Title(), 'John Smith')
         self.assertEqual(self.pcont1.getJobtitle(), 'Plonista')
@@ -165,6 +166,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.pcont1.getStateOrProvince(), 'WA')
         self.assertEqual(self.pcont1.getOrganization(), 'Plone Foundation')
         self.assertEqual(self.pcont1.getPhone(), '555-555-1234')
+        self.assertEqual(self.pcont1.getCellphone(), '666-666-1234')
 
     def testAssociateContactWithRelease(self):
         self.pr1.setReleaseContacts(self.pcont1)

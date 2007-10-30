@@ -47,44 +47,37 @@
 	        </h3>
                         
 			<dl tal:condition="pressContacts">
-            	<tal:pressContacts tal:repeat="item pressContacts">
-                	<tal:block tal:define="item_description item/Description;
-                                           item_subhead item/getSubhead;
-                                           item_type_class python: 'contenttype-' + normalizeString(item.portal_type);
-                                           item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
-                                           item_wf_state_class python:'state-' + normalizeString(item_wf_state);">
-						<dt metal:define-macro='contactlist'>
-                        	<span tal:attributes="class item_type_class">
-                            	<a href="#" 
-                                   tal:attributes="href item/getURL|item/absolute_url;
-                                                   class string:$item_wf_state_class visualIconPadding"
-                                   tal:content="item/pretty_title_or_id">
-                                    [Item Title]
-                                </a>
-                                           
-                                <metal:description define-slot="description_slot">
-                                	<tal:comment replace="nothing"> 
-                                    	Place custom listing info for custom types here
-                                    </tal:comment>
-                                </metal:description>
-                            </span>
-                        </dt>
-                                
-                        <dd>
-                            <div tal:condition="item_subhead"
-                                 tal:content="item_subhead"
-                                 class="pressroomSubhead">
-                                [Subheading]
-                            </div>
- 
-                            <div tal:omit-tag="" tal:condition="not:item_description"> 
-                                &nbsp; 
-                            </div> 
-                            <div tal:omit-tag="" tal:content="item_description"> 
-                                description 
-                            </div> 
-                        </dd>
-                    </tal:block>
+                <tal:pressContacts tal:repeat="item pressContacts">
+                    <dt metal:define-macro="contactlist">
+                        <a tal:attributes="href item/getURL;
+                                           title item/Description|nothing"
+                           tal:content="item/pretty_title_or_id">
+                            [Contact's Name]
+                        </a>
+                    </dt>
+                    <dd tal:define="job item/getJobtitle|nothing"
+                        tal:condition="job">
+                        <strong tal:content="job">[Job Title]</strong>
+                    </dd>
+                    <dd tal:define="email item/getEmail|nothing"
+                        tal:condition="email">
+                        <a tal:replace="structure python: here.spamProtect(email)">[Spam-protected email]</a>
+                    </dd>
+                    <dd tal:define="phone item/getPhone|nothing"
+                        tal:condition="phone">
+                        <strong i18n:translate="label_phone">Phone:</strong>
+                        <span tal:content="phone">[Phone]</span>
+                    </dd>
+                    <dd tal:define="cell item/getCellphone|nothing"
+                        tal:condition="cell">
+                        <strong i18n:translate="label_cellphone">Cell:</strong>
+                        <span tal:content="cell">[Cellphone]</span>
+                    </dd>
+                    <dd class="discreet vcard-link">
+                        [<a title="Add this contact to your address book"
+                           tal:attributes="href string:${item/getURL}/vCard.vcf"
+                           i18n:attributes="title label_download_vcard">vCard <img tal:replace="structure here/vcard.gif" src="" alt="" /> </a>]
+                    </dd>
                 </tal:pressContacts>
             </dl>
         </div>   

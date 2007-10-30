@@ -66,6 +66,7 @@
                                        item_stateOrProvince item/getStateOrProvince|nothing;
                                        item_email item/getEmail|nothing;
                                        item_phone item/getPhone|nothing;
+                                       item_cellphone item/getCellphone|nothing;
                                    ">
 
                     <dt metal:define-macro="listitem">
@@ -116,10 +117,17 @@
                         </div>
                         <div class='documentByLine'
                              tal:condition="item_email"
-                             tal:content="item_email"></div>
+                             ><a tal:replace="structure python: here.spamProtect(item_email)">[Spam-protected email]</a></div>
                         <div class='documentByLine'
-                             tal:condition="item_phone"
-                             tal:content="item_phone"></div>
+                             tal:condition="item_phone">
+                             <span i18n:translate="label_phone">Phone:</span>
+                             <span tal:content="item_phone">[Phone]</span>
+                         </div>
+                        <div class='documentByLine'
+                             tal:condition="item_cellphone">
+                             <span i18n:translate="label_cellphone">Cellphone:</span>
+                             <span tal:content="item_cellphone">[Cellphone]</span>
+                        </div>
                     
                         <span tal:omit-tag="" tal:condition="python: not (item_description or item_subhead)"> 
                             &nbsp; 
