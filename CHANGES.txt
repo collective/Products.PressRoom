@@ -1,3 +1,12 @@
+3.1
+- Added basque translation [erral]
+- Fixed an upgrade error (issue #42) and the i18n coverage in pressroom_view (issue #43).
+- Added a cell phone field to press contacts. Enhanced the way they are displayed throughout the
+  Press Room (issue #11). Also Press Contacts can be downloaded as vCards for use in address
+  books/email clients. [jbaldivieso]
+
+
+
 3.0
 - moved pressroom_view logic into view [jbaldivieso]
 - bifurcated the pressroom_content skin directory into 2.5 and 3.0 versions to
