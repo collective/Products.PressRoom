@@ -1,6 +1,8 @@
 Trunk
 - Added Publication to pressroom_view listing of Press Clips [jonstahl]
 - Changed date & publication spans in pressrom_view to divs [jonstahl]
+- Removed "Up one folder" from Press Room subfolder views [jonstahl]
+- Made CSS not conditional on pressroom types, that was making it hard to accurately style pressroom subfolders, which aren't custom types [jonstahl]
 
 3.1
 - Added basque translation [erral]

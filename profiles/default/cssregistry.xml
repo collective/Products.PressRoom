@@ -2,7 +2,6 @@
 <object name="portal_css" meta_type="Stylesheets Registry">
  <stylesheet title="PressRoom styles" cacheable="True" compression="safe" cookable="True"
     enabled="on"
-	expression="python:object.getTypeInfo().getId() in ('PressRoom','PressRelease','PressClip','PressContact')"
-	id="PressRoom.css" media="all" rel="stylesheet"
+    id="PressRoom.css" media="all" rel="stylesheet"
     rendering="import"/>
 </object>

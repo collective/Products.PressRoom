@@ -16,15 +16,6 @@
             Title or id
         </h1>
 
-        <a href=""
-           class="link-parent"
-           tal:define="parent_url python:here.navigationParent(here, template_id)"
-           tal:condition="parent_url"
-           tal:attributes="href parent_url"
-           i18n:translate="go_to_parent_url">
-        Up one level
-        </a>
-
         <p class="documentDescription"
            tal:content="here/Description"
            tal:condition="here/Description">
@@ -80,27 +71,25 @@
                             </a>
                         </span>
 
-                        <span class="documentByLine">
 
-                            <span class="itemDate"
+                            <div class="itemDate"
                                  tal:condition="item_storydate"
-                                 tal:content="python:' - ' + context.toLocalizedTime(item_storydate)">
-                                 - [Story date]
-                            </span>
+                                 tal:content="python: context.toLocalizedTime(item_storydate)">
+                                 [Story date]
+                            </div>
                             
-                            <span class="itemLocation"
+                            <div class="itemLocation"
                                  tal:condition="item_location"
-                                 tal:content="string: - ${item_location}">
-                                 - [Location]
-                            </span>
+                                 tal:content="item_location">
+                                [Location]
+                            </div>
                             
-                            <span class="itemPublication"
+                            <div class="itemPublication"
                                  tal:condition="item_publication"
-                                 tal:content="string: - ${item_publication}">
-                                 - [Publication]
-                            </span>
+                                 tal:content="item_publication">
+                                 [Publication]
+                            </div>
 
-                        </span>
 
                     </dt>
 
