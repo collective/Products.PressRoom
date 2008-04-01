@@ -1,3 +1,7 @@
+Trunk
+- Added Publication to pressroom_view listing of Press Clips [jonstahl]
+- Changed date & publication spans in pressrom_view to divs [jonstahl]
+
 3.1
 - Added basque translation [erral]
 - Fixed an upgrade error (issue #42) and the i18n coverage in pressroom_view (issue #43).
