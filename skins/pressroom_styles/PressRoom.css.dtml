@@ -18,9 +18,10 @@
 .pressroomSubhead {
  font-style: italic;
  font-size: 110%;
+ padding-bottom: 0.25em;
 }
 
-.itemDate {
+.itemDate, .itemPublication {
  color: #666;
  font-weight: normal;
  margin-left: 1em;

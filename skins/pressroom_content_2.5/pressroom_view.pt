@@ -105,19 +105,19 @@
             
                     <dt metal:define-macro="releaselistitem">
         
-                        <span tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
+                        <div tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
                             <a href="#" 
                                tal:attributes="href item/getURL|item/absolute_url;
                                                class string:$item_wf_state_class visualIconPadding"
                                tal:content="item/pretty_title_or_id">
                                 Item Title
                             </a>
-                        </span>
+                        </div>
  
-                        <span class="itemDate"
+                        <div class="itemDate"
                               tal:content="python:toLocalizedTime(item.getReleaseDate)">
                             August 8, 2006
-                        </span>
+                        </div>
         
                                 
                         <metal:description define-slot="description_slot">
@@ -183,19 +183,24 @@
         
                         <dt metal:define-macro="cliplistitem">
         
-                            <span tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
+                            <div tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
                                 <a href="#" 
                                    tal:attributes="href item/getURL|item/absolute_url;
                                                    class string:$item_wf_state_class visualIconPadding"
                                    tal:content="item/pretty_title_or_id">
                                     Item Title
                                 </a>
-                                </span>
+                                </div>
                                 
-                            <span class="itemDate"
+                            <div class="itemDate"
                                   tal:content="python:toLocalizedTime(item.getStorydate)">
                                  Story Date
-                            </span>
+                            </div>
+
+                            <div class="itemPublication"
+                                  tal:content="item/getPublication">
+                                 Publication
+                            </div>
         
                         </dt>
         
