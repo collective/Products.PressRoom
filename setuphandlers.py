@@ -38,7 +38,8 @@ class PRSetup(object):
     def configureATCT(self, portal):
         """enable two indices to be used by smart folders"""
         smart_folder_tool = getToolByName(portal, 'portal_atct')
-    
+        
+        # enable "position in parent" index
         index = smart_folder_tool.getIndex("getObjPositionInParent")
         index_def = {'index'        : index.index,
                      'friendlyName' : index.friendlyName,
@@ -46,7 +47,8 @@ class PRSetup(object):
                      'criteria'     : index.criteria
                     }
         smart_folder_tool.addIndex(enabled=True, **index_def)
-    
+
+        # extend the possible "criteria" for the "Type" criterion 
         typeIndex = smart_folder_tool.getIndex("Type")
         typeIndex_def = {'index'        : typeIndex.index,
                          'friendlyName' : typeIndex.friendlyName,
@@ -54,8 +56,20 @@ class PRSetup(object):
                          'criteria'     : typeIndex.criteria + ("ATListCriterion",)
                         }
         smart_folder_tool.addIndex(enabled=True, **typeIndex_def)
-    
-        return "Enabled the getObjPositionInParent and getPublic indices for use by smart folders.  Updated settings on the Type index field with the portal_atct tool."
+
+        # enable the "Story Date" index with a nicer name
+        # what appears to be a bug in 3.0.6 -- unless I list the indexes ahead of time,
+        # it can't find the "getStorydate" index.  Not a problem in 2.5.5
+        smart_folder_tool.getIndexes()
+        index = smart_folder_tool.getIndex("getStorydate")
+        index_def = {'index'        : index.index,
+                     'friendlyName' : "Story Date",
+                     'description'  : """The date a Press Clip ran in its original publication or the date a Press Release was "released".""",
+                     'criteria'     : index.criteria
+                    }
+        smart_folder_tool.addIndex(enabled=True, **index_def)
+
+        return "Enabled the getObjPositionInParent and Story Date indices for use by smart folders.  Updated settings on the Type index field with the portal_atct tool."
 
     def removeUnneededSkinLayer(self, portal):
         """Our profile installs two different skin layers for content,

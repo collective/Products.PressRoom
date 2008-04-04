@@ -90,6 +90,10 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         index = self.atct_tool.getIndex("Type")
         self.failUnless("ATListCriterion" in index.criteria)
 
+    def testStorydateIndexEnabledForTopics(self):
+        index = self.atct_tool.getIndex("getStorydate")
+        self.failUnless(index.enabled)
+
 
 class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
     """Ensure content types can be created and edited"""

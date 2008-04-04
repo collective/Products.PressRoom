@@ -75,7 +75,7 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
 
     def testContactRosterCriteria(self):
         # Press Contact topic is in place as default view and has a criterion to show
-        # only Press Contacts with the public checkbox set for appearance in press-contact listing.
+        # only published Press Contacts sorted by their position in the folder.
         self.assertEqual(self.contactroster._getPortalTypeName(), 'Topic')
         self.assertEqual(self.contactroster.buildQuery()['Type'], ('Press Contact',))
         self.assertEqual(self.contactroster.buildQuery()['review_state'], 'published')
