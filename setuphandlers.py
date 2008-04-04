@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from Products.PressRoom import HAS_PLONE30
 import string
+from Products.kupu.plone.librarytool import KupuError
 
 class PRSetup(object):
     
@@ -17,13 +18,23 @@ class PRSetup(object):
         mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
     
         for t in ("PressRoom","PressRelease","PressClip","PressContact",):
-            if t not in linkable:
-                linkable.append(t)
+            # validate type using kupu's method; defensive maneuver for elusive bug #44
+            try:
+                kupuTool._validate_portal_types('linkable', (t,))
+                if t not in linkable:
+                    linkable.append(t)
+            except KupuError:
+                # we're swallowing these issues for now
+                pass
     
         for t in ('PressRoom',):
-            if t not in collection:
-                collection.append(t)
-    
+            try:
+                kupuTool._validate_portal_types('collection', (t,))
+                if t not in collection:
+                    collection.append(t)
+            except KupuError:
+                # swallowing for now
+                pass
         # kupu_library_tool has an odd interface, basically written purely to
         # work with its configuration page. :-(
         kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
