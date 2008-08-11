@@ -1,4 +1,5 @@
 Trunk
+- Added German translation, thanks to Sven Anders [jbaldivieso]
 - Added Publication to pressroom_view listing of Press Clips [jonstahl]
 - Changed date & publication spans in pressrom_view to divs [jonstahl]
 - Removed "Up one folder" from Press Room subfolder views [jonstahl]
