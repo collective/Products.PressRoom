@@ -58,7 +58,14 @@ Usage
     as "private".  The Press Room provides a button to publish all of these.  That button will
     NOT publish any actual Releases, Clips or Contacts -- just the folders that contain them and
     the Collections that aggregate them.
-    
+
+Upgrading Folders
+    As of Press Room 3.2, the containers for Press Clips and Press Releases are Large Plone Folders. Before
+    3.2, Press Room used normal folders, which become inefficient when containing more than about a hundred
+    items.  To upgrade an older Press Room, navigate to the Press Room and append "/@@upgrade-folders" to the
+    url. A message will return with the results of the upgrade. Note that your Press Room subfolders must retain
+    their original ids ('press-clips' and 'press-releases') in order to be upgraded.
+
 Authors
   
     See CREDITS.TXT

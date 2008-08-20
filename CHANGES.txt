@@ -1,10 +1,16 @@
 Trunk
+ - Switched to Large Plone Folders for storing Press Releases and Clips. Provided
+   a migration script for upgrading older Press Rooms. (This was Roadmap
+   item #3.) [jbaldivieso]
+ - Returned Press Contacts for purposes of press room presentation in the order in which
+   they're stored in the press-contacts folder. [jbaldivieso]
  - Added German translation, thanks to Sven Anders [jbaldivieso]
  - Added Publication to pressroom_view listing of Press Clips [jonstahl]
  - Changed date & publication spans in pressrom_view to divs [jonstahl]
  - Removed "Up one folder" from Press Room subfolder views [jonstahl]
- - Made CSS not conditional on pressroom types, that was making it hard
-   to accurately style pressroom subfolders, which aren't custom types [jonstahl]
+ - Made CSS not conditional on pressroom types (it was hard to style pressroom
+   subfolders, which aren't custom types; also it's more efficient to have that
+   readily combinable with other stylesheets in the Resource Registry) [jonstahl]
 
 3.1
  - Added basque translation [erral]
