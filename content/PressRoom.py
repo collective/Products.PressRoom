@@ -282,7 +282,7 @@ class PressRoom(ATFolder):
         if not large_folders_addable:
             lpf.manage_changeProperties(global_allow = False)
 
-        transaction.commit(1)
+        transaction.savepoint()
 
     def manage_afterAdd(self, item, container):
         ATFolder.manage_afterAdd(self, item, container)
