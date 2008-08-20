@@ -65,9 +65,15 @@ Upgrading Folders
     items.  To upgrade an older Press Room, navigate to the Press Room and append "/@@upgrade-folders" to the
     url. A message will return with the results of the upgrade. Note that your Press Room subfolders must retain
     their original ids ('press-clips' and 'press-releases') in order to be upgraded.
-
+    
+    Note also that, by default, Large Plone Folders are not normally addable in a Plone site. To allow the creation
+    of the two used in a new Press Room, we briefly enable them (if they weren't already) and after adding them, we
+    disable them again. That means that attempts to rename them will cause a cryptic error about disallowed types.
+    To get around that, simply navigate to portal_types in the ZMI, click into Large Plone Folders, and check the
+    "Implicitly addable" checkbox.
+    
 Authors
-  
+
     See CREDITS.TXT
 
 
