@@ -14,6 +14,7 @@
 import transaction
 
 # CMF/ZOPE
+from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
 
@@ -35,6 +36,8 @@ from Products.CMFPlone.i18nl10n import utranslate
 # PR
 from Products.PressRoom.config import *
 from Products.PressRoom import PressRoomMessageFactory as _
+from Products.PressRoom.interfaces.content import IPressRoom
+
 
 ATPressRoomSchema = ATFolderSchema.copy()
 ATPressRoomSchema += Schema((
@@ -126,6 +129,8 @@ class PressRoom(ATFolder):
     #allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
 
     __implements__ = (IATFolder,)
+    implements(IPressRoom)
+
 
     # Enable marshalling via WebDAV/FTP/ExternalEditor.
     __dav_marshall__ = True

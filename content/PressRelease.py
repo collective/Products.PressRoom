@@ -4,6 +4,7 @@ __author__  = ''
 __docformat__ = 'plaintext'
 
 # Core
+from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.permissions import View
@@ -24,6 +25,7 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import Reference
 # PR
 from Products.PressRoom.config import *
 from Products.PressRoom import PressRoomMessageFactory as _
+from Products.PressRoom.interfaces.content import IPressRelease
 
 # Schema declaration
 schema = ATNewsItemSchema.copy()
@@ -137,6 +139,7 @@ class PressRelease(ATNewsItem):
     # which includes support for ISelectableBrowserDefault to get the
     # 'display' menu to work, IHistoryAware and other standard interfaces.
     __implements__ = ATNewsItem.__implements__
+    implements(IPressRelease)
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT

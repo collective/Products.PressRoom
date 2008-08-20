@@ -1,3 +1,5 @@
+from zope.interface import implements
+
 try:
   from Products.LinguaPlone.public import *
 except ImportError:
@@ -9,6 +11,7 @@ from Products.ATContentTypes.content.newsitem import ATNewsItem, ATNewsItemSchem
 
 from Products.PressRoom.config import *
 from Products.PressRoom import PressRoomMessageFactory as _
+from Products.PressRoom.interfaces.content import IPressClip
 
 schema = ATNewsItemSchema.copy()
 
@@ -88,6 +91,7 @@ class PressClip(ATNewsItem):
     # which includes support for ISelectableBrowserDefault to get the
     # 'display' menu to work, IHistoryAware and other standard interfaces.
     __implements__ = (ATNewsItem.__implements__,)
+    implements(IPressClip)
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT

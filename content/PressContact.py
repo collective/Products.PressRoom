@@ -1,3 +1,5 @@
+from zope.interface import implements
+
 try:
   from Products.LinguaPlone.public import *
 except ImportError:
@@ -8,6 +10,7 @@ from Products.ATContentTypes.content.base import ATCTContent
 
 from Products.PressRoom.config import *
 from Products.PressRoom import PressRoomMessageFactory as _
+from Products.PressRoom.interfaces.content import IPressContact
 
 # set Base Schema as the schema
 schema = BaseSchema.copy()
@@ -136,5 +139,7 @@ class PressContact(ATCTContent):
     exclude_from_nav = True
     
     _at_rename_after_creation = True
+    implements(IPressContact)
+
 
 registerType(PressContact)
