@@ -25,13 +25,11 @@ class PressRoom(BrowserView):
                                                              review_state='published',
                                                              path=path,
                                                              )
-        
+
     def canAddPressContacts(self):
         """Returns True if the current user has permission to add Press Contacts"""
         membership_tool = getToolByName(self.context, 'portal_membership')
         return membership_tool.checkPermission('Add_Portal_Content', self.context)
-        
-
 
     def getReleases(self):
         """Return  a list of Press Releases for this Press Room only if they should be shown
@@ -46,14 +44,12 @@ class PressRoom(BrowserView):
                                                              path=path,
                                                              sort_on='getReleaseDate',
                                                              )
-        
+
     def canAddPressReleases(self):
         """Returns True if the current user has permission to add Press Releases"""
         membership_tool = getToolByName(self.context, 'portal_membership')
         return membership_tool.checkPermission('Add_Portal_Content', self.context)
-    
-    
-    
+
     def getClips(self):
         """Return  a list of Press Clips for this Press Room only if they should be shown
         """
@@ -67,12 +63,11 @@ class PressRoom(BrowserView):
                                                              path=path,
                                                              sort_on='getStorydate',
                                                              )
-        
+
     def canAddPressClips(self):
         """Returns True if the current user has permission to add Press Clips"""
         membership_tool = getToolByName(self.context, 'portal_membership')
         return membership_tool.checkPermission('Add_Portal_Content', self.context)
-
 
     def showTwoStatePrivateWarning(self):
         """Returns True if we're in Plone 3.0, the press room's supporting folders are private,
@@ -94,7 +89,7 @@ class PressRoom(BrowserView):
                         return False
 
         return True
-    
+
     def publishPressRoomInfrastructure(self):
         """Publish the 3 content folders (clips, releases, contacts) and the Collections
         that are their home folders.  If the Press Room is unpublished, publish it too"""
@@ -104,7 +99,7 @@ class PressRoom(BrowserView):
         # I decided to not make showTwoStatePrivateWarning a dependency at this level to allow
         # people who published one of the folders manually before realizing the issue.
         # That way, they can call this to fix the reset
-        
+
         workflow_tool = getToolByName(self.context, 'portal_workflow')
         context = aq_inner(self.context)
         infrastructure = {'press-releases':'all-press-releases',
