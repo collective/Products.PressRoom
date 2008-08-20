@@ -35,7 +35,7 @@ class UpgradeFolders(BrowserView):
             large_folders_addable = False
             lpf.manage_changeProperties(global_allow = True)
 
-        subfolder_ids = ('press-releases','press-contacts','press-clips')
+        subfolder_ids = ('press-releases','press-clips')
         upgraded = []
         for subfolder_id in subfolder_ids:
             orig = getattr(self.context, subfolder_id, None)

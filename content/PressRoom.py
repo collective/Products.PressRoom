@@ -258,7 +258,7 @@ class PressRoom(ATFolder):
 
 
         if 'press-contacts' not in self.objectIds():
-            self.invokeFactory(folder_type, 'press-contacts')
+            self.invokeFactory("Folder", 'press-contacts')
             obj = self['press-contacts']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressContact",])

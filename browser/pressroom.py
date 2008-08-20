@@ -24,6 +24,7 @@ class PressRoom(BrowserView):
             return self.context.portal_catalog.searchResults(meta_type = 'PressContact',
                                                              review_state='published',
                                                              path=path,
+                                                             sort_on='getObjPositionInParent',
                                                              )
 
     def canAddPressContacts(self):

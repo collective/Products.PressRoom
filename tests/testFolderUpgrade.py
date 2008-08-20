@@ -23,11 +23,9 @@ class TestFolderUpgrade(PressRoomTestCase.PressRoomTestCase):
         pressroom = getattr(self.folder, 'pressroom')
         type_mapping = {'press-releases': "PressRelease",
                         'press-clips': "PressClip",
-                        'press-contacts': "PressContact",
                         }
         home_mapping = {'press-releases':'all-press-releases',
                         'press-clips':'all-press-clips',
-                        'press-contacts':'press-contacts',
                         }
 
         # nuke the subfolders; recreate them as mere Folders.

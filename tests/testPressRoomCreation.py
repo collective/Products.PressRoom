@@ -74,7 +74,12 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
 
     def testLargeFoldersUsed(self):
         for f in self.childFolderMapping.keys():
-            self.assertEqual(self.pressroom[f].portal_type, "Large Plone Folder")
+            if f == 'press-contacts':
+                # contacts want to be in an *ordered* folder
+                self.assertEqual(self.pressroom[f].portal_type, "Folder")
+            else:
+                # press releases and clips want to be in BTree folders
+                self.assertEqual(self.pressroom[f].portal_type, "Large Plone Folder")
 
     def testLargeFoldersStillNotAddable(self):
         # we're assuming that the default settings were in place initially: 
