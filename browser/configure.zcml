@@ -2,7 +2,7 @@
            xmlns:browser="http://namespaces.zope.org/browser">
 
     <browser:page
-          for="*"
+          for="..interfaces.content.IPressRoom"
           name="pr_view"
           class=".pressroom.PressRoom"
           permission="zope2.View"
