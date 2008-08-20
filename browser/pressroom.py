@@ -10,7 +10,7 @@ from Products.PressRoom.interfaces import IPressRoom
 from Products.PressRoom import HAS_PLONE30
 
 class PressRoom(BrowserView):
-    """Interface for functionality in the PressRoom CT view"""
+    """Browser view for the Press Room CT"""
 
     implements(IPressRoom)
 
