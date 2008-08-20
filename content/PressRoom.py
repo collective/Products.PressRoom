@@ -1,7 +1,7 @@
 #
 # The Press Room container.
 #
-# A Press Room is pre-populated with the following folders:
+# A Press Room is pre-populated with the following Large Plone Folders:
 #
 # /press-contacts
 # /press-clips
@@ -122,7 +122,7 @@ class PressRoom(ATFolder):
     assocMimetypes = ()
     assocFileExt   = ()
     cmf_edit_kws   = ()
-    
+
     #allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
 
     __implements__ = (IATFolder,)
@@ -135,13 +135,21 @@ class PressRoom(ATFolder):
         """
         ATFolder.initializeArchetype(self,**kwargs)
 
+        # enable the addition of LPFs momentarily
+        large_folders_addable = True
+        portal_types = getToolByName(self, "portal_types")
+        lpf = getattr(portal_types, "Large Plone Folder")
+        if not lpf.global_allow:
+            large_folders_addable = False
+            lpf.manage_changeProperties(global_allow = True)
+
         if 'press-releases' not in self.objectIds():
-            self.invokeFactory('Folder','press-releases') # XXX Make large plone folder
+            self.invokeFactory('Large Plone Folder','press-releases')
             obj = self['press-releases']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressRelease",])
             obj.setLocallyAllowedTypes(["Topic","PressRelease",])
-            
+
             obj.setTitle(utranslate('pressroom', 'Press Releases', context=self))
             obj.setDescription(utranslate('pressroom', 'These are our press releases', context=self))
             obj.reindexObject()
@@ -149,13 +157,13 @@ class PressRoom(ATFolder):
             # create Smart Folder to be this folder's default page
             obj.invokeFactory('Topic','all-press-releases')
             obj.setDefaultPage('all-press-releases')
-            
+
             smart_obj = obj['all-press-releases']
             smart_obj.setTitle(utranslate('pressroom', u'Press Releases', context=self))
             smart_obj.setDescription(utranslate('pressroom', u'These are our press releases', context=self))
             smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
-            
+
             state_crit = smart_obj.addCriterion('review_state',
                                                 'ATSimpleStringCriterion')
             state_crit.setValue('published')
@@ -186,7 +194,7 @@ class PressRoom(ATFolder):
                 smart_folder_tool.updateMetadata('getReleaseDate', enabled=True) 
 
         if 'press-clips' not in self.objectIds():
-            self.invokeFactory('Folder','press-clips') # XXX Make large plone folder
+            self.invokeFactory('Large Plone Folder','press-clips')
             obj = self['press-clips']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressClip",])
@@ -205,7 +213,7 @@ class PressRoom(ATFolder):
             smart_obj.setDescription(utranslate('pressroom', u'See us in the news!', context=self))
             smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
-            
+
             state_crit = smart_obj.addCriterion('review_state',
                                                 'ATSimpleStringCriterion')
             state_crit.setValue('published')
@@ -234,7 +242,7 @@ class PressRoom(ATFolder):
 
 
         if 'press-contacts' not in self.objectIds():
-            self.invokeFactory('Folder','press-contacts')
+            self.invokeFactory('Large Plone Folder','press-contacts')
             obj = self['press-contacts']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressContact",])
@@ -265,7 +273,10 @@ class PressRoom(ATFolder):
             path_crit.setValue(self.UID())
             path_crit.setRecurse(True)
             sort_crit = smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
-            
+
+        if not large_folders_addable:
+            lpf.manage_changeProperties(global_allow = False)
+
         transaction.commit(1)
 
     def manage_afterAdd(self, item, container):

@@ -3,6 +3,7 @@
 #
 
 import os, sys
+from Products.CMFCore.utils import getToolByName
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
@@ -18,7 +19,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.setRoles(['Manager'])
         self.folder.invokeFactory('PressRoom', id="pressroom", title="Press Room",)
         self.pressroom = getattr(self.folder, 'pressroom')
-        
+
         self.childFolderMapping = {
                                     'press-releases':'all-press-releases',
                                     'press-clips':'all-press-clips',
@@ -35,7 +36,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.pressroom.setNum_clips(5)
         self.pressroom.setShow_contacts(True)
         self.pressroom.setText('<p>Here are our latest <strong>press releases and press clips</strong>:</p>')
-        
+
         self.assertEqual(self.pressroom.Title(), 'Media Center')
         self.assertEqual(self.pressroom.Description(), 'Our Media Center')
         self.assertEqual(self.pressroom.getNum_releases(), 5)
@@ -62,7 +63,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.failUnless("PressClip" in self.presscontacts.getLocallyAllowedTypes())
         self.failUnless("Topic" in self.presscontacts.getLocallyAllowedTypes()) 
         self.failUnless("PressClip" in self.presscontacts.getImmediatelyAddableTypes())
-    
+
     def testDefaultPage(self):
         for k,v in self.childFolderMapping.items():
             self.assertEqual(self.pressroom[k].getDefaultPage(), v)
@@ -70,7 +71,29 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
     def testChildrenTopicsCreated(self):
         for k,v in self.childFolderMapping.items():
             self.failUnless(v in self.pressroom[k].objectIds())
-            
+
+    def testLargeFoldersUsed(self):
+        for f in self.childFolderMapping.keys():
+            self.assertEqual(self.pressroom[f].portal_type, "Large Plone Folder")
+
+    def testLargeFoldersStillNotAddable(self):
+        # we're assuming that the default settings were in place initially: 
+        # Large Plone Folders are not implicitly addable
+        portal_types = getToolByName(self.portal, 'portal_types')
+        lpf = getattr(portal_types, "Large Plone Folder")
+        self.failUnless(lpf.global_allow is False)
+
+    def testLargeFoldersStillAddableIfEnabled(self):
+        # we're assuming that the default settings were in place initially: 
+        # Large Plone Folders are not implicitly addable
+        portal_types = getToolByName(self.portal, 'portal_types')
+        lpf = getattr(portal_types, "Large Plone Folder")
+        lpf.manage_changeProperties(global_allow = True)
+
+        self.folder.invokeFactory('PressRoom', id="pressroom2", title="Press Room 2",)
+        self.failIf(lpf.global_allow is False)
+
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
