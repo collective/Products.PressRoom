@@ -139,17 +139,28 @@ class PressRoom(ATFolder):
         """Pre-populate the press room folder with its basic folders.
         """
         ATFolder.initializeArchetype(self,**kwargs)
+        
+        # create sub-folders
+        self._createSubFolders()
 
-        # enable the addition of LPFs momentarily
-        large_folders_addable = True
-        portal_types = getToolByName(self, "portal_types")
-        lpf = getattr(portal_types, "Large Plone Folder")
-        if not lpf.global_allow:
-            large_folders_addable = False
-            lpf.manage_changeProperties(global_allow = True)
+    def _createSubFolders(self, use_large_folders=True):
+        """We're splitting this out and giving the optional arg just
+        to facilitate testing."""
+
+        if use_large_folders:
+            folder_type = "Large Plone Folder"
+            # enable the addition of LPFs momentarily
+            large_folders_addable = True
+            portal_types = getToolByName(self, "portal_types")
+            lpf = getattr(portal_types, folder_type)
+            if not lpf.global_allow:
+                large_folders_addable = False
+                lpf.manage_changeProperties(global_allow = True)
+        else:
+            folder_type = "Folder"
 
         if 'press-releases' not in self.objectIds():
-            self.invokeFactory('Large Plone Folder','press-releases')
+            self.invokeFactory(folder_type, 'press-releases')
             obj = self['press-releases']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressRelease",])
@@ -199,7 +210,7 @@ class PressRoom(ATFolder):
                 smart_folder_tool.updateMetadata('getReleaseDate', enabled=True) 
 
         if 'press-clips' not in self.objectIds():
-            self.invokeFactory('Large Plone Folder','press-clips')
+            self.invokeFactory(folder_type, 'press-clips')
             obj = self['press-clips']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressClip",])
@@ -247,7 +258,7 @@ class PressRoom(ATFolder):
 
 
         if 'press-contacts' not in self.objectIds():
-            self.invokeFactory('Large Plone Folder','press-contacts')
+            self.invokeFactory(folder_type, 'press-contacts')
             obj = self['press-contacts']
             obj.setConstrainTypesMode(1)
             obj.setImmediatelyAddableTypes(["PressContact",])
@@ -279,7 +290,7 @@ class PressRoom(ATFolder):
             path_crit.setRecurse(True)
             sort_crit = smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
 
-        if not large_folders_addable:
+        if use_large_folders and not large_folders_addable:
             lpf.manage_changeProperties(global_allow = False)
 
         transaction.savepoint()

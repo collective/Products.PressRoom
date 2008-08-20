@@ -9,4 +9,12 @@
           allowed_interface="..interfaces.browserviews.IPressRoom"
           />
 
+    <browser:page
+          for="..interfaces.content.IPressRoom"
+          name="upgrade-folders"
+          class=".upgrade_folders.UpgradeFolders"
+          permission="cmf.ManagePortal"
+          allowed_interface="..interfaces.browserviews.IPressRoom"
+          />
+
 </configure>
