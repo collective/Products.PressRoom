@@ -1,4 +1,6 @@
-Trunk
+3.2-beta-2
+ - Fixed the German translations to really be German. [jbaldivieso]
+3.2-beta-1
  - Switched to Large Plone Folders for storing Press Releases and Clips. Provided
    a migration script for upgrading older Press Rooms. (This was Roadmap
    item #3.) [jbaldivieso]
