@@ -1,4 +1,3 @@
-# PressRoom manual pot.
 # Radim Novotny <novotny.radim@gmail.com>, 2007.
 # Sven Anders <s.anders@digitec.de>, 2008.
 msgid ""
@@ -51,6 +50,11 @@ msgstr "Es gibt momentan keine Presseberichte."
 #: ../skins/pressroom_content/pressroom_view.pt
 msgid "description_no_releases"
 msgstr "Es gibt momentan keine Pressemitteilungen."
+
+# Neuer SAN:
+msgid "description_no_items_in_folder"
+msgstr "Es gibt momentan keine Pressemitteilungen."
+
 
 #. Default: "Press Contacts"
 #: ../skins/pressroom_content/pressroom_view.pt
@@ -337,3 +341,6 @@ msgstr "Telefonnummer"
 msgid "label_title"
 msgstr "Überschrift"
 
+# von Hand eingefügt SAN
+msgid "label_cellphone_number"
+msgstr "Handynummer"

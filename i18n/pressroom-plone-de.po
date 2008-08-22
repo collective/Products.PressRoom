@@ -1,5 +1,3 @@
-# translation of pressroom-plone-de.po to 
-# translation of pressroom-plone-de.po to
 # translation of pressroom-plone-de.po to
 # PressRoom manual pot.
 # Radim Novotny <novotny.radim@gmail.com>, 2007.
