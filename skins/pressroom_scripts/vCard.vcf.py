@@ -12,8 +12,8 @@ request = context.REQUEST
 c = context
 
 print 'BEGIN:VCARD'
-print 'FN:%s' % c.title
-print 'N:%s' % c.title
+print 'FN:%s' % c.Title()
+print 'N:%s' % c.Title()
 print 'ORG:%s' % c.getOrganization()
 print 'ADR:%s;%s' % (c.getCity() , c.getStateOrProvince())
 print 'TEL;type=WORK:%s' % c.getPhone()
