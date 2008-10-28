@@ -30,7 +30,7 @@ class PressRoom(BrowserView):
     def canAddPressContacts(self):
         """Returns True if the current user has permission to add Press Contacts"""
         membership_tool = getToolByName(self.context, 'portal_membership')
-        return membership_tool.checkPermission('Add_Portal_Content', self.context)
+        return membership_tool.checkPermission('PressRoom: Add portal press rooms', self.context)
 
     def getReleases(self):
         """Return  a list of Press Releases for this Press Room only if they should be shown

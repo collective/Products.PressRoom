@@ -1,3 +1,6 @@
+3.2-final (unreleased)
+ - Fixed handling of the PressRoom add permission for contributors and in
+   the main pressroom view shortcut links. [davisagli]
 3.2-beta-2
  - Fixed the German translations to really be German. [jbaldivieso]
 3.2-beta-1
