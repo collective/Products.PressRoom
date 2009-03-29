@@ -16,29 +16,29 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-#. A folder where all the press related materials in the site live.
-msgid "description_edit_press_room"
-msgstr "Komunikabideekin lotutako informazio guztia biltzeko karpeta"
+msgid "Press Clip"
+msgstr "Komunikabideetan ikusitakoa"
+
+msgid "Press Contact"
+msgstr "Harremanetarako pertsonak"
+
+msgid "Press Release"
+msgstr "Prentsa Oharra"
 
 msgid "Press Room"
 msgstr "Prentsa Aretoa"
 
-msgid "Press Clip"
-msgstr "Komunikabideetan ikusitakoa"
+#. A folder where all the press related materials in the site live.
+msgid "description_edit_press_room"
+msgstr "Komunikabideekin lotutako informazio guztia biltzeko karpeta"
 
 #. For organization's press clips.
 msgid "press_clip_description_edit"
 msgstr "Erakundeak komunikabideetan duen oihartzuna biltzeko lekua"
 
-msgid "Press Contact"
-msgstr "Harremanetarako pertsonak"
-
 #. Contact information for your press contacts
 msgid "press_contact_description_edit"
 msgstr "Informazio gehiago emango duen jendearen harremanetarako informazioa"
-
-msgid "Press Release"
-msgstr "Prentsa Oharra"
 
 #. For an organization's original press release documents
 msgid "press_release_description_edit"

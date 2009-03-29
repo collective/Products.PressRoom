@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PressRoom\n"
-"POT-Creation-Date: 2007-03-15 18:41+0000\n"
+"POT-Creation-Date: 2009-03-29 08:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,52 +16,50 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: pressroom\n"
 
-#: ../content/PressRoom.py:248
-msgid "Contact these people for more information"
+#: ../content/PressRelease.py:41
+msgid "FOR IMMEDIATE RELEASE"
 msgstr ""
 
-#: ../content/PressRoom.py:200
-msgid "Press Clips"
+#: ../browser/pressroom.py:127
+msgid "Press Room infrastructure published"
 msgstr ""
 
-#: ../content/PressRoom.py:256
-msgid "Press Contacts"
+#: ../browser/pressroom.py:124
+msgid "Press Room published"
 msgstr ""
 
-#: ../content/PressRoom.py:150
-msgid "Press Releases"
+#. Default: "Warning"
+#: ../skins/pressroom_content/pressroom_view.pt:35
+msgid "Warning"
 msgstr ""
 
-#: ../content/PressRoom.py:210
-msgid "See us in the news!"
-msgstr ""
-
-#: ../content/PressRoom.py:160
-msgid "These are our press releases"
-msgstr ""
-
-#. Default: "There are currently no press clips."
-#: ../skins/pressroom_content/pressroom_view.pt
-msgid "description_no_press_clips"
+#. Default: "Publish this Press Room and its supporting folders"
+#: ../skins/pressroom_content/pressroom_view.pt:49
+msgid "button_publish_pr_infrastructure"
 msgstr ""
 
 #. Default: "There are currently no press releases."
-#: ../skins/pressroom_content/pressroom_view.pt
-msgid "description_no_releases"
+#: ../skins/pressroom_content/pressroom_view.pt:184
+msgid "description_no_items_in_folder"
+msgstr ""
+
+#. Default: "FOR IMMEDIATE RELEASE"
+#: Content Type: PressRelease, Field: releaseTiming
+msgid "field_default_for_immediate_release"
 msgstr ""
 
 #. Default: "Press Contacts"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:74
 msgid "heading_press_contacts"
 msgstr ""
 
 #. Default: "Recent Press Clips"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:203
 msgid "heading_recent_clips"
 msgstr ""
 
 #. Default: "Recent Press Releases"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:124
 msgid "heading_recent_releases"
 msgstr ""
 
@@ -171,23 +169,28 @@ msgid "help_telephone_number"
 msgstr ""
 
 #. Default: "[Add Press Clip]"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:207
 msgid "label_add_clip"
 msgstr ""
 
 #. Default: "[Add Press Contact]"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:76
 msgid "label_add_press_contact"
 msgstr ""
 
 #. Default: "[Add Press Release]"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:128
 msgid "label_add_release"
 msgstr ""
 
 #. Default: "Body Text"
 #: Content Type: PressRoom, Field: text
 msgid "label_body_text"
+msgstr ""
+
+#. Default: "Cellphone:"
+#: ../skins/pressroom_content/presscontact_view.pt:103
+msgid "label_cellphone"
 msgstr ""
 
 #. Default: "City"
@@ -200,13 +203,13 @@ msgstr ""
 msgid "label_description"
 msgstr ""
 
-#. Default: "Read the original story:"
-#: ../skins/pressroom_content/pressclip_view.pt
-msgid "read_the_original_story"
+#. Default: "Add this contact to your address book"
+#: ../skins/pressroom_content/presscontact_view.pt:123
+msgid "label_download_vcard"
 msgstr ""
 
 #. Default: "Email:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:84
 msgid "label_email"
 msgstr ""
 
@@ -216,22 +219,22 @@ msgid "label_email_address"
 msgstr ""
 
 #. Default: "Job title:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:32
 msgid "label_job_title"
 msgstr ""
 
 #. Default: "Location:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:62
 msgid "label_location"
 msgstr ""
 
 #. Default: "More Press Clips"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:264
 msgid "label_more_clips"
 msgstr ""
 
 #. Default: "More Press Releases"
-#: ../skins/pressroom_content/pressroom_view.pt
+#: ../skins/pressroom_content/pressroom_view.pt:192
 msgid "label_more_releases"
 msgstr ""
 
@@ -246,12 +249,12 @@ msgid "label_num_releases"
 msgstr ""
 
 #. Default: "Organization:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:46
 msgid "label_organization"
 msgstr ""
 
 #. Default: "Phone:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:91
 msgid "label_phone"
 msgstr ""
 
@@ -266,7 +269,7 @@ msgid "label_pressclip_url"
 msgstr ""
 
 #. Default: "Public contact:"
-#: ../skins/pressroom_content/presscontact_view.pt
+#: ../skins/pressroom_content/presscontact_view.pt:117
 msgid "label_public_contact"
 msgstr ""
 
@@ -288,11 +291,6 @@ msgstr ""
 #. Default: "Release timing"
 #: Content Type: PressRelease, Field: releaseTiming
 msgid "label_release_timing"
-msgstr ""
-
-#. Default: "FOR IMMEDIATE RELEASE"
-#: Content Type: PressRelease, Field: releaseTiming
-msgid "FOR IMMEDIATE RELEASE"
 msgstr ""
 
 #. Default: "Reporter's Name"
@@ -333,5 +331,20 @@ msgstr ""
 #. Default: "Headline"
 #: Content Type: PressRelease, Field: title
 msgid "label_title"
+msgstr ""
+
+#. Default: "Read the original story"
+#: ../skins/pressroom_content/pressclip_view.pt:97
+msgid "read_the_original_story"
+msgstr ""
+
+#. Default: "By default, Plone 3.0 creates content in the \"private\" state.  This is affecting the set of folders that contain this Press Room's material.  Click this button to publish this Press Room and its supporting infrastructure (actual clips, contacts, and releases will not be published by doing this)."
+#: ../skins/pressroom_content/pressroom_view.pt:39
+msgid "text_infrastructure_not_published"
+msgstr ""
+
+#. Default: "Until you do this, this Press Room will not function properly."
+#: ../skins/pressroom_content/pressroom_view.pt:44
+msgid "text_infrastructure_not_published_warning"
 msgstr ""
 

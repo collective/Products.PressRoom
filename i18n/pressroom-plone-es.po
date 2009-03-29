@@ -16,29 +16,29 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-#. A folder where all the press related materials in the site live.
-msgid "description_edit_press_room"
-msgstr "Una carpeta para agrupar todos los documentos relacionados con la prensa"
+msgid "Press Clip"
+msgstr "Revista de Prensa"
+
+msgid "Press Contact"
+msgstr "Contacto"
+
+msgid "Press Release"
+msgstr "Nota de Prensa"
 
 msgid "Press Room"
 msgstr "Sala de Prensa"
 
-msgid "Press Clip"
-msgstr "Revista de Prensa"
+#. A folder where all the press related materials in the site live.
+msgid "description_edit_press_room"
+msgstr "Una carpeta para agrupar todos los documentos relacionados con la prensa"
 
 #. For organization's press clips.
 msgid "press_clip_description_edit"
 msgstr "Para la revista de prensa de la organización"
 
-msgid "Press Contact"
-msgstr "Contacto"
-
 #. Contact information for your press contacts
 msgid "press_contact_description_edit"
 msgstr "Datos de las personas de contacto"
-
-msgid "Press Release"
-msgstr "Nota de Prensa"
 
 #. For an organization's original press release documents
 msgid "press_release_description_edit"
