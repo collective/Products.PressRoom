@@ -15,12 +15,12 @@ Press Room
 
 Current Status of Press Room
 
-    The 3.0 line of PressRoom is tested with Plone 2.5.5 and Plone 3.0. We assume it will work for most
-    Plone 2.5.x and 3.0.x releases.  If you have a Plone 2.1 site, please see the PressRoom 1.1 line.  
+    The 3.0 line of PressRoom is tested with Plone 2.5.5 and Plone 3.1.7. We assume it will work for most
+    Plone 2.5.x and 3.x releases.  If you have a Plone 2.1 site, please see the PressRoom 1.1 line.  
     
     Note: we opted to skip a 2.0 line in order to sync up with the Plone version number that Press Room 
     supports. Hence the 3.x line works with Plone 3.x (and 2.5) and 4 will be intended to work with Plone 
-    4 (and 3.0).  We are committed to supporting the two most current Plone releases at a time.
+    4 (and 3.x).  We are committed to supporting the two most current Plone releases at a time.
     
     * Known bugs and issues are listed at http://plone.org/products/pressroom/issues
     
