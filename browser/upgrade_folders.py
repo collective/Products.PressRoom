@@ -1,11 +1,9 @@
 import transaction
 from zope.interface import implements
-from Acquisition import aq_inner
 
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
-from Products.statusmessages.interfaces import IStatusMessage
 
 from Products.PressRoom.interfaces.browserviews import IUpgradeFolders
 
