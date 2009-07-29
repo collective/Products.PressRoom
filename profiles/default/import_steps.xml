@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <import-steps>
-  <import-step id="onenwtemplate-final"
+  <import-step id="pressroom-final"
                version="20060621-01"
                handler="Products.PressRoom.setuphandlers.importFinalSteps"
-               title="Final ONENWTemplate Config">
+               title="Final Press Room Config">
    <dependency step="types"/>
     Final configuration
   </import-step>
