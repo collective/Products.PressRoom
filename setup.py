@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.2'
+version = '3.3dev'
 
 setup(name='Products.PressRoom',
       version=version,
@@ -22,7 +22,7 @@ setup(name='Products.PressRoom',
       author_email='info@onenw.org',
       url='http://plone.org/products/pressroom',
       license='GPL',
-      package=find_packages(),
+      packages=find_packages(),
       namespace_packages=['Products'],
       include_package_data=True,
       zip_safe=False,
