@@ -1,3 +1,6 @@
+History
+=======
+
 3.2-final
  - Fixed handling of the PressRoom add permission for contributors and in
    the main pressroom view shortcut links. [davisagli]
