@@ -9,6 +9,7 @@ Plone 4 compatibility:
 
 - don't create large folders anymore
 - test compatibility with 2.5 and 3.x
+- upgrade step(s)
 
 
 Other Ideas:
