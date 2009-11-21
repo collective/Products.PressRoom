@@ -119,7 +119,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
         self.pr1.setTitle('Big Foot Sighting!')
         self.pr1.setSubhead('Sasquatch Seen Lurking in Local Park')
         self.pr1.setDescription('A description')
-        self.pr1.setText('<p>Body text</p>')
+        self.pr1.setText('<p>Body text</p>', mimetype='text/html')
         self.pr1.setLocation('SEATTLE, WA')
         self.pr1.setReleaseTiming('FOR IMMEDIATE RELEASE')
         self.pr1.setReleaseDate(now)
@@ -138,7 +138,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
     def testEditPressClip(self):
         self.pc1.setTitle('A Title')
         self.pc1.setDescription('A description')
-        self.pc1.setText('<p>Body text</p>')
+        self.pc1.setText('<p>Body text</p>', mimetype='text/html')
         self.pc1.setPermalink('http://www.onenw.org')
         self.pc1.setReporter('John Smith')
         self.pc1.setPublication('Seattle Post-Intelligencer')
