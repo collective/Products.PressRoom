@@ -31,7 +31,27 @@ def restoreKupuSettings(portal, out):
     print >> out, "Removed reference to PressRoom types from kupu's linkable and collection types"
 
     return out
+
+def restoreTinyMCESettings(portal, out):
+    """Remove PressRoom types from TinyMCE's linkable & containsobject types"""
+    tinymce = getToolByName(portal, 'portal_tinymce', None)
+    if tinymce is None:
+        return
     
+    containsobjects = tinymce.containsobjects.splitlines()
+    if 'PressRoom' in containsobjects:
+        containsobjects.remove('PressRoom')
+    tinymce.containsobjects = "\n".join(containsobjects)
+    
+    linkable = tinymce.linkable.splitlines()
+    for t in ("PressRoom","PressRelease","PressClip","PressContact",):
+        if t in linkable:
+            linkable.remove(t)
+    tinymce.linkable = "\n".join(linkable)
+    
+    print >> out, "Removed reference to PressRoom types from TinyMCE's linkable and containsobject types"
+    return out
+
 def restorePropertiesSettings(portal, out):
     """Remove PressRoom's contributions to various portal_properties.site_properties props"""
     props_tool = getToolByName(portal, 'portal_properties')

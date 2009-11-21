@@ -7,13 +7,13 @@ import string
 from Products.PressRoom.tests import PressRoomTestCase
 from Products.PressRoom import HAS_PLONE30
 
-
 class TestInstallation(PressRoomTestCase.PressRoomTestCase):
     """Ensure product is properly installed"""
 
     def afterSetUp(self):
         self.css        = self.portal.portal_css
         self.kupu       = getattr(self.portal, 'kupu_library_tool', None)
+        self.tinymce    = getattr(self.portal, 'portal_tinymce', None)
         self.skins      = self.portal.portal_skins
         self.types      = self.portal.portal_types
         self.factory    = self.portal.portal_factory
@@ -81,6 +81,16 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         collection = self.kupu.getPortalTypesForResourceType('collection')
         for t in ('PressRoom',):
             self.failUnless(t in collection)
+    
+    def testTinyMCEResources(self):
+        if self.tinymce is None:
+            return
+        
+        linkable = self.tinymce.linkable.splitlines()
+        for t in self.metaTypes:
+            self.failUnless(t in linkable)
+        
+        self.failUnless('PressRoom' in self.tinymce.containsobjects.splitlines())
 
     def testFolderPositionEnabled(self):
         index = self.atct_tool.getIndex("getObjPositionInParent")

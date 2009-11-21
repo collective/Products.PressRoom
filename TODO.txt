@@ -7,7 +7,6 @@ The Roadmap (http://plone.org/products/pressroom/roadmap) also contains proposal
 Plone 4 compatibility:
 ----------------------
 
-- configure tinymce resource types
 - don't create large folders anymore
 - test compatibility with 2.5 and 3.x
 
