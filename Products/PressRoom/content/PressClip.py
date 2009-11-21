@@ -87,14 +87,10 @@ class PressClip(ATNewsItem):
     # Get the standard actions (tabs)
     actions = ATNewsItem.actions
 
-    # Make sure we get all the interface declarations from ATDocument,
-    # which includes support for ISelectableBrowserDefault to get the
-    # 'display' menu to work, IHistoryAware and other standard interfaces.
-    __implements__ = (ATNewsItem.__implements__,)
     implements(IPressClip)
 
     # enable FTP/WebDAV and friends
     PUT = ATNewsItem.PUT
 
 
-registerType(PressClip)
+registerType(PressClip, PROJECTNAME)

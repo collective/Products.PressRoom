@@ -40,7 +40,6 @@ schema = schema + Schema((
                 primary=False,
                 default=_(u'FOR IMMEDIATE RELEASE'),
                 languageIndependent=0,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                     label='Release timing',
                     label_msgid = "label_release_timing",
@@ -52,7 +51,6 @@ schema = schema + Schema((
                 required=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 searchable=1,
                 widget=StringWidget(
                     label='Subheadline',
@@ -66,7 +64,6 @@ schema = schema + Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                     label='Press release location',
                     label_msgid = "label_location",
@@ -79,7 +76,6 @@ schema = schema + Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                #index="DateIndex:brains",
                 widget=CalendarWidget(
                     label='Press release date',
                     label_msgid = "label_release_date",
@@ -93,7 +89,6 @@ schema = schema + Schema((
             isMetadata = True,
             allowed_types=('PressContact',),
             languageIndependent = False,
-            #index = 'KeywordIndex',
             write_permission = ModifyPortalContent,
             widget = ReferenceBrowserWidget(
                         allow_search = True,
@@ -120,11 +115,6 @@ finalizeATCTSchema(schema)
 class PressRelease(ATNewsItem):
     """For an organization's original press release documents."""
     
-    # meta_type = portal_type = 'PressRelease'
-    # archetype_name  = 'Press Release'
-    # immediate_view  = 'pressrelease_view'
-    # default_view    = 'pressrelease_view'
-    # content_icon    = 'pressrelease_icon.gif'
     typeDescription = """For an organization's original press release documents"""
     typeDescMsgId   = """press_release_description_edit"""
     schema          = schema
@@ -135,10 +125,6 @@ class PressRelease(ATNewsItem):
     # Get the standard actions (tabs)
     actions = ATNewsItem.actions
 
-    # Make sure we get all the interface declarations from ATNewsItem,
-    # which includes support for ISelectableBrowserDefault to get the
-    # 'display' menu to work, IHistoryAware and other standard interfaces.
-    __implements__ = ATNewsItem.__implements__
     implements(IPressRelease)
 
     # enable FTP/WebDAV and friends
@@ -152,4 +138,4 @@ class PressRelease(ATNewsItem):
         """To bring Releases and Clips into synch in terms of date fields"""
         return self.getReleaseDate()
         
-registerType(PressRelease)
+registerType(PressRelease, PROJECTNAME)

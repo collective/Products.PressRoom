@@ -64,3 +64,12 @@ except ImportError:
 else:
     HAS_PLONE30 = True
 
+try:
+    # The folder Products.CMFPlone.migrations does not exist in Plone 4
+    # anymore, see plone.app.upgrade
+    from plone.app.upgrade import v40
+except ImportError:
+    HAS_PLONE40 = False
+else:
+    HAS_PLONE30 = True
+    HAS_PLONE40 = True

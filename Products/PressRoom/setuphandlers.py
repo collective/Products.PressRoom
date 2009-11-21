@@ -12,7 +12,10 @@ class PRSetup(object):
          settings, we're doing it with code here."""
 
         # Add FileAttachment and ImageAttachment to kupu's linkable and collection types
-        kupuTool = getToolByName(portal, 'kupu_library_tool')
+        kupuTool = getToolByName(portal, 'kupu_library_tool', None)
+        if kupuTool is None:
+            return
+        
         linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
         collection = list(kupuTool.getPortalTypesForResourceType('collection'))
         mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
@@ -46,6 +49,7 @@ class PRSetup(object):
                                       {'resource_type' : 'collection',
                                        'old_type'      : 'collection',
                                        'portal_types'  :  collection},))
+
     def configureATCT(self, portal):
         """enable two indices to be used by smart folders"""
         smart_folder_tool = getToolByName(portal, 'portal_atct')

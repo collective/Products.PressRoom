@@ -13,7 +13,7 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
 
     def afterSetUp(self):
         self.css        = self.portal.portal_css
-        self.kupu       = self.portal.kupu_library_tool
+        self.kupu       = getattr(self.portal, 'kupu_library_tool', None)
         self.skins      = self.portal.portal_skins
         self.types      = self.portal.portal_types
         self.factory    = self.portal.portal_factory
@@ -71,6 +71,9 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         self.failUnless('PressClip' in default_page_types)
         
     def testKupuResources(self):
+        if self.kupu is None:
+            return
+        
         linkable = self.kupu.getPortalTypesForResourceType('linkable')
         for t in self.metaTypes:
             self.failUnless(t in linkable)

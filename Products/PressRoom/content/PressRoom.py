@@ -115,20 +115,12 @@ class PressRoom(ATFolder):
     """A folder where all the press related materials in the site live"""
     schema = ATPressRoomSchema
     _at_rename_after_creation = True
-    # content_icon = 'pressroom_icon.gif'
-    # archetype_name = 'Press Room'
-    # meta_type = portal_type = 'PressRoom'
-    # default_view = 'pressroom_view'
-    # immediate_view = 'pressroom_view'
     typeDescription= """A folder where all the press related materials in the site live"""
     typeDescMsgId  = 'description_edit_press_room'
     assocMimetypes = ()
     assocFileExt   = ()
     cmf_edit_kws   = ()
 
-    #allowed_content_types = ['Document', 'File', 'Folder', 'Image', 'Large Plone Folder', 'Link', 'Topic',]
-
-    __implements__ = (IATFolder,)
     implements(IPressRoom)
 
 
@@ -300,4 +292,4 @@ class PressRoom(ATFolder):
 
     security = ClassSecurityInfo()
 
-registerType(PressRoom)
+registerType(PressRoom, PROJECTNAME)

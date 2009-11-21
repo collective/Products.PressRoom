@@ -25,7 +25,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Job Title',
                         label_msgid = "label_job_title",
@@ -39,7 +38,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Email Address',
                         label_msgid = "label_email_address",
@@ -52,7 +50,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='City',
                         label_msgid = "label_city",
@@ -65,7 +62,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='State or Province',
                         label_msgid = "label_state_or_province",
@@ -79,7 +75,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Organization',
                         label_msgid = "label_organization",
@@ -92,7 +87,6 @@ schema += Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=1,
-                #index="FieldIndex:brains",
                 widget=StringWidget(
                         label='Telephone Number',
                         label_msgid = "label_telephone_number",
@@ -128,11 +122,6 @@ schema += Schema((
 
 class PressContact(ATCTContent):
     """Contact information for your press contacts. Can be referenced in press releases."""
-    #meta_type = portal_type = 'PressContact'
-    #archetype_name = 'Press Contact'
-    #immediate_view = 'presscontact_view'
-    #default_view   = 'presscontact_view'
-    #content_icon   = 'user.gif'
     typeDescription = """Contact information for your press contacts"""
     typeDescMsgId  = """press_contact_description_edit"""
     schema         = schema
@@ -142,4 +131,4 @@ class PressContact(ATCTContent):
     implements(IPressContact)
 
 
-registerType(PressContact)
+registerType(PressContact, PROJECTNAME)

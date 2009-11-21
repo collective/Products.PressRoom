@@ -1,13 +1,18 @@
 History
 =======
 
+3.3b1
+ - Make PressRoom compatible with Plone 4 [nvasseur, davisagli]
+
 3.2-final
  - Fixed handling of the PressRoom add permission for contributors and in
    the main pressroom view shortcut links. [davisagli]
  - Fixed a Unicode bug in vCard download [naro]
  - more translation work [naro, tabacha]
+
 3.2-beta-2
  - Fixed the German translations to really be German. [jbaldivieso]
+
 3.2-beta-1
  - Switched to Large Plone Folders for storing Press Releases and Clips. Provided
    a migration script for upgrading older Press Rooms. (This was Roadmap

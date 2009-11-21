@@ -4,7 +4,10 @@ from Products.CMFCore.utils import getToolByName
 
 def restoreKupuSettings(portal, out):
     """Remove PressRoom types from kupu's linkable & collection types"""
-    kupuTool = getToolByName(portal, 'kupu_library_tool')
+    kupuTool = getToolByName(portal, 'kupu_library_tool', None)
+    if kupuTool is None:
+        return
+
     linkable    = list(kupuTool.getPortalTypesForResourceType('linkable'))
     collection  = list(kupuTool.getPortalTypesForResourceType('collection'))
     mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
@@ -35,14 +38,14 @@ def restorePropertiesSettings(portal, out):
     if hasattr(props_tool, 'site_properties'):
         site_properties = getattr(props_tool, 'site_properties')
 
-        types_not_searched = list(site_properties.getProperty('types_not_searched'))
+        types_not_searched = list(site_properties.getProperty('types_not_searched', []))
         if 'PressContact' in types_not_searched:
             types_not_searched.remove('PressContact')
             site_properties.manage_changeProperties(types_not_searched = types_not_searched)
             print >> out, "Removed PressContact from types_not_searched"
 
         # default_page_types
-        defaultPageTypes = list(site_properties.getProperty('default_page_types'))
+        defaultPageTypes = list(site_properties.getProperty('default_page_types', []))
         for t in ("PressRelease","PressClip",):
             if t in defaultPageTypes:
                 defaultPageTypes.remove(t)
@@ -51,7 +54,7 @@ def restorePropertiesSettings(portal, out):
 
         # use_folder_tabs (i couldn't find any installation code for this, but it 
         # still seems to be getting added to this property)
-        use_folder_tabs = list(site_properties.getProperty('use_folder_tabs'))
+        use_folder_tabs = list(site_properties.getProperty('use_folder_tabs', []))
         if 'PressRoom' in use_folder_tabs:
             use_folder_tabs.remove('PressRoom')
             site_properties.manage_changeProperties(use_folder_tabs = use_folder_tabs)
@@ -59,7 +62,7 @@ def restorePropertiesSettings(portal, out):
 
         # typesLinkToFolderContentsInFC (same thing: i couldn't find any installation
         # code for this, but it still seems to be getting added to this property)
-        typesLinkToFolderContentsInFC = list(site_properties.getProperty('typesLinkToFolderContentsInFC'))
+        typesLinkToFolderContentsInFC = list(site_properties.getProperty('typesLinkToFolderContentsInFC', []))
         if 'PressRoom' in typesLinkToFolderContentsInFC:
             typesLinkToFolderContentsInFC.remove('PressRoom')
             site_properties.manage_changeProperties(typesLinkToFolderContentsInFC = typesLinkToFolderContentsInFC)
