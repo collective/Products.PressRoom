@@ -2,13 +2,7 @@
 # Test Press Room content type initialization
 #
 
-import os, sys
 from Products.CMFCore.utils import getToolByName
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
 
 from Products.PressRoom.tests import PressRoomTestCase
 
@@ -104,6 +98,3 @@ def test_suite():
     suite = TestSuite()
     suite.addTest(makeSuite(TestPressRoomCreation))
     return suite
-
-if __name__ == '__main__':
-    framework()

@@ -2,10 +2,7 @@
 # Test our Press Room installation
 #
 
-import os, sys
 import string
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
 
 from Products.PressRoom.tests import PressRoomTestCase
 from Products.PressRoom import HAS_PLONE30
@@ -153,7 +150,7 @@ class TestContentCreation(PressRoomTestCase.PressRoomTestCase):
     def testCreatePressContact(self):
         self.failUnless('pcont1' in self.folder.objectIds())
 
-    def testEditPressClip(self):
+    def testEditPressContact(self):
         self.pcont1.setTitle('John Smith')
         self.pcont1.setJobtitle('Plonista')
         self.pcont1.setEmail('john@example.com')
@@ -185,6 +182,3 @@ def test_suite():
     suite.addTest(makeSuite(TestInstallation))
     suite.addTest(makeSuite(TestContentCreation))
     return suite
-
-if __name__ == '__main__':
-    framework()

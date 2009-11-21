@@ -2,13 +2,6 @@
 # Test Press Room Topic (aka Smart Folder or Collection) setup
 #
 
-import os, sys
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
 from Products.PressRoom.tests import PressRoomTestCase
 
 class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
@@ -105,9 +98,6 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.allclips.getSortCriterion().field,'getStorydate')
         self.assertEqual(self.allclips.getSortCriterion().getReversed(),True)
 
-if __name__ == '__main__':
-    framework()
-    
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

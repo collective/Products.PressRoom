@@ -2,17 +2,10 @@
 # Test Press Room content type initialization
 #
 
-import os, sys
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
 from Products.CMFCore.utils import getToolByName
 from Products.PressRoom.tests import PressRoomTestCase
 from Products.PressRoom import HAS_PLONE30
 from Products.PressRoom.browser.pressroom import PressRoom as PR_view # crowded namespace, no?
-
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
 
 class TestPressRoomView(PressRoomTestCase.PressRoomTestCase):
     """Ensure content types can be created and edited"""
@@ -96,6 +89,3 @@ def test_suite():
     suite = TestSuite()
     suite.addTest(makeSuite(TestPressRoomView))
     return suite
-
-if __name__ == '__main__':
-    framework()

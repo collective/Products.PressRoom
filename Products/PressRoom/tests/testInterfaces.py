@@ -8,14 +8,6 @@ from Products.PressRoom.content.PressClip import PressClip
 from Products.PressRoom.content.PressRelease import PressRelease
 from Products.PressRoom.content.PressContact import PressContact
 
-
-import os, sys
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
 from Products.PressRoom.tests import PressRoomTestCase
 
 class TestInterfaces(PressRoomTestCase.PressRoomTestCase):
@@ -64,10 +56,6 @@ class TestInterfaces(PressRoomTestCase.PressRoomTestCase):
         obj = getattr(self.folder, id)
         self.failUnless(verifyObject(content.IPressRelease, obj))
 
-
-if __name__ == '__main__':
-    framework()
-    
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
