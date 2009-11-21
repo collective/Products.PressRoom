@@ -29,7 +29,7 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.pressroom.setNum_releases(5)
         self.pressroom.setNum_clips(5)
         self.pressroom.setShow_contacts(True)
-        self.pressroom.setText('<p>Here are our latest <strong>press releases and press clips</strong>:</p>')
+        self.pressroom.setText('<p>Here are our latest <strong>press releases and press clips</strong>:</p>', mimetype='text/html')
 
         self.assertEqual(self.pressroom.Title(), 'Media Center')
         self.assertEqual(self.pressroom.Description(), 'Our Media Center')

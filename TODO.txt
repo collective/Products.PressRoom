@@ -1,10 +1,19 @@
 Press Room TODO
+===============
 
 Note: the main repository for todo items is the Issue Tracker (http://plone.org/products/pressroom/issues).
 The Roadmap (http://plone.org/products/pressroom/roadmap) also contains proposals for some enhancements under debate. 
 
+Plone 4 compatibility:
+----------------------
+
+- configure tinymce resource types
+- don't create large folders anymore
+- test compatibility with 2.5 and 3.x
+
+
 Other Ideas:
------------------------
+------------
 
 - Come up with some good content icons for PressClip & PressRelease
 - Documentation for how to administer Press Items (everything else is still too undefined)
