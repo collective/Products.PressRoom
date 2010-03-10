@@ -4,6 +4,7 @@
 
 from Products.CMFCore.utils import getToolByName
 
+from Products.PressRoom import HAS_PLONE40
 from Products.PressRoom.tests import PressRoomTestCase
 
 class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
@@ -68,14 +69,17 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
 
     def testLargeFoldersUsed(self):
         for f in self.childFolderMapping.keys():
-            if f == 'press-contacts':
+            if f == 'press-contacts' or HAS_PLONE40:
                 # contacts want to be in an *ordered* folder
                 self.assertEqual(self.pressroom[f].portal_type, "Folder")
             else:
-                # press releases and clips want to be in BTree folders
+                # in Plone 3, press releases and clips want to be in BTree folders
                 self.assertEqual(self.pressroom[f].portal_type, "Large Plone Folder")
 
     def testLargeFoldersStillNotAddable(self):
+        if HAS_PLONE40:
+            return
+        
         # we're assuming that the default settings were in place initially: 
         # Large Plone Folders are not implicitly addable
         portal_types = getToolByName(self.portal, 'portal_types')
@@ -83,6 +87,9 @@ class TestPressRoomCreation(PressRoomTestCase.PressRoomTestCase):
         self.failUnless(lpf.global_allow is False)
 
     def testLargeFoldersStillAddableIfEnabled(self):
+        if HAS_PLONE40:
+            return
+        
         # we're assuming that the default settings were in place initially: 
         # Large Plone Folders are not implicitly addable
         portal_types = getToolByName(self.portal, 'portal_types')

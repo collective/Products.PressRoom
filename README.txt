@@ -78,7 +78,7 @@ Current Status of Press Room
 ============================
 
 This release of PressRoom has been tested with Plone 2.5.5, Plone 3.3.2, and
-Plone 4.0a1. We assume it will work for most Plone releases 2.5 through 4.0a1.
+Plone 4.0b1. We assume it will work for most Plone releases 2.5 through 4.0b1.
 If you have a Plone 2.1 site, please see the PressRoom 1.1 line.  We are
 committed to supporting the two most current Plone releases at a time.
 
@@ -124,16 +124,22 @@ aggregate them.
 Upgrading Folders
 =================
 
-XXX FIXME for Plone 4
+As of Press Room 3.2, the containers for Press Clips and Press Releases are
+Large Plone Folders. Before 3.2, Press Room used normal folders, which become
+inefficient when containing more than about a hundred items.  To upgrade an
+older Press Room, navigate to the Press Room and append "/@@upgrade-folders" to
+the url. A message will return with the results of the upgrade. Note that your
+Press Room subfolders must retain their original ids ('press-clips' and
+'press-releases') in order to be upgraded.
 
-As of Press Room 3.2, the containers for Press Clips and Press Releases are Large Plone Folders. Before
-3.2, Press Room used normal folders, which become inefficient when containing more than about a hundred
-items.  To upgrade an older Press Room, navigate to the Press Room and append "/@@upgrade-folders" to the
-url. A message will return with the results of the upgrade. Note that your Press Room subfolders must retain
-their original ids ('press-clips' and 'press-releases') in order to be upgraded.
+Note also that, by default, Large Plone Folders are not normally addable in a
+Plone site. To allow the creation of the two used in a new Press Room, we
+briefly enable them (if they weren't already) and after adding them, we disable
+them again. That means that attempts to rename them will cause a cryptic error
+about disallowed types. To get around that, simply navigate to portal_types in
+the ZMI, click into Large Plone Folders, and check the "Implicitly addable"
+checkbox.
 
-Note also that, by default, Large Plone Folders are not normally addable in a Plone site. To allow the creation
-of the two used in a new Press Room, we briefly enable them (if they weren't already) and after adding them, we
-disable them again. That means that attempts to rename them will cause a cryptic error about disallowed types.
-To get around that, simply navigate to portal_types in the ZMI, click into Large Plone Folders, and check the
-"Implicitly addable" checkbox.
+In Plone 4, standard folders are BTree-based and can better handle large numbers
+of items, so Large Plone Folders are no longer used.  Folders that were already
+upgraded to Large Plone Folders in Plone 3 can remain that way.

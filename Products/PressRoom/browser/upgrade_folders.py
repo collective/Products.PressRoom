@@ -3,28 +3,34 @@ from zope.interface import implements
 
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
 
+from Products.PressRoom import HAS_PLONE40
 from Products.PressRoom.interfaces.browserviews import IUpgradeFolders
 
 class UpgradeFolders(BrowserView):
-    """This browser view migrates the three main Press Room subfolders to Large Plone Folders.
+    """This browser view migrates the three main Press Room subfolders to
+    unordered folders, to improve performance.  Running this migration is no
+    longer needed in Plone 4.
     
-    It's called within the context of a Press Room obj.  It assumes that the subfolders retain
-    their original names.  Migration preserves:
+    This view is called within the context of a Press Room obj.  It assumes that
+    the subfolders retain their original names.  Migration preserves:
     - all content (obviously)
     - 'default page'/'layout' settings
     - addable type constraints
     - folders' Title/descr
     - WF state of folders
     
-    Note that calling this browser view might be very resource/time intensive if the
-    folders have a lot of content!
+    Note that calling this browser view might be very resource/time intensive
+    if the folders have a lot of content!
     """
 
     implements(IUpgradeFolders)
 
     def __call__(self):
+        if HAS_PLONE40:
+            return ("Migrating to Large Plone Folders is no longer necessary in "
+                   "Plone 4.")
+        
         # if needed, enable the addition of LPFs momentarily
         large_folders_addable = True
         portal_types = getToolByName(self, "portal_types")

@@ -28,14 +28,13 @@ except ImportError:
 # ATCT
 from Products.ATContentTypes.content.folder import ATFolderSchema, ATFolder
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
-from Products.ATContentTypes.interfaces import IATFolder
 
 # Plone
 from Products.CMFPlone.i18nl10n import utranslate
 
 # PR
+from Products.PressRoom import HAS_PLONE40
 from Products.PressRoom.config import *
-from Products.PressRoom import PressRoomMessageFactory as _
 from Products.PressRoom.interfaces.content import IPressRoom
 
 
@@ -139,7 +138,10 @@ class PressRoom(ATFolder):
         """We're splitting this out and giving the optional arg just
         to facilitate testing."""
 
-        if use_large_folders:
+        folder_type = "Folder"
+        if HAS_PLONE40:
+            use_large_folders = False
+        elif use_large_folders:
             folder_type = "Large Plone Folder"
             # enable the addition of LPFs momentarily
             large_folders_addable = True
@@ -148,8 +150,6 @@ class PressRoom(ATFolder):
             if not lpf.global_allow:
                 large_folders_addable = False
                 lpf.manage_changeProperties(global_allow = True)
-        else:
-            folder_type = "Folder"
 
         if 'press-releases' not in self.objectIds():
             self.invokeFactory(folder_type, 'press-releases')
@@ -185,7 +185,7 @@ class PressRoom(ATFolder):
             path_crit.setValue(self.UID())
             path_crit.setRecurse(True)
 
-            sort_crit = smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
+            smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
             smart_obj.getSortCriterion().setReversed(True)
 
             # Update Smart Folder settings  
@@ -228,7 +228,7 @@ class PressRoom(ATFolder):
             type_crit = smart_obj.addCriterion('Type',
                                                'ATPortalTypeCriterion')
             type_crit.setValue('Press Clip')
-            sort_crit = smart_obj.addCriterion('getStorydate','ATSortCriterion')
+            smart_obj.addCriterion('getStorydate','ATSortCriterion')
             path_crit = smart_obj.addCriterion('path',
                                                'ATPathCriterion')
             path_crit.setValue(self.UID())
@@ -280,7 +280,7 @@ class PressRoom(ATFolder):
                                                'ATPathCriterion')
             path_crit.setValue(self.UID())
             path_crit.setRecurse(True)
-            sort_crit = smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
+            smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
 
         if use_large_folders and not large_folders_addable:
             lpf.manage_changeProperties(global_allow = False)

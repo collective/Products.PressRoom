@@ -2,6 +2,7 @@ import transaction
 
 from Products.CMFCore.utils import getToolByName
 
+from Products.PressRoom import HAS_PLONE40
 from Products.PressRoom.tests import PressRoomTestCase
 
 class TestFolderUpgrade(PressRoomTestCase.PressRoomTestCase):
@@ -41,8 +42,11 @@ class TestFolderUpgrade(PressRoomTestCase.PressRoomTestCase):
         for sub in type_mapping.keys():
             f = getattr(pressroom, sub)
 
-            # are they LPFs?
-            self.assertEqual(f.portal_type, "Large Plone Folder")
+            # in Plone 3, are they Large Plone Folders?
+            if HAS_PLONE40:
+                self.assertEqual(f.portal_type, 'Folder')
+            else:
+                self.assertEqual(f.portal_type, "Large Plone Folder")
 
             # content moved?
             self.failUnless("sample-%s" % (sub) in f.objectIds())
