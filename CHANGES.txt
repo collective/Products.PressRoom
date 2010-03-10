@@ -1,7 +1,7 @@
 History
 =======
 
-3.3b1
+3.3 (2010-03-09)
  - Make PressRoom compatible with Plone 4, TinyMCE. [nvasseur, davisagli]
 
 3.2-final

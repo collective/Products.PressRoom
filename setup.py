@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
-import os
 
-version = '3.3dev'
+version = '3.3'
 
 setup(name='Products.PressRoom',
       version=version,
@@ -18,8 +17,8 @@ setup(name='Products.PressRoom',
         "Development Status :: 6 - Mature",
         ],
       keywords='plone press media news release',
-      author='ONE/Northwest',
-      author_email='info@onenw.org',
+      author='Groundwire',
+      author_email='info@groundwire.org',
       url='http://plone.org/products/pressroom',
       license='GPL',
       packages=find_packages(),
