@@ -1,6 +1,9 @@
 History
 =======
 
+3.4 (unreleased)
+ - Fix some missing global variables in Plone 4. [davisagli]
+
 3.3 (2010-03-09)
  - Make PressRoom compatible with Plone 4, TinyMCE. [nvasseur, davisagli]
 
