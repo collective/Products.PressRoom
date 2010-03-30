@@ -13,6 +13,7 @@
                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                       templateId template/getId;
                       pr_view context/@@pr_view;
+                      normalizeString nocall:context/@@plone/normalizeString;
                       toLocalizedTime nocall:here/toLocalizedTime;
                       viewReleaseAmt context/getNum_releases | nothing;
                       viewClipAmt context/getNum_clips | nothing;
