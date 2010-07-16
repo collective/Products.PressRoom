@@ -1,6 +1,9 @@
 History
 =======
 
+3.7 (2010-07-16)
+ - Fixed invalid TAL. [davisagli]
+
 3.6 (2010-07-16)
  - Use a forward-compatible way of checking isViewTemplate. [davisagli]
 
