@@ -1,7 +1,7 @@
 History
 =======
 
-3.4 (unreleased)
+3.4 (2010-07-16)
  - Fix some missing global variables in Plone 4. [davisagli]
 
 3.3 (2010-03-09)
