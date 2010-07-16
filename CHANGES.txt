@@ -1,6 +1,9 @@
 History
 =======
 
+3.6 (2010-07-16)
+ - Use a forward-compatible way of checking isViewTemplate. [davisagli]
+
 3.5 (2010-07-16)
  - Use context.portal_workflow instead of wtool in templates. [davisagli]
 
