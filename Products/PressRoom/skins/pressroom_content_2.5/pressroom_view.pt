@@ -99,7 +99,7 @@
                 <tal:entry tal:repeat="item python:pressReleases[:viewReleaseAmt]">
                     <tal:block tal:define="item_description item/Description;
                                            item_subhead item/getSubhead;
-                                           item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                           item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                            ">
             
@@ -177,7 +177,7 @@
             <dl tal:condition="pressClips">
                 <tal:entry tal:repeat="item python:pressClips[:viewClipAmt]">
                     <tal:block tal:define="item_description item/Description;
-                                           item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                           item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                            ">
         

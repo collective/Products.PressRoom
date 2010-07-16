@@ -4,7 +4,7 @@
 <body>
 <div metal:define-macro="releaseContacts"
     id="relatedItems"
-    tal:define="getInfoFor python:wtool.getInfoFor;">
+    tal:define="getInfoFor python:context.portal_workflow.getInfoFor;">
     <tal:allowed condition="isViewTemplate">
         <tal:relatedItems tal:define="related python:here.computeReleaseContacts();">
             <tal:block tal:condition="python:related">

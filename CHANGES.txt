@@ -1,6 +1,9 @@
 History
 =======
 
+3.5 (2010-07-16)
+ - Use context.portal_workflow instead of wtool in templates. [davisagli]
+
 3.4 (2010-07-16)
  - Fix some missing global variables in Plone 4. [davisagli]
 
