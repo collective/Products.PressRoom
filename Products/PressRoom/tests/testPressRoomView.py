@@ -14,21 +14,6 @@ class TestPressRoomView(PressRoomTestCase.PressRoomTestCase):
         self.setRoles(['Manager'])
         self.folder.invokeFactory('PressRoom', id="pressroom", title="Press Room",)
         self.pressroom = getattr(self.folder, 'pressroom')
-
-    def testGetContacts(self):
-        """Return a list of Press Contacts for this Press Room only if they should be shown.
-        """
-        pass
-        
-    def testGetReleases(self):
-        """Return  a list of Press Releases for this Press Room only if they should be shown
-        """
-        pass
-        
-    def testGetClips(self):
-        """Return  a list of Press Clips for this Press Room only if they should be shown
-        """
-        pass
         
     def testShowTwoStatePrivateWarning(self):
         """Returns True if we're in Plone 3.0, the press room's supporting folders are private,

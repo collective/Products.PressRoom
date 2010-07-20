@@ -1,6 +1,9 @@
 History
 =======
 
+3.8 (2010-??-??)
+ - Made Press Room draw on collections for content. [yomatters]
+
 3.7 (2010-07-16)
  - Fixed invalid TAL. [davisagli]
 

@@ -66,13 +66,14 @@
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
                 
- 
+    <tal:pressContacts define="pressContactsCollection nocall:context/press-contacts/press-contacts|nothing;"
+        condition="nocall:pressContactsCollection">
         <div id="press-contacts-box"
-             tal:define="pressContacts pr_view/getContacts;
+             tal:define="pressContacts pressContactsCollection/queryCatalog|nothing;
                          canAddPressContacts pr_view/canAddPressContacts"
              tal:condition="python: pressContacts or canAddPressContacts">
             <h3 class="pressroomSection">
-                <i18n:pc translate="heading_press_contacts">Press Contacts</i18n:pc>
+                <span tal:replace="pressContactsCollection/Title">Press Contacts</span>
                 <span tal:condition="canAddPressContacts" class="addPressRoomItem">
                   <a href="./press-contacts/createObject?type_name=PressContact"
                      i18n:translate="label_add_press_contact">[Add Press Contact]</a>
@@ -80,7 +81,7 @@
             </h3>
                         
             <dl tal:condition="pressContacts">
-                <tal:pressContacts tal:repeat="item pressContacts">
+                <tal:pressContact tal:repeat="item pressContacts">
                     <dt metal:define-macro='contactlist'
                         tal:define="contact_url item/getURL|item/absolute_url">
                         <a tal:attributes="href contact_url;
@@ -112,17 +113,19 @@
                            tal:attributes="href string:${item/getURL}/vCard.vcf"
                            i18n:attributes="title label_download_vcard">vCard <img tal:replace="structure here/vcard.gif" src="" alt="" /> </a>]
                     </dd>
-                </tal:pressContacts>
+                </tal:pressContact>
             </dl>
-        </div>   
-    
+        </div>
+    </tal:pressContacts>
+    <tal:pressReleases define="pressReleasesCollection nocall:context/press-releases/all-press-releases|nothing;"
+        condition="nocall:pressReleasesCollection">
         <div id='press-releases'
-             tal:define="pressReleases pr_view/getReleases;
+             tal:define="pressReleases pressReleasesCollection/queryCatalog|nothing;
                          canAddPressReleases pr_view/canAddPressReleases"
              tal:condition="python: pressReleases or canAddPressReleases">
                       
             <h3 class="pressroomSection">
-                <i18n:heading translate="heading_recent_releases">Recent Press Releases</i18n:heading>
+                <span tal:replace="pressReleasesCollection/Title">Recent Press Releases</span>
                                
                 <span tal:condition="canAddPressReleases" 
                       class="addPressRoomItem">
@@ -195,13 +198,15 @@
             </a>
         </div>
     </div>
-        
+    </tal:pressReleases>
+    <tal:pressClips define="pressClipsCollection nocall:context/press-clips/all-press-clips|nothing;"
+        condition="nocall:pressClipsCollection">
         <div id="press-clips"
-             tal:define="pressClips pr_view/getClips;
+             tal:define="pressClips pressClipsCollection/queryCatalog|nothing;
                          canAddPressClips pr_view/canAddPressClips"
              tal:condition="python: pressClips or canAddPressClips">
             <h3 class="pressroomSection">
-                <i18n:heading translate="heading_recent_clips">Recent Press Clips</i18n:heading>
+                <span tal:replace="pressClipsCollection/Title">Recent Press Clips</span>
                                
                 <span tal:condition="canAddPressClips"
                       class="addPressRoomItem">
@@ -267,6 +272,7 @@
                 </a>
             </div>
         </div>
+    </tal:pressClips>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
         
