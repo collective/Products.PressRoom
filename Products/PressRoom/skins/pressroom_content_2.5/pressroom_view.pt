@@ -11,6 +11,8 @@
                                   toLocalizedTime nocall:here/toLocalizedTime;
                                   viewReleaseAmt context/getNum_releases | nothing;
                                   viewClipAmt context/getNum_clips | nothing;
+                                  showContacts context/getShow_contacts;
+                                  showReleases context/getShow_releases;
                                   showClips context/getShow_clips;">
 
         <div metal:use-macro="here/document_actions/macros/document_actions">
@@ -30,12 +32,12 @@
             <div tal:replace="structure here/getText | nothing" />
         </div>
                 
-    <tal:pressContacts define="pressContactsCollection nocall:context/press-contacts/press-contacts|nothing;"
-        condition="nocall:pressContactsCollection">
+    <tal:pressContacts condition="showContacts">
 	    <div id="press-contacts-box"
-             tal:define="pressContacts pressContactsCollection/queryCatalog|nothing;
+             tal:define="pressContactsCollection nocall:context/press-contacts/press-contacts|nothing;
+                         pressContacts pressContactsCollection/queryCatalog|python:[];
                          canAddPressContacts pr_view/canAddPressContacts"
-             tal:condition="python: pressContacts or canAddPressContacts">
+             tal:condition="python: pressContacts or (canAddPressContacts and pressContactsCollection)">
             <h3 class="pressroomSection">
                 <span tal:replace="pressContactsCollection/Title">Press Contacts</span>
                 <span tal:condition="canAddPressContacts" class="addPressRoomItem">
@@ -80,12 +82,12 @@
             </dl>
         </div>
     </tal:pressContacts>
-    <tal:pressReleases define="pressReleasesCollection nocall:context/press-releases/all-press-releases|nothing;"
-        condition="nocall:pressReleasesCollection">
+    <tal:pressReleases condition="showReleases">
         <div id='press-releases'
-             tal:define="pressReleases pressReleasesCollection/queryCatalog|nothing;
+             tal:define="pressReleasesCollection nocall:context/press-releases/all-press-releases|nothing;
+                         pressReleases pressReleasesCollection/queryCatalog|python:[];
                          canAddPressReleases pr_view/canAddPressReleases"
-             tal:condition="python: pressReleases or canAddPressReleases">
+             tal:condition="python: pressReleases or (canAddPressReleases and pressReleasesCollection)">
                       
             <h3 class="pressroomSection">
                 <span tal:replace="pressReleasesCollection/Title">Recent Press Releases</span>
@@ -162,12 +164,12 @@
         </div>
     </div>
     </tal:pressReleases>
-    <tal:pressClips define="pressClipsCollection nocall:context/press-clips/all-press-clips|nothing;"
-        condition="nocall:pressClipsCollection">
+    <tal:pressClips condition="showClips">
         <div id="press-clips"
-             tal:define="pressClips pressClipsCollection/queryCatalog|nothing;
+             tal:define="pressClipsCollection nocall:context/press-clips/all-press-clips|nothing;
+                         pressClips pressClipsCollection/queryCatalog|python:[];
                          canAddPressClips pr_view/canAddPressClips"
-             tal:condition="python: pressClips or canAddPressClips">
+             tal:condition="python: pressClips or (canAddPressClips and pressClipsCollection)">
             <h3 class="pressroomSection">
                 <span tal:replace="pressClipsCollection/Title">Recent Press Clips</span>
 
