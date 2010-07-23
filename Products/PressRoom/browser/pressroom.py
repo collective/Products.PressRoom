@@ -5,6 +5,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
+from Products.CMFPlone.log import log_deprecated
 
 from Products.PressRoom.interfaces import IPressRoom
 from Products.PressRoom import HAS_PLONE30
@@ -13,16 +14,58 @@ class PressRoom(BrowserView):
     """Browser view for the Press Room CT"""
 
     implements(IPressRoom)
+    
+    # BBB This method is deprecated and will be removed in PressRoom 4.0.
+    def getContacts(self):
+        """Return  a list of Press Contacts for this Press Room only if they should be shown
+        """
+        log_deprecated('getContacts is deprecated and will be removed'
+                       'in PressRoom 4.0. Please update your pressroom_view template'
+                       'to query the appropriate collection directly.')
+             
+        if self.context.getShow_contacts():
+            source = self.context.restrictedTraverse('press-contacts/press-contacts', None)
+            if source:
+                return source.queryCatalog()
+        return ()
 
     def canAddPressContacts(self):
         """Returns True if the current user has permission to add Press Contacts"""
         membership_tool = getToolByName(self.context, 'portal_membership')
         return membership_tool.checkPermission('PressRoom: Add portal press rooms', self.context)
+        
+    # BBB This method is deprecated and will be removed in PressRoom 4.0.
+    def getReleases(self):
+        """Return  a list of Press Releases for this Press Room only if they should be shown
+        """
+        log_deprecated('getReleases is deprecated and will be removed'
+                       'in PressRoom 4.0. Please update your pressroom_view template'
+                       'to query the appropriate collection directly.')
+             
+        if self.context.getShow_releases():
+            source = self.context.restrictedTraverse('press-releases/all-press-releases', None)
+            if source:
+                return source.queryCatalog()
+        return ()
 
     def canAddPressReleases(self):
         """Returns True if the current user has permission to add Press Releases"""
         membership_tool = getToolByName(self.context, 'portal_membership')
         return membership_tool.checkPermission('Add_Portal_Content', self.context)
+        
+    # BBB This method is deprecated and will be removed in PressRoom 4.0.
+    def getClips(self):
+        """Return  a list of Press Clips for this Press Room only if they should be shown
+        """
+        log_deprecated('getClips is deprecated and will be removed'
+                       ' in PressRoom 4.0. Please update your pressroom_view template'
+                       ' to query the appropriate collection directly.')
+             
+        if self.context.getShow_clips():
+            source = self.context.restrictedTraverse('press-clips/all-press-clips', None)
+            if source:
+                return source.queryCatalog()
+        return ()
 
     def canAddPressClips(self):
         """Returns True if the current user has permission to add Press Clips"""
