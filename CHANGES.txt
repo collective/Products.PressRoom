@@ -1,6 +1,9 @@
 History
 =======
 
+3.9 (2010-??-??)
+ - Made folder_listing_pressroom template Plone 4 compatible. [yomatters]
+
 3.8 (2010-07-23)
  - Made Press Room draw on collections for content. [yomatters]
 
