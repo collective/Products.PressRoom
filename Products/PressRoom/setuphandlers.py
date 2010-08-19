@@ -110,6 +110,10 @@ def importFinalSteps(context):
     """
     The last bit of code that runs as part of this setup profile.
     """
+    # don't run as a step for other profiles
+    if context.readDataFile('is_pressroom.txt') is None:
+        return
+    
     site = context.getSite()
     configurator = PRSetup()
     configurator.configureKupu(site)

@@ -1,6 +1,10 @@
 History
 =======
 
+3.10
+ - Avoid running the final import step except as part of the PressRoom
+   profile. [davisagli]
+
 3.9 (2010-??-??)
  - Made folder_listing_pressroom template Plone 4 compatible. [yomatters]
 
