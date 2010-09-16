@@ -1,7 +1,7 @@
 History
 =======
 
-3.10
+3.10 (2010-09-16)
  - Avoid running the final import step except as part of the PressRoom
    profile. [davisagli]
 
