@@ -1,6 +1,9 @@
 History
 =======
 
+3.11 (2010-09-21)
+ - Fix normalizeString usage in Plone 3. [davisagli]
+
 3.10 (2010-09-16)
  - Avoid running the final import step except as part of the PressRoom
    profile. [davisagli]
