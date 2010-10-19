@@ -100,7 +100,7 @@
                 </span> 
             </h3>
             
-            <dl condition="pressReleases">
+            <dl tal:condition="pressReleases">
                 <tal:entry tal:repeat="item python:pressReleases[:viewReleaseAmt]">
                     <tal:block tal:define="item_description item/Description;
                                            item_subhead item/getSubhead;

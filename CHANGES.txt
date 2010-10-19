@@ -1,5 +1,7 @@
 History
 =======
+3.12 (2010-10-19)
+ - Fix some improper TAL. [jbaldivieso]
 
 3.11 (2010-09-21)
  - Fix normalizeString usage in Plone 3. [davisagli]
