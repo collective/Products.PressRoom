@@ -106,18 +106,22 @@ schema += Schema((
                         description_msgid = "help_cellphone_number",
                         i18n_domain = "pressroom",),
                 ),    
-    TextField('description',
-              default='',
-              primary=True,
-              searchable=1,
-              accessor="Description",
-              widget=TextAreaWidget(
-                        label='Description',
-                        description="A description of the press contact (such as their focus areas, job responsibilities, expertise, etc.)",
-                        label_msgid="label_description",
-                        description_msgid="help_description",
-                        i18n_domain="pressroom",),
-              ),
+    TextField('text',
+        required=0,
+        primary=1,
+        searchable=1,
+        default_output_type='text/x-html-safe',
+        allowable_content_types=('text/html',),
+        widget = RichWidget(
+            description = "A description of the press contact (such as their focus areas, job responsibilities, expertise, etc.)",
+            # we use the old msgid for compatibility with existing translations
+            description_msgid = "help_description",
+            label = "Description",
+            label_msgid = "label_description",
+            rows = 5,
+            i18n_domain = "pressroom",)
+          ),
+    
     ))
 
 class PressContact(ATCTContent):
@@ -130,5 +134,18 @@ class PressContact(ATCTContent):
     _at_rename_after_creation = True
     implements(IPressContact)
 
+    def getRawText(self, raw=False, **kwargs):
+        # BBB for old description field
+        raw = self.getField('text').getRaw(self, raw=raw, **kwargs)
+        if raw:
+            return raw
+        return self.Description()
+    
+    def getText(self, mimetype=None, raw=False, **kwargs):
+        # BBB for old description field
+        text = self.getField('text').get(self, mimetype=mimetype, raw=raw, **kwargs)
+        if text:
+            return text
+        return self.Description()
 
 registerType(PressContact, PROJECTNAME)

@@ -20,9 +20,9 @@
             Get the byline - contains details about author and modification date.
         </div>
 
-        <p class="documentDescription"
-           tal:condition="here/Description"
-           tal:content="here/Description">[Description]</p>
+        <p tal:define="text here/getText"
+           tal:condition="text"
+           tal:content="structure text">[Description]</p>
 
         <p>
             <span tal:condition="here/getJobtitle | nothing">

@@ -23,9 +23,9 @@
         
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
-            [Contact's "Description"]
-        </p>
+        <p tal:define="text here/getText"
+           tal:condition="text"
+           tal:content="structure text">[Description]</p>
 
         <p>
             <span class="contact-field" tal:condition="here/getJobtitle | nothing">

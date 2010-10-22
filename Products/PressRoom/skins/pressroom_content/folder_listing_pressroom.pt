@@ -146,13 +146,18 @@
                         </span>                        
                         <span tal:omit-tag="" 
                               tal:content="item_description"
-                              tal:condition="not:item_subhead"> 
+                              tal:condition="python:not item_subhead and item_type != 'PressContact'">
                             description 
                         </span>
                         <span tal:omit-tag="" 
                               tal:content="item_subhead"
                               tal:condition="item_subhead"> 
                             item_subhead
+                        </span>
+                        <span tal:omit-tag
+                              tal:condition="python:item_type == 'PressContact'">
+                           <tal:block tal:define="obj item/getObject"
+                                      tal:replace="structure obj/getText"/>
                         </span>
                     </dd>
                 </tal:block>

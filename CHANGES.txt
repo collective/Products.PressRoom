@@ -1,5 +1,11 @@
 History
 =======
+
+3.13 (2010-10-22)
+ - Replace the description field of press contacts with a rich-text text
+   field.  The old description is still used if no text is set.
+   [davisagli]
+
 3.12 (2010-10-19)
  - Fix some improper TAL. [jbaldivieso]
 
