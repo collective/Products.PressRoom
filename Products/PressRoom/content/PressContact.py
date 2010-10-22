@@ -139,13 +139,13 @@ class PressContact(ATCTContent):
         raw = self.getField('text').getRaw(self, raw=raw, **kwargs)
         if raw:
             return raw
-        return self.Description()
+        return '<p class="documentDescription">%s</p>' % self.Description()
     
     def getText(self, mimetype=None, raw=False, **kwargs):
         # BBB for old description field
         text = self.getField('text').get(self, mimetype=mimetype, raw=raw, **kwargs)
         if text:
             return text
-        return self.Description()
+        return '<p class="documentDescription">%s</p>' % self.Description()
 
 registerType(PressContact, PROJECTNAME)
