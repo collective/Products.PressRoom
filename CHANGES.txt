@@ -2,8 +2,7 @@ History
 =======
 
 3.14 (2011-04-08)
- - fixed improper return statement in Extensions/utils.py
-
+ - fixed improper return statement in Extensions/utils.py [ajung]
 
 3.13 (2010-10-22)
  - Replace the description field of press contacts with a rich-text text
