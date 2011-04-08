@@ -36,7 +36,7 @@ def restoreTinyMCESettings(portal, out):
     """Remove PressRoom types from TinyMCE's linkable & containsobject types"""
     tinymce = getToolByName(portal, 'portal_tinymce', None)
     if tinymce is None:
-        return
+        return out
     
     containsobjects = tinymce.containsobjects.splitlines()
     if 'PressRoom' in containsobjects:

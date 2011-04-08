@@ -1,7 +1,8 @@
 History
 =======
 
-3.14 (unreleased)
+3.14 (2011-04-08)
+ - fixed improper return statement in Extensions/utils.py
 
 
 3.13 (2010-10-22)
