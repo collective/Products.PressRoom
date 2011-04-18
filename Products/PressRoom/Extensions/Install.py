@@ -32,11 +32,10 @@ def uninstall(portal, reinstall=False):
 
     print >> out, "Uninstalling Press Room"
     # 1: Fix editor settings
-    out = restoreKupuSettings(portal, out)
-    out = restoreTinyMCESettings(portal, out)
+    restoreKupuSettings(portal, out)
+    restoreTinyMCESettings(portal, out)
     # 2: Remove PressRoom's contributions to various portal_properties.site_properties props
-    out = restorePropertiesSettings(portal, out)
+    restorePropertiesSettings(portal, out)
     # 3: Remove 'folder_listing_pressroom' view from topic's list of view methods
-    out = restoreViewMethods(portal, out)
-
+    restoreViewMethods(portal, out)
     return out.getvalue()

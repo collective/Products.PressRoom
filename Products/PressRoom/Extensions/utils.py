@@ -30,13 +30,11 @@ def restoreKupuSettings(portal, out):
                                    'portal_types'  :  collection},))
     print >> out, "Removed reference to PressRoom types from kupu's linkable and collection types"
 
-    return out
-
 def restoreTinyMCESettings(portal, out):
     """Remove PressRoom types from TinyMCE's linkable & containsobject types"""
     tinymce = getToolByName(portal, 'portal_tinymce', None)
     if tinymce is None:
-        return out
+        return 
     
     containsobjects = tinymce.containsobjects.splitlines()
     if 'PressRoom' in containsobjects:
@@ -50,7 +48,6 @@ def restoreTinyMCESettings(portal, out):
     tinymce.linkable = "\n".join(linkable)
     
     print >> out, "Removed reference to PressRoom types from TinyMCE's linkable and containsobject types"
-    return out
 
 def restorePropertiesSettings(portal, out):
     """Remove PressRoom's contributions to various portal_properties.site_properties props"""
@@ -88,8 +85,6 @@ def restorePropertiesSettings(portal, out):
             site_properties.manage_changeProperties(typesLinkToFolderContentsInFC = typesLinkToFolderContentsInFC)
             print >> out, "Removed PressRoom from typesLinkToFolderContentsInFC"
 
-    return out
-
 def restoreViewMethods(portal, out):
     """Remove 'folder_listing_pressroom' view from topic's list of view methods"""
     types_tool = getToolByName(portal, 'portal_types')
@@ -100,5 +95,3 @@ def restoreViewMethods(portal, out):
             view_methods.remove('folder_listing_pressroom')
             topicFTI.view_methods = tuple(view_methods)
             print >> out, "Removed 'folder_listing_pressroom' view from topic's list of view methods"
-
-    return out
