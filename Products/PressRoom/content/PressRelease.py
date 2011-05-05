@@ -20,7 +20,11 @@ except ImportError:
 from Products.ATContentTypes.content.newsitem import ATNewsItem
 from Products.ATContentTypes.content.newsitem import ATNewsItemSchema
 from Products.ATContentTypes.content.newsitem import finalizeATCTSchema
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+
+try:
+    from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
+except ImportError:
+    from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
 
 # PR
 from Products.PressRoom.config import *

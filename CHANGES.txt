@@ -1,6 +1,9 @@
 History
 =======
 
+3.16 (2011-05-05)
+ - use archetypes.referencebrowserwidget if available [ajung]
+
 3.15 (2011-04-19)
  - general cleanup of the uninstall code [ajung]
 
