@@ -1,7 +1,10 @@
 from Products.CMFCore.utils import getToolByName
 from Products.PressRoom import HAS_PLONE30
 import string
-from Products.kupu.plone.librarytool import KupuError
+try:
+    from Products.kupu.plone.librarytool import KupuError
+except ImportError:
+    KupuError = None
 
 class PRSetup(object):
     
@@ -116,6 +119,7 @@ def importFinalSteps(context):
     
     site = context.getSite()
     configurator = PRSetup()
-    configurator.configureKupu(site)
+    if KupuError is not None:
+        configurator.configureKupu(site)
     configurator.configureATCT(site)
     configurator.removeUnneededSkinLayer(site)
