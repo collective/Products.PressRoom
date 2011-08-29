@@ -1,6 +1,8 @@
 History
 =======
 
+3.18 (unreleased)
+
 3.17 (2011-08-29)
  - Use a separate add permission for each type, and grant them to the Site
    Administrator role by default. [davisagli]
