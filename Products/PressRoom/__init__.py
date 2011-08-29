@@ -38,13 +38,14 @@ def initialize(context):
         listTypes(PROJECTNAME),
         PROJECTNAME)
 
-    utils.ContentInit(
-        PROJECTNAME + ' Content',
-        content_types      = content_types,
-        permission         = ADD_CONTENT_PERMISSION,
-        extra_constructors = constructors,
-        fti                = ftis,
-        ).initialize(context)
+    for content_type, constructor, fti in zip(content_types, constructors, ftis):
+        utils.ContentInit(
+            PROJECTNAME + ' Content',
+            content_types      = (content_type,),
+            permission         = PERMISSIONS[content_type.portal_type],
+            extra_constructors = (constructor,),
+            fti                = (fti,),
+            ).initialize(context)
 
     # Register the extension profile
     profile_registry.registerProfile('default',

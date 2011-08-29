@@ -32,7 +32,7 @@ class PressRoom(BrowserView):
     def canAddPressContacts(self):
         """Returns True if the current user has permission to add Press Contacts"""
         membership_tool = getToolByName(self.context, 'portal_membership')
-        return membership_tool.checkPermission('PressRoom: Add portal press rooms', self.context)
+        return membership_tool.checkPermission('PressRoom: Add press contacts', self.context)
         
     # BBB This method is deprecated and will be removed in PressRoom 4.0.
     def getReleases(self):
@@ -51,7 +51,7 @@ class PressRoom(BrowserView):
     def canAddPressReleases(self):
         """Returns True if the current user has permission to add Press Releases"""
         membership_tool = getToolByName(self.context, 'portal_membership')
-        return membership_tool.checkPermission('Add_Portal_Content', self.context)
+        return membership_tool.checkPermission('PressRoom: Add press releases', self.context)
         
     # BBB This method is deprecated and will be removed in PressRoom 4.0.
     def getClips(self):
@@ -70,7 +70,7 @@ class PressRoom(BrowserView):
     def canAddPressClips(self):
         """Returns True if the current user has permission to add Press Clips"""
         membership_tool = getToolByName(self.context, 'portal_membership')
-        return membership_tool.checkPermission('Add_Portal_Content', self.context)
+        return membership_tool.checkPermission('PressRoom: Add press clips', self.context)
 
     def showTwoStatePrivateWarning(self):
         """Returns True if we're in Plone 3.0, the press room's supporting folders are private,
