@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '3.18dev'
+version = '3.18'
 
 setup(name='Products.PressRoom',
       version=version,

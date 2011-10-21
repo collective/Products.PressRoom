@@ -1,7 +1,10 @@
 History
 =======
 
-3.18 (unreleased)
+3.18 (2011-10-21)
+- subhead field must not be languageIndependent - there
+  is no need why the subheading should not be translatable
+  [ajung]
 
 3.17 (2011-08-29)
  - Use a separate add permission for each type, and grant them to the Site

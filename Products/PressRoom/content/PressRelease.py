@@ -54,7 +54,7 @@ schema = schema + Schema((
     StringField('subhead',
                 required=0,
                 primary=False,
-                languageIndependent=1,
+                languageIndependent=0,
                 searchable=1,
                 widget=StringWidget(
                     label='Subheadline',
