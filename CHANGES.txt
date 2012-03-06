@@ -1,5 +1,8 @@
 History
 =======
+3.19 (UNRELEASED)
+- typo in Release Date description
+  [spanky]
 
 3.18 (2011-10-21)
 - subhead field must not be languageIndependent - there

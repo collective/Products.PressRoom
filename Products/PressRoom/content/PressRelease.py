@@ -83,7 +83,7 @@ schema = schema + Schema((
                 widget=CalendarWidget(
                     label='Press release date',
                     label_msgid = "label_release_date",
-                    description='Provide a date for when this press relase will be distributed',
+                    description='Provide a date for when this press release will be distributed',
                     description_msgid = "help_release_date",
                     i18n_domain = "pressroom",),
                 ),
