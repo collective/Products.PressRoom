@@ -111,10 +111,13 @@ schema = schema + Schema((
 
 schema.moveField('releaseTiming', before='title')
 schema.moveField('subhead', after='title')
-schema.moveField('location', after='subhead')
 schema.moveField('releaseDate', after='location')
 
 finalizeATCTSchema(schema)
+
+# This must be done after finalizeATCTSchema
+schema.changeSchemataForField('location', 'default')
+schema.moveField('location', after='subhead')
 
 class PressRelease(ATNewsItem):
     """For an organization's original press release documents."""

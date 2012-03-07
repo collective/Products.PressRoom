@@ -1,6 +1,11 @@
 History
 =======
 3.19 (UNRELEASED)
+
+- Move location field to the proper Schemata (default) and place it in the 
+  proper order in the schema, AFTER finalizeATCTSchema().
+  [spanky]
+
 - typo in Release Date description
   [spanky]
 
