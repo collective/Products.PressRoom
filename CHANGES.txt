@@ -2,7 +2,14 @@ History
 =======
 3.19 (UNRELEASED)
 
-- Move location field to the proper Schemata (default) and place it in the 
+- Opened git repo.
+  [smcmahon]
+
+- Remove template calls to old document_related_items, which was removed
+  in Plone 4.3. Related items are in the belowcontent viewletmanager.
+  [smcmahon]
+
+- Move location field to the proper Schemata (default) and place it in the
   proper order in the schema, AFTER finalizeATCTSchema().
   [spanky]
 
@@ -144,7 +151,7 @@ History
 1.0.1
  - Fixed dumb tab issue. [jonstahl]
 
-1.0 final 
+1.0 final
  - Fixed smart folder index fields to include getReleaseDate and getStoryDate
 
 1.0 beta
@@ -155,10 +162,10 @@ History
  - Resolved compatibility issues with LinguaPlone and PressRoom due to subclassing of
    i18N-unaware type for the PressRoom type
 
-0.8 
- - Initial release to plone.org products area (CHANGES regime not in place so do the following:   
+0.8
+ - Initial release to plone.org products area (CHANGES regime not in place so do the following:
    "svn diff --verbose -r 23865:27132" against the collective repository to determine what
    has changed)
 
-0.1 
+0.1
  - Initial release and migration to Collective

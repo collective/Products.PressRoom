@@ -8,7 +8,7 @@
 <body>
 
 <div metal:fill-slot="main">
-    <tal:main-macro metal:define-macro="main" 
+    <tal:main-macro metal:define-macro="main"
          tal:define="kssClassesView context/@@kss_field_decorator_view;
                      getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                      templateId template/getId">
@@ -20,7 +20,7 @@
         </h1>
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
-        
+
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
         <p tal:define="text here/getText"
@@ -36,7 +36,7 @@
                                 templateId=templateId, macro='jobtitle-field-view');"
                       id="parent-fieldname-jobtitle"
                       tal:attributes="class string: summary$kss_class;">
-                  <span metal:define-slot="inside" 
+                  <span metal:define-slot="inside"
                         tal:replace="here/getJobtitle">[Job Title]</span>
                 </span>
                 <br />
@@ -49,7 +49,7 @@
                                 templateId=templateId, macro='organization-field-view');"
                       id="parent-fieldname-organization"
                       tal:attributes="class string: summary$kss_class;">
-                  <span metal:define-slot="inside" 
+                  <span metal:define-slot="inside"
                         tal:replace="here/getOrganization">[Organization]</span>
                 </span>
                 <br />
@@ -66,7 +66,7 @@
                                     templateId=templateId, macro='city-field-view');"
                           id="parent-fieldname-city"
                           tal:attributes="class string: summary$kss_class;">
-                      <span metal:define-slot="inside" 
+                      <span metal:define-slot="inside"
                             tal:replace="here/getCity">[City]</span></span></tal:city><tal:province
                     tal:condition="province">,
                         <span metal:define-macro="stateOrProvince-field-view"
@@ -74,7 +74,7 @@
                                         templateId=templateId, macro='stateOrProvince-field-view');"
                               id="parent-fieldname-stateOrProvince"
                               tal:attributes="class string: summary$kss_class;">
-                          <span metal:define-slot="inside" 
+                          <span metal:define-slot="inside"
                                 tal:replace="here/getStateOrProvince">[State]</span>
                         </span>
                     </tal:province>
@@ -86,7 +86,7 @@
                    tal:replace="structure python: here.spamProtect(email)" />
                 <br />
             </span>
-            
+
             <span class="contact-field" tal:condition="here/getPhone | nothing">
                 <strong i18n:translate="label_phone">Phone:</strong>
                 <span metal:define-macro="phone-field-view"
@@ -94,11 +94,11 @@
                                         templateId=templateId, macro='phone-field-view');"
                               id="parent-fieldname-phone"
                               tal:attributes="class string: summary$kss_class;">
-                          <span metal:define-slot="inside" 
+                          <span metal:define-slot="inside"
                                 tal:replace="here/getPhone">[Phone]</span>
                 </span>
                 <br />
-            </span>            
+            </span>
             <span class="contact-field" tal:condition="here/getCellphone | nothing">
                 <strong i18n:translate="label_cellphone">Cellphone:</strong>
                 <span metal:define-macro="cellphone-field-view"
@@ -106,11 +106,11 @@
                                         templateId=templateId, macro='cellphone-field-view');"
                               id="parent-fieldname-cellphone"
                               tal:attributes="class string: summary$kss_class;">
-                          <span metal:define-slot="inside" 
+                          <span metal:define-slot="inside"
                                 tal:replace="here/getCellphone">[Cellphone]</span>
                 </span>
                 <br />
-            </span>            
+            </span>
 
             <span class="contact-field"
                   tal:condition="here/getPublic | nothing">
@@ -125,11 +125,7 @@
                     i18n:attributes="title label_download_vcard">vCard <img tal:replace="structure here/vcard.gif" src="" alt="" /> </a>]
             </span>
         </p>
-    
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-            Show related items if they exist
-        </div>
-        
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>

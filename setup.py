@@ -8,7 +8,7 @@ setup(name='Products.PressRoom',
                   "press room, featuring press releases, press clips and press "
                   "contacts.  Manage an online Press Room within your Plone "
                   "site.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open("CREDITS.txt").read() + "\n" +
                        open("CHANGES.txt").read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers

@@ -1,4 +1,4 @@
-## Script (Python) "computeRelatedItems"
+## Script (Python) "vCard.vcf"
 ##bind container=container
 ##bind context=context
 ##bind namespace=

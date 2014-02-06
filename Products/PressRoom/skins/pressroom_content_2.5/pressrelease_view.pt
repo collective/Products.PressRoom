@@ -12,8 +12,8 @@
             Document actions (print, sendto etc)
         </div>
 
-        <p class="releaseTiming" 
-           tal:condition="here/getReleaseTiming" 
+        <p class="releaseTiming"
+           tal:condition="here/getReleaseTiming"
            tal:content="here/getReleaseTiming | nothing">
             FOR IMMEDIATE RELEASE
         </p>
@@ -70,14 +70,10 @@
             <div tal:replace="structure text" />
         </div>
 
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-            Show related items if they exist
-        </div>
-
         <p class='release-hashes'>
             ###
         </p>
-        
+
         <div class="visualClear"></div>
 
     </tal:main-macro>
