@@ -69,9 +69,9 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
     def testContactRosterCriteria(self):
         if self.contactroster.portal_type == 'Collection':
             query = {q['i']: q['v'] for q in self.contactroster.query}
-            self.assertEqual(query['portal_type'], ['PressContact'])
+            self.assertEqual(query['portal_type'], 'PressContact')
             self.assertEqual(query['path'], '..::-1')
-            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(query['review_state'], 'published')
             self.assertEqual(self.contactroster.sort_on, 'getObjPositionInParent')
             self.assertEqual(self.contactroster.sort_reversed, False)
             return
@@ -87,9 +87,9 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
     def testAllPressReleasesCriteria(self):
         if self.allreleases.portal_type == 'Collection':
             query = {q['i']: q['v'] for q in self.allreleases.query}
-            self.assertEqual(query['portal_type'], ['PressRelease'])
+            self.assertEqual(query['portal_type'], 'PressRelease')
             self.assertEqual(query['path'], '..::-1')
-            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(query['review_state'], 'published')
             self.assertEqual(self.allreleases.sort_on, 'getReleaseDate')
             self.assertEqual(self.allreleases.sort_reversed, True)
             return
@@ -106,9 +106,9 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
     def testAllPressClipCriteria(self):
         if self.allclips.portal_type == 'Collection':
             query = {q['i']: q['v'] for q in self.allclips.query}
-            self.assertEqual(query['portal_type'], ['PressClip'])
+            self.assertEqual(query['portal_type'], 'PressClip')
             self.assertEqual(query['path'], '..::-1')
-            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(query['review_state'], 'published')
             self.assertEqual(self.allclips.sort_on, 'getStorydate')
             self.assertEqual(self.allclips.sort_reversed, True)
             return

@@ -196,8 +196,8 @@ class PressRoom(ATFolder):
                 state_crit.setValue('published')
                 type_crit = smart_obj.addCriterion('Type',
                                                    'ATPortalTypeCriterion')
-                type_crit.setValue('Press Clip')
-                smart_obj.addCriterion('getStorydate','ATSortCriterion')
+                type_crit.setValue('Press Release')
+                smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
                 path_crit = smart_obj.addCriterion('path',
                                                    'ATPathCriterion')
                 path_crit.setValue(self.UID())
@@ -209,12 +209,12 @@ class PressRoom(ATFolder):
                 #: Query by Type and Review State
                 smart_obj.query = [
                     {'i': u'portal_type',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'PressRelease'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'PressRelease',
                      },
                     {'i': u'review_state',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'published'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'published',
                      },
                     {'i': u'path',
                      'o': u'plone.app.querystring.operation.string.relativePath',
@@ -264,12 +264,12 @@ class PressRoom(ATFolder):
                 #: Query by Type and Review State
                 smart_obj.query = [
                     {'i': u'portal_type',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'PressClip'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'PressClip',
                      },
                     {'i': u'review_state',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'published'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'published',
                      },
                     {'i': u'path',
                      'o': u'plone.app.querystring.operation.string.relativePath',
@@ -320,12 +320,12 @@ class PressRoom(ATFolder):
                 #: Query by Type and Review State
                 smart_obj.query = [
                     {'i': u'portal_type',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'PressContact'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'PressContact',
                      },
                     {'i': u'review_state',
-                     'o': u'plone.app.querystring.operation.selection.any',
-                     'v': [u'published'],
+                     'o': u'plone.app.querystring.operation.selection.is',
+                     'v': u'published',
                      },
                     {'i': u'path',
                      'o': u'plone.app.querystring.operation.string.relativePath',
