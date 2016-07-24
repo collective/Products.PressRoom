@@ -48,10 +48,10 @@ from Products.PressRoom.config import *
 from Products.PressRoom.interfaces.content import IPressRoom
 
 try:
-    from plone.app.contenttypes.behaviors import collection
-    coll_type = 'Collection'
+    from plone.app.collection.interfaces import ICollection
+    HAS_COLLECTIONS = True
 except ImportError:
-    coll_type = 'Topic'
+    HAS_COLLECTIONS = False
 
 
 ATPressRoomSchema = ATFolderSchema.copy()
@@ -155,17 +155,23 @@ class PressRoom(ATFolder):
         to facilitate testing."""
 
         folder_type = "Folder"
+        portal_types = getToolByName(self, "portal_types")
         if HAS_PLONE40:
             use_large_folders = False
         elif use_large_folders:
             folder_type = "Large Plone Folder"
             # enable the addition of LPFs momentarily
             large_folders_addable = True
-            portal_types = getToolByName(self, "portal_types")
             lpf = getattr(portal_types, folder_type)
             if not lpf.global_allow:
                 large_folders_addable = False
                 lpf.manage_changeProperties(global_allow = True)
+
+        coll_type = 'Topic'
+        if HAS_COLLECTIONS and 'Collection' in portal_types.objectIds():
+            if portal_types['Collection'].globalAllow():
+                coll_type = 'Collection'
+
 
         if 'press-releases' not in self.objectIds():
             self.invokeFactory(folder_type, 'press-releases')
