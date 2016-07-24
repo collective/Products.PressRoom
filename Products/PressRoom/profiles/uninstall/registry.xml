@@ -1,0 +1,29 @@
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="pressroom">
+
+  <record name="plone.default_page_types">
+    <value purge="False">
+      <element remove="True">PressClip</element>
+      <element remove="True">PressRelease</element>
+    </value>
+  </record>
+
+  <records interface="Products.CMFPlone.interfaces.ITinyMCEResourceTypesSchema" prefix="plone">
+    <value key="contains_objects" purge="false">
+      <element remove="True">PressRoom</element>
+    </value>
+  </records>
+
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getReleaseDate" remove="True" />
+
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getStorydate" remove="True" />
+
+  <records prefix="plone.resources/pressroom-styles"
+           interface="Products.CMFPlone.interfaces.IResourceRegistry" remove="True" />
+
+  <records prefix="plone.bundles/pressroom"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry' remove="True" />
+
+</registry>

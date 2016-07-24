@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<atcttool
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <topic_indexes i18n:domain="pressroom">
+  <index name="getStorydate" enabled="False" remove="True" />
+  <index name="getReleaseDate" enabled="False" remove="True" />
+ </topic_indexes>
+</atcttool>

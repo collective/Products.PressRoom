@@ -28,5 +28,16 @@ setup(name='Products.PressRoom',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'Products.Archetypes',
+          'archetypes.referencebrowserwidget',
       ],
+      extras_require=dict(
+        test=[
+            'Products.PloneTestCase',
+        ],
+      ),
+      entry_points="""
+      [z3c.autoinclude.plugin]
+      target = plone
+      """,
       )

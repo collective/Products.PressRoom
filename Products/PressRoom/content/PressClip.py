@@ -6,6 +6,12 @@ except ImportError:
   # No multilingual support
   from Products.Archetypes.public import *
 
+try:
+    from Products.Archetypes.atapi import DatetimeWidget
+    DateFieldWidget = DatetimeWidget
+except ImportError:
+    DateFieldWidget = CalendarWidget
+
 from Products.ATContentTypes.content.newsitem import ATNewsItem, ATNewsItemSchema, \
                                                      finalizeATCTSchema
 
@@ -59,7 +65,7 @@ schema += Schema((
     DateTimeField('storydate',
                 #index="DateIndex:brains",
                 required=1,
-                widget=CalendarWidget(
+                widget=DateFieldWidget(
                         label='Story Date',
                         label_msgid = "label_pressclip_storydate",
                         description='The date the clip was originally published',

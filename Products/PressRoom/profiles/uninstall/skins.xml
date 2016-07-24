@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<object name="portal_skins" meta_type="Plone Skins Tool">
+  <object name="pressroom_content"
+          meta_type="Filesystem Directory View"
+          directory="PressRoom/skins/pressroom_content"
+          remove="True" />
+  <object name="pressroom_content_2.5"
+          meta_type="Filesystem Directory View"
+          directory="PressRoom/skins/pressroom_content_2.5"
+          remove="True" />
+  <object name="pressroom_images"
+          meta_type="Filesystem Directory View"
+          directory="PressRoom/skins/pressroom_images"
+          remove="True" />
+  <object name="pressroom_scripts"
+          meta_type="Filesystem Directory View"
+          directory="PressRoom/skins/pressroom_scripts"
+          remove="True" />
+  <object name="pressroom_styles"
+          meta_type="Filesystem Directory View"
+          directory="PressRoom/skins/pressroom_styles"
+          remove="True"/>
+  <skin-path name="*">
+    <layer name="pressroom_content" remove="True" />
+    <layer name="pressroom_content_2.5" remove="True" />
+    <layer name="pressroom_images" remove="True" />
+    <layer name="pressroom_scripts" remove="True" />
+    <layer name="pressroom_styles" remove="True" />
+  </skin-path>
+</object>

@@ -42,10 +42,12 @@
 
         <metal:listingmacro define-macro="listing">
         <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;
+                            b_start python:request.get('b_start', 0);
                             limit_display limit_display|request/limit_display|nothing;
                             more_url more_url|request/more_url|string:folder_contents;
                             is_a_topic python:here.portal_type=='Topic';
-                            folderContents folderContents|nothing; folderContents python:folderContents or is_a_topic and here.queryCatalog(contentFilter) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
+                            is_a_collection python:here.portal_type=='Collection';
+                            folderContents folderContents|nothing; folderContents python:folderContents or is_a_topic and here.queryCatalog(contentFilter) or is_a_collection and here.results(b_start=b_start) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
                             use_view_action site_properties/typesUseViewActionInListings|python:();
                             over_limit python: limit_display and len(folderContents) > limit_display;
                             folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
@@ -58,13 +60,13 @@
                 <tal:entry tal:repeat="item folderContents">
                 <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                        item_id item/getId|item/id;
-                                       item_title_or_id item/pretty_title_or_id;
+                                       item_title_or_id item/Title|item/getId;
                                        item_description item/Description;
                                        item_type item/portal_type;
                                        item_type_title item/Type;
                                        item_modified item/ModificationDate;
                                        item_created item/CreationDate;
-                                       item_icon python:plone_view.getIcon(item);
+                                       item_icon item/getIcon|nothing;
                                        item_type_class python:'contenttype-' + normalizeString(item_type);
                                        item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);

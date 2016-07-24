@@ -47,14 +47,6 @@ def initialize(context):
             fti                = (fti,),
             ).initialize(context)
 
-    # Register the extension profile
-    profile_registry.registerProfile('default',
-                                     'PressRoom',
-                                     'pressroom',
-                                     'profiles/default',
-                                     'PressRoom',
-                                     EXTENSION,
-                                     IPloneSiteRoot)
 
 # Parts of the installation process depend on the version of Plone.
 # This release supports Plone 2.5.3 and Plone 3.

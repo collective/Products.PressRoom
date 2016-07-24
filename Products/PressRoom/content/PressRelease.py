@@ -16,6 +16,14 @@ except ImportError:
   # No multilingual support
   from Products.Archetypes.public import *
 
+try:
+    from Products.Archetypes.atapi import DatetimeWidget, RelatedItemsWidget
+    DateFieldWidget = DatetimeWidget
+    RelatedWidget = RelatedItemsWidget
+except ImportError:
+    DateFieldWidget = CalendarWidget
+    RelatedWidget = None
+
 # ATCT
 from Products.ATContentTypes.content.newsitem import ATNewsItem
 from Products.ATContentTypes.content.newsitem import ATNewsItemSchema
@@ -25,6 +33,9 @@ try:
     from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 except ImportError:
     from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import ReferenceBrowserWidget
+
+if not RelatedWidget:
+    RelatedWidget = ReferenceBrowserWidget
 
 # PR
 from Products.PressRoom.config import *
@@ -80,7 +91,7 @@ schema = schema + Schema((
                 searchable=0,
                 primary=False,
                 languageIndependent=0,
-                widget=CalendarWidget(
+                widget=DateFieldWidget(
                     label='Press release date',
                     label_msgid = "label_release_date",
                     description='Provide a date for when this press release will be distributed',
@@ -94,7 +105,7 @@ schema = schema + Schema((
             allowed_types=('PressContact',),
             languageIndependent = False,
             write_permission = ModifyPortalContent,
-            widget = ReferenceBrowserWidget(
+            widget = RelatedWidget(
                         allow_search = True,
                         allow_browse = True,
                         show_indexes = False,
@@ -104,7 +115,17 @@ schema = schema + Schema((
                         description = "Contact with assigned release contacts will be encouraged for further information",
                         description_msgid = "help_release_contacts",
                         i18n_domain = "pressroom",
-                        visible = {'edit' : 'visible', 'view' : 'visible' }
+                        visible = {'edit' : 'visible', 'view' : 'visible' },
+                        pattern_options={
+                            'baseCriteria': [{
+                                'i': 'portal_type',
+                                'o': 'plone.app.querystring.operation.string.is',
+                                'v': 'PressContact',
+                            }],
+                            'basePath': None,
+                            'selectableTypes': ['PressContact', ],
+                            'placeholder': _(u'Begin typing a name'),
+                        },
                 )
             )
     ),)

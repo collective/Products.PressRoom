@@ -17,17 +17,9 @@
           directory="PressRoom/skins/pressroom_styles"/>
   <skin-path name="*">
     <layer name="pressroom_content" insert-after="custom"/>
-  </skin-path>
-  <skin-path name="*">
-    <layer name="pressroom_content_2.5" insert-after="custom"/>
-  </skin-path>
-  <skin-path name="*">
+    <layer name="pressroom_content_2.5" remove="True" />
     <layer name="pressroom_images" insert-after="custom"/>
-  </skin-path>
-  <skin-path name="*">
     <layer name="pressroom_scripts" insert-after="custom"/>
-  </skin-path>
-  <skin-path name="*">
     <layer name="pressroom_styles" insert-after="custom"/>
   </skin-path>
 </object>

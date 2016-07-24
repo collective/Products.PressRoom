@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <object>
  <resourcetypes>
-  <linkable>
+  <linkable purge="False">
    <element value="PressRoom"/>
    <element value="PressRelease"/>
    <element value="PressClip"/>
    <element value="PressContact"/>
   </linkable>
-  <containsobjects>
+  <containsobjects pruge="False">
    <element value="PressRoom"/>
   </containsobjects>
  </resourcetypes>

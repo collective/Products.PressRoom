@@ -1,14 +1,22 @@
 from zope.interface import implements
 
 try:
-  from Products.LinguaPlone.public import *
+    from Products.LinguaPlone.public import *
 except ImportError:
-  # No multilingual support
-  from Products.Archetypes.public import *
+    # No multilingual support
+    from Products.Archetypes.public import (Schema, BaseSchema, StringField,
+                                            StringWidget, TextField,
+                                            RichWidget, registerType)
+
+try:
+    from Products.Archetypes.atapi import TinyMCEWidget
+    RichTextWidget = TinyMCEWidget
+except ImportError:
+    RichTextWidget = RichWidget
 
 from Products.ATContentTypes.content.base import ATCTContent
 
-from Products.PressRoom.config import *
+from Products.PressRoom.config import PROJECTNAME
 from Products.PressRoom import PressRoomMessageFactory as _
 from Products.PressRoom.interfaces.content import IPressContact
 
@@ -112,14 +120,14 @@ schema += Schema((
         searchable=1,
         default_output_type='text/x-html-safe',
         allowable_content_types=('text/html',),
-        widget = RichWidget(
+        widget = RichTextWidget(
             description = "A description of the press contact (such as their focus areas, job responsibilities, expertise, etc.)",
             # we use the old msgid for compatibility with existing translations
             description_msgid = "help_description",
             label = "Description",
             label_msgid = "label_description",
             rows = 5,
-            i18n_domain = "pressroom",)
+            i18n_domain = "pressroom",),
           ),
     
     ))

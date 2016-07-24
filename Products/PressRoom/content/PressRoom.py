@@ -14,9 +14,10 @@
 import transaction
 
 # CMF/ZOPE
-from zope.interface import implements
+from zope.interface import implements, Interface
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_base
 
 # AT
 try:
@@ -25,17 +26,32 @@ except ImportError:
     # No multilingual support
     from Products.Archetypes.public import *
 
+try:
+    from Products.Archetypes.atapi import TinyMCEWidget
+    RichTextWidget = TinyMCEWidget
+except ImportError:
+    RichTextWidget = RichWidget
+
 # ATCT
 from Products.ATContentTypes.content.folder import ATFolderSchema, ATFolder
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
 
 # Plone
 from Products.CMFPlone.i18nl10n import utranslate
-
+try:
+    from Products.CMFPlone.interfaces.constrains import ISelectableConstrainTypes
+except:
+    ISelectableConstrainTypes = Interface
 # PR
 from Products.PressRoom import HAS_PLONE40
 from Products.PressRoom.config import *
 from Products.PressRoom.interfaces.content import IPressRoom
+
+try:
+    from plone.app.contenttypes.behaviors import collection
+    coll_type = 'Collection'
+except ImportError:
+    coll_type = 'Topic'
 
 
 ATPressRoomSchema = ATFolderSchema.copy()
@@ -98,7 +114,7 @@ ATPressRoomSchema += Schema((
         allowable_content_types=('text/restructured',
                                 'text/plain',
                                 'text/html'),
-        widget = RichWidget(
+        widget = RichTextWidget(
             description = "",
             description_msgid = "help_body_text",
             label = "Body Text",
@@ -154,16 +170,18 @@ class PressRoom(ATFolder):
         if 'press-releases' not in self.objectIds():
             self.invokeFactory(folder_type, 'press-releases')
             obj = self['press-releases']
-            obj.setConstrainTypesMode(1)
-            obj.setImmediatelyAddableTypes(["PressRelease",])
-            obj.setLocallyAllowedTypes(["Topic","PressRelease",])
+            aspect = ISelectableConstrainTypes(obj, alternate=obj)
+            if getattr(aq_base(aspect), 'canSetConstrainTypes', None):
+                aspect.setConstrainTypesMode(1)
+                aspect.setImmediatelyAddableTypes(["PressRelease",])
+                aspect.setLocallyAllowedTypes([coll_type, "PressRelease",])
 
             obj.setTitle(utranslate('pressroom', 'Press Releases', context=self))
             obj.setDescription(utranslate('pressroom', 'These are our press releases', context=self))
             obj.reindexObject()
 
             # create Smart Folder to be this folder's default page
-            obj.invokeFactory('Topic','all-press-releases')
+            obj.invokeFactory(coll_type, 'all-press-releases')
             obj.setDefaultPage('all-press-releases')
 
             smart_obj = obj['all-press-releases']
@@ -172,48 +190,53 @@ class PressRoom(ATFolder):
             smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
 
-            state_crit = smart_obj.addCriterion('review_state',
-                                                'ATSimpleStringCriterion')
-            state_crit.setValue('published')
-
-            type_crit = smart_obj.addCriterion('Type',
-                                               'ATPortalTypeCriterion')
-            type_crit.setValue('Press Release')
-
-            path_crit = smart_obj.addCriterion('path',
-                                               'ATPathCriterion')
-            path_crit.setValue(self.UID())
-            path_crit.setRecurse(True)
-
-            smart_obj.addCriterion('getReleaseDate','ATSortCriterion')
-            smart_obj.getSortCriterion().setReversed(True)
-
-            # Update Smart Folder settings  
-            smart_folder_tool = getToolByName(self, 'portal_atct') 
-            if 'getReleaseDate' not in smart_folder_tool.getIndexes(enabledOnly=True):     
-                smart_folder_tool.addIndex("getReleaseDate", "Release Date", "The date of the press release", enabled=True) 
-            elif 'getReleaseDate' not in smart_folder_tool.getIndexes():
-                # index exists, but is disabled 
-                smart_folder_tool.updateIndex('getReleaseDate', enabled=True)
-            if 'getReleaseDate' not in smart_folder_tool.getAllMetadata(enabledOnly=True):
-                smart_folder_tool.addMetadata("getReleaseDate", "Release Date", "The date of the press release", enabled=True)
-            elif 'getReleaseDate' not in smart_folder_tool.getAllMetadata():     
-                # metadata exist, but are disabled     
-                smart_folder_tool.updateMetadata('getReleaseDate', enabled=True) 
+            if coll_type == 'Topic':
+                state_crit = smart_obj.addCriterion('review_state',
+                                                    'ATSimpleStringCriterion')
+                state_crit.setValue('published')
+                type_crit = smart_obj.addCriterion('Type',
+                                                   'ATPortalTypeCriterion')
+                type_crit.setValue('Press Clip')
+                smart_obj.addCriterion('getStorydate','ATSortCriterion')
+                path_crit = smart_obj.addCriterion('path',
+                                                   'ATPathCriterion')
+                path_crit.setValue(self.UID())
+                path_crit.setRecurse(True)
+                smart_obj.getSortCriterion().setReversed(True)
+            else:
+                smart_obj.sort_on = u'getReleaseDate'
+                smart_obj.sort_reversed = True
+                #: Query by Type and Review State
+                smart_obj.query = [
+                    {'i': u'portal_type',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'PressRelease'],
+                     },
+                    {'i': u'review_state',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'published'],
+                     },
+                    {'i': u'path',
+                     'o': u'plone.app.querystring.operation.string.relativePath',
+                     'v': '..::-1',
+                     },
+                ]
 
         if 'press-clips' not in self.objectIds():
             self.invokeFactory(folder_type, 'press-clips')
             obj = self['press-clips']
-            obj.setConstrainTypesMode(1)
-            obj.setImmediatelyAddableTypes(["PressClip",])
-            obj.setLocallyAllowedTypes(["Topic","PressClip",])
+            aspect = ISelectableConstrainTypes(obj, alternate=obj)
+            if getattr(aq_base(aspect), 'canSetConstrainTypes', None):
+                aspect.setConstrainTypesMode(1)
+                aspect.setImmediatelyAddableTypes(["PressClip",])
+                aspect.setLocallyAllowedTypes([coll_type, "PressClip",])
 
             obj.setTitle(utranslate('pressroom', u'Press Clips', context=self))
             obj.setDescription(utranslate('pressroom', u'See us in the news!', context=self))
             obj.reindexObject()
 
             # create Smart Folder to be this folder's default page
-            obj.invokeFactory('Topic','all-press-clips')
+            obj.invokeFactory(coll_type, 'all-press-clips')
             obj.setDefaultPage('all-press-clips')
 
             smart_obj = obj['all-press-clips']
@@ -222,45 +245,54 @@ class PressRoom(ATFolder):
             smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
 
-            state_crit = smart_obj.addCriterion('review_state',
-                                                'ATSimpleStringCriterion')
-            state_crit.setValue('published')
-            type_crit = smart_obj.addCriterion('Type',
-                                               'ATPortalTypeCriterion')
-            type_crit.setValue('Press Clip')
-            smart_obj.addCriterion('getStorydate','ATSortCriterion')
-            path_crit = smart_obj.addCriterion('path',
-                                               'ATPathCriterion')
-            path_crit.setValue(self.UID())
-            path_crit.setRecurse(True)
-            smart_obj.getSortCriterion().setReversed(True)
-
-            # Update Smart Folder settings  
-            if 'getStorydate' not in smart_folder_tool.getIndexes(enabledOnly=True):     
-                smart_folder_tool.addIndex("getStorydate", "Story Date", "The date of the press clip", enabled=True) 
-            elif 'getStorydate' not in smart_folder_tool.getIndexes():
-                # index exists, but is disabled 
-                smart_folder_tool.updateIndex('getStorydate', enabled=True)
-            if 'getStorydate' not in smart_folder_tool.getAllMetadata(enabledOnly=True):
-                smart_folder_tool.addMetadata("getStorydate", "Release Date", "The date of the press clip", enabled=True)
-            elif 'getStorydate' not in smart_folder_tool.getAllMetadata(): 
-                # metadata exist, but are disabled     
-                smart_folder_tool.updateMetadata('getStorydate', enabled=True)     
-
+            if coll_type == 'Topic':
+                state_crit = smart_obj.addCriterion('review_state',
+                                                    'ATSimpleStringCriterion')
+                state_crit.setValue('published')
+                type_crit = smart_obj.addCriterion('Type',
+                                                   'ATPortalTypeCriterion')
+                type_crit.setValue('Press Clip')
+                smart_obj.addCriterion('getStorydate','ATSortCriterion')
+                path_crit = smart_obj.addCriterion('path',
+                                                   'ATPathCriterion')
+                path_crit.setValue(self.UID())
+                path_crit.setRecurse(True)
+                smart_obj.getSortCriterion().setReversed(True)
+            else:
+                smart_obj.sort_on = u'getStorydate'
+                smart_obj.sort_reversed = True
+                #: Query by Type and Review State
+                smart_obj.query = [
+                    {'i': u'portal_type',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'PressClip'],
+                     },
+                    {'i': u'review_state',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'published'],
+                     },
+                    {'i': u'path',
+                     'o': u'plone.app.querystring.operation.string.relativePath',
+                     'v': '..::-1',
+                     },
+                ]
 
 
         if 'press-contacts' not in self.objectIds():
             self.invokeFactory("Folder", 'press-contacts')
             obj = self['press-contacts']
-            obj.setConstrainTypesMode(1)
-            obj.setImmediatelyAddableTypes(["PressContact",])
-            obj.setLocallyAllowedTypes(["Topic","PressContact",])
+            aspect = ISelectableConstrainTypes(obj, alternate=obj)
+            if getattr(aq_base(aspect), 'canSetConstrainTypes', None):
+                aspect.setConstrainTypesMode(1)
+                aspect.setImmediatelyAddableTypes(["PressContact",])
+                aspect.setLocallyAllowedTypes([coll_type, "PressContact",])
+
             obj.setTitle(utranslate('pressroom', u'Press Contacts', context=self))
             obj.setDescription(utranslate('pressroom', u'Contact these people for more information', context=self))
             obj.reindexObject()
 
             # create Smart Folder to be this folder's default page
-            obj.invokeFactory('Topic','press-contacts')
+            obj.invokeFactory(coll_type, 'press-contacts')
             obj.setDefaultPage('press-contacts')
 
             smart_obj = obj['press-contacts']
@@ -269,18 +301,37 @@ class PressRoom(ATFolder):
             smart_obj.setLayout('folder_listing_pressroom')
             smart_obj.reindexObject()
 
-            # set the criteria published, type, public, and ordering
-            state_crit = smart_obj.addCriterion('review_state',
-                                                'ATSimpleStringCriterion')
-            state_crit.setValue('published')
-            type_crit = smart_obj.addCriterion('Type',
-                                               'ATPortalTypeCriterion')
-            type_crit.setValue('Press Contact')
-            path_crit = smart_obj.addCriterion('path',
-                                               'ATPathCriterion')
-            path_crit.setValue(self.UID())
-            path_crit.setRecurse(True)
-            smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
+            if coll_type == 'Topic':
+                # set the criteria published, type, public, and ordering
+                state_crit = smart_obj.addCriterion('review_state',
+                                                    'ATSimpleStringCriterion')
+                state_crit.setValue('published')
+                type_crit = smart_obj.addCriterion('Type',
+                                                   'ATPortalTypeCriterion')
+                type_crit.setValue('Press Contact')
+                path_crit = smart_obj.addCriterion('path',
+                                                   'ATPathCriterion')
+                path_crit.setValue(self.UID())
+                path_crit.setRecurse(True)
+                smart_obj.addCriterion('getObjPositionInParent','ATSortCriterion')
+            else:
+                smart_obj.sort_on = u'getObjPositionInParent'
+                smart_obj.sort_reversed = False
+                #: Query by Type and Review State
+                smart_obj.query = [
+                    {'i': u'portal_type',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'PressContact'],
+                     },
+                    {'i': u'review_state',
+                     'o': u'plone.app.querystring.operation.selection.any',
+                     'v': [u'published'],
+                     },
+                    {'i': u'path',
+                     'o': u'plone.app.querystring.operation.string.relativePath',
+                     'v': '..::-1',
+                     },
+                ]
 
         if use_large_folders and not large_folders_addable:
             lpf.manage_changeProperties(global_allow = False)

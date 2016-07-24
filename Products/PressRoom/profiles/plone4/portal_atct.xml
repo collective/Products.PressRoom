@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<atcttool
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <topic_indexes i18n:domain="pressroom">
+  <index name="getObjPositionInParent" enabled="True">
+  </index>
+  <index name="Type" enabled="True">
+   <criteria>ATPortalTypeCriterion</criteria>
+   <criteria>ATListCriterion</criteria>
+  </index>
+  <index name="getReleaseDate"
+     description='The date a Press Clip ran in its original publication or the date a Press Release was "released".'
+     enabled="True" friendlyName="Release Date"
+     i18n:attributes="description; friendlyName">
+    <criteria>ATFriendlyDateCriteria</criteria>
+    <criteria>ATDateRangeCriterion</criteria>
+  </index>
+  <index name="getStorydate"
+     description='The date a Press Clip ran in its original publication or the date a Press Release was "released".'
+     enabled="True" friendlyName="Story Date"
+     i18n:attributes="description; friendlyName">
+    <criteria>ATFriendlyDateCriteria</criteria>
+    <criteria>ATDateRangeCriterion</criteria>
+  </index>
+ </topic_indexes>
+</atcttool>

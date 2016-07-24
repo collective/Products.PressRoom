@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+<!-- indices -->
+<index name="getReporter" remove="True" />
+<index name="getPublication" remove="True" />
+<index name="getPermalink" remove="True" />
+<index name="getStorydate" remove="True" />
+<index name="getJobtitle" remove="True" />
+<index name="getEmail" remove="True" />
+<index name="getCity" remove="True" />
+<index name="getStateOrProvince" remove="True" />
+<index name="getOrganization" remove="True" />
+<index name="getPhone" remove="True" />
+<index name="getReleaseTiming" remove="True" />
+<index name="getSubhead" remove="True" />
+<index name="getLocation" remove="True" />
+<index name="getReleaseDate" remove="True" />
+<index name="getReleaseContacts" remove="True" />
+<!-- metadata fields -->
+<column value="getReporter" remove="True" />
+<column value="getPublication" remove="True" />
+<column value="getPermalink" remove="True" />
+<column value="getStorydate" remove="True" />
+<column value="getJobtitle" remove="True" />
+<column value="getEmail" remove="True" />
+<column value="getCity" remove="True" />
+<column value="getStateOrProvince" remove="True" />
+<column value="getOrganization" remove="True" />
+<column value="getPhone" remove="True" />
+<column value="getCellphone" remove="True" />
+<column value="getReleaseTiming" remove="True" />
+<column value="getSubhead" remove="True" />
+<column value="getLocation" remove="True" />
+<column value="getReleaseDate" remove="True" />
+<column value="getReleaseContacts" remove="True" />
+</object>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object>
+ <resourcetypes>
+  <linkable purge="False">
+   <element value="PressRoom" remove="True"/>
+   <element value="PressRelease" remove="True"/>
+   <element value="PressClip" remove="True"/>
+   <element value="PressContact" remove="True"/>
+  </linkable>
+  <containsobjects purge="False">
+   <element value="PressRoom" remove="True"/>
+  </containsobjects>
+ </resourcetypes>
+</object>

@@ -71,7 +71,7 @@
     <tal:pressContacts condition="showContacts">
         <div id="press-contacts-box"
              tal:define="pressContactsCollection nocall:context/press-contacts/press-contacts|nothing;
-                         pressContacts pressContactsCollection/queryCatalog|python:[];
+                         pressContacts pressContactsCollection/results|pressContactsCollection/queryCatalog|python:[];
                          canAddPressContacts pr_view/canAddPressContacts"
              tal:condition="python: pressContacts or (canAddPressContacts and pressContactsCollection)">
             <h3 class="pressroomSection">
@@ -88,7 +88,7 @@
                         tal:define="contact_url item/getURL|item/absolute_url">
                         <a tal:attributes="href contact_url;
                                            title item/Description|nothing"
-                           tal:content="item/pretty_title_or_id">
+                           tal:content="item/Title|item/getId">
                             [Contact's Name]
                         </a>
                     </dt>
@@ -122,7 +122,7 @@
     <tal:pressReleases condition="showReleases">
         <div id='press-releases'
              tal:define="pressReleasesCollection nocall:context/press-releases/all-press-releases|nothing;
-                         pressReleases pressReleasesCollection/queryCatalog|python:[];
+                         pressReleases pressReleasesCollection/results|pressReleasesCollection/queryCatalog|python:[];
                          canAddPressReleases pr_view/canAddPressReleases"
              tal:condition="python: pressReleases or (canAddPressReleases and pressReleasesCollection)">
                       
@@ -138,7 +138,7 @@
             </h3>
             
             <dl tal:condition="pressReleases">
-                <tal:entry tal:repeat="item python:pressReleases[:viewReleaseAmt]">
+                <tal:entry tal:repeat="item python:len(pressReleases) >= viewReleaseAmt and pressReleases[:viewReleaseAmt] or pressReleases">
                     <tal:block tal:define="item_description item/Description;
                                            item_subhead item/getSubhead;
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
@@ -147,11 +147,11 @@
             
                     <dt metal:define-macro="releaselistitem">
         
-                        <div tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
+                        <div class="contenttype-pressrelease">
                             <a href="#" 
                                tal:attributes="href item/getURL|item/absolute_url;
                                                class string:$item_wf_state_class visualIconPadding"
-                               tal:content="item/pretty_title_or_id">
+                               tal:content="item/Title|item/getId">
                                 Item Title
                             </a>
                         </div>
@@ -204,7 +204,7 @@
     <tal:pressClips condition="showClips">
         <div id="press-clips"
              tal:define="pressClipsCollection nocall:context/press-clips/all-press-clips|nothing;
-                         pressClips pressClipsCollection/queryCatalog|python:[];
+                         pressClips pressClipsCollection/results|pressClipsCollection/queryCatalog|python:[];
                          canAddPressClips pr_view/canAddPressClips"
              tal:condition="python: pressClips or (canAddPressClips and pressClipsCollection)">
             <h3 class="pressroomSection">
@@ -219,7 +219,7 @@
             </h3>
             
             <dl tal:condition="pressClips">
-                <tal:entry tal:repeat="item python:pressClips[:viewClipAmt]">
+                <tal:entry tal:repeat="item python:len(pressClips) >= viewClipAmt and pressClips[:viewClipAmt] or pressClips">
                     <tal:block tal:define="item_description item/Description;
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
@@ -227,11 +227,11 @@
         
                         <dt metal:define-macro="cliplistitem">
         
-                            <div tal:attributes="class python: 'contenttype-' + normalizeString(item.portal_type)">
+                            <div class="contenttype-pressclip">
                                 <a href="#" 
                                    tal:attributes="href item/getURL|item/absolute_url;
                                                    class string:$item_wf_state_class visualIconPadding"
-                                   tal:content="item/pretty_title_or_id">
+                                   tal:content="item/Title|item/getId">
                                     Item Title
                                 </a>
                                 </div>

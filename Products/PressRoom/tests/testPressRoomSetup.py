@@ -6,6 +6,11 @@ import string
 
 from Products.PressRoom.tests import PressRoomTestCase
 from Products.PressRoom import HAS_PLONE30
+try:
+    from Products.CMFPlone.resources import RESOURCE_DEVELOPMENT_MODE
+    HAS_PLONE50 = True
+except ImportError:
+    HAS_PLONE50 = False
 
 class TestInstallation(PressRoomTestCase.PressRoomTestCase):
     """Ensure product is properly installed"""
@@ -59,16 +64,19 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         # PR originally wanted Press Contacts to be unsearchable, but that doesn't make
         # sense -- people want to be able to find press contacts as quickly as possible
         # this test now confirms only that PressContacts are indeed searchable
-        types_not_searched = self.properties.site_properties.getProperty('types_not_searched')
-        self.failUnless('PressContact' not in types_not_searched)
+        if not HAS_PLONE50:
+            types_not_searched = self.properties.site_properties.getProperty('types_not_searched')
+            self.failUnless('PressContact' not in types_not_searched)
 
     def testCssInstalled(self):
-        self.failUnless('PressRoom.css' in self.css.getResourceIds())
+        if not HAS_PLONE50:
+            self.failUnless('PressRoom.css' in self.css.getResourceIds())
     
     def testDefaultPageType(self):
-        default_page_types = self.properties.site_properties.getProperty('default_page_types')
-        self.failUnless('PressRelease' in default_page_types)
-        self.failUnless('PressClip' in default_page_types)
+        if not HAS_PLONE50:
+            default_page_types = self.properties.site_properties.getProperty('default_page_types')
+            self.failUnless('PressRelease' in default_page_types)
+            self.failUnless('PressClip' in default_page_types)
         
     def testKupuResources(self):
         if self.kupu is None:
@@ -92,17 +100,10 @@ class TestInstallation(PressRoomTestCase.PressRoomTestCase):
         
         self.failUnless('PressRoom' in self.tinymce.containsobjects.splitlines())
 
-    def testFolderPositionEnabled(self):
-        index = self.atct_tool.getIndex("getObjPositionInParent")
-        self.failUnless(index.enabled)
-
-    def testTypeATCTCriterion(self):
-        index = self.atct_tool.getIndex("Type")
-        self.failUnless("ATListCriterion" in index.criteria)
-
     def testStorydateIndexEnabledForTopics(self):
-        index = self.atct_tool.getIndex("getStorydate")
-        self.failUnless(index.enabled)
+        if not HAS_PLONE50:
+            index = self.atct_tool.getIndex("getStorydate")
+            self.failUnless(index.enabled)
 
 
 class TestContentCreation(PressRoomTestCase.PressRoomTestCase):

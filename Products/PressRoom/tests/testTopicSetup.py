@@ -67,6 +67,14 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(len(self.allreleases.queryCatalog()),n)
 
     def testContactRosterCriteria(self):
+        if self.contactroster.portal_type == 'Collection':
+            query = {q['i']: q['v'] for q in self.contactroster.query}
+            self.assertEqual(query['portal_type'], ['PressContact'])
+            self.assertEqual(query['path'], '..::-1')
+            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(self.contactroster.sort_on, 'getObjPositionInParent')
+            self.assertEqual(self.contactroster.sort_reversed, False)
+            return
         # Press Contact topic is in place as default view and has a criterion to show
         # only published Press Contacts sorted by their position in the folder.
         self.assertEqual(self.contactroster._getPortalTypeName(), 'Topic')
@@ -77,6 +85,14 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.contactroster.getSortCriterion().field,'getObjPositionInParent')
 
     def testAllPressReleasesCriteria(self):
+        if self.allreleases.portal_type == 'Collection':
+            query = {q['i']: q['v'] for q in self.allreleases.query}
+            self.assertEqual(query['portal_type'], ['PressRelease'])
+            self.assertEqual(query['path'], '..::-1')
+            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(self.allreleases.sort_on, 'getReleaseDate')
+            self.assertEqual(self.allreleases.sort_reversed, True)
+            return
         # Press Release topic is in place as default view and has a criterion to show
         # only published Press Contacts within the current press room object
         self.assertEqual(self.allreleases._getPortalTypeName(), 'Topic')
@@ -88,6 +104,14 @@ class TestTopicSetup(PressRoomTestCase.PressRoomTestCase):
         self.assertEqual(self.allreleases.getSortCriterion().getReversed(),True)
 
     def testAllPressClipCriteria(self):
+        if self.allclips.portal_type == 'Collection':
+            query = {q['i']: q['v'] for q in self.allclips.query}
+            self.assertEqual(query['portal_type'], ['PressClip'])
+            self.assertEqual(query['path'], '..::-1')
+            self.assertEqual(query['review_state'], ['published'])
+            self.assertEqual(self.allclips.sort_on, 'getStorydate')
+            self.assertEqual(self.allclips.sort_reversed, True)
+            return
         # Press Clip topic is in place as default view and has a criterion to show
         # only Press Clips with published press clips within the appropriate path location
         self.assertEqual(self.allclips._getPortalTypeName(), 'Topic')
