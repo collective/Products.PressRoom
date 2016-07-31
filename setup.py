@@ -29,6 +29,7 @@ setup(name='Products.PressRoom',
           'setuptools',
           # -*- Extra requirements: -*-
           'Products.Archetypes',
+          'Products.ATContentTypes',
           'archetypes.referencebrowserwidget',
       ],
       extras_require=dict(

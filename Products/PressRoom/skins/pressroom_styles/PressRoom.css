@@ -1,18 +1,3 @@
-/*
-** Press Room style sheet - Portlets
-**
-** Style sheet documentation can be found at http://plone.org/documentation
-**
-** You should preferrably use ploneCustom.css to add your own CSS classes and to
-** customize your Press Room, as these are the base fundaments of this Product and will
-** change and be refined in newer versions. Keeping your changes in
-** ploneCustom.css will make it easier to upgrade.
-**
-*/
-
-/* <dtml-with base_properties> (do not remove this :) */
-/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-
 /* -=-=-=- Press Release Styles -=-=-=- */
 
 .pressroomSubhead {
@@ -34,7 +19,7 @@
  margin-left: 20px;
  border: 1px solid #CCC;
  padding: 10px;
- background: &dtml-helpBackgroundColor;; 
+ background: #ffffe1; 
 }
 #press-contacts-box dt { margin-top: 1em;}
 #press-contacts-box dd {
@@ -88,5 +73,15 @@
  margin-bottom: 1em;
 }
 
-/* </dtml-with> */
+body#visual-portal-wrapper.pat-plone #edit-zone .contenttype-pressroom:after {
+    content: '\e801';
+}
 
+body#visual-portal-wrapper.pat-plone #edit-zone .contenttype-pressclip:after,
+body#visual-portal-wrapper.pat-plone #edit-zone .contenttype-pressrelease:after {
+    content: '\e80f';
+}
+
+body#visual-portal-wrapper.pat-plone #edit-zone .contenttype-presscontact:after {
+    content: '\e800';
+}
