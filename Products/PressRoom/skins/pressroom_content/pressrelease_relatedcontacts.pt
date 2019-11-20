@@ -13,7 +13,8 @@
                     <legend i18n:translate="label_related_items">For more information, contact</legend>
                     <ul class="visualNoMarker">
                     <tal:related tal:repeat="item related"
-                         tal:define="use_view_action site_properties/typesUseViewActionInListings|python:();">
+                         tal:define="use_view_action context/@@pr-utils/types_use_view_action_in_listings|python:();
+">
                         <li tal:define="
                                 normalizeString nocall:context/@@plone/normalizeString;
                                 desc                item/Description;

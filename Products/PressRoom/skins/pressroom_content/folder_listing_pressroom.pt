@@ -48,12 +48,14 @@
                             is_a_topic python:here.portal_type=='Topic';
                             is_a_collection python:here.portal_type=='Collection';
                             folderContents folderContents|nothing; folderContents python:folderContents or is_a_topic and here.queryCatalog(contentFilter) or is_a_collection and here.results(b_start=b_start) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
-                            use_view_action site_properties/typesUseViewActionInListings|python:();
+                            pr_utils nocall:context/@@pr-utils|nothing;
+                            use_view_action pr_utils/types_use_view_action_in_listings|python:();
                             over_limit python: limit_display and len(folderContents) > limit_display;
                             folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
                             batch folderContents;
                             isAnon context/@@plone_portal_state/anonymous;
-                            show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
+                            allowAnonymousViewAbout pr_utils/allow_anonymous_view_about|python:False;
+                            show_about python:not isAnon or allowAnonymousViewAbout;">
         <tal:listing condition="folderContents">
 
             <dl>

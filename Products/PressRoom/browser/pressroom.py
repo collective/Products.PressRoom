@@ -1,5 +1,6 @@
 from zope.interface import implements
 from Acquisition import aq_inner
+from AccessControl import ClassSecurityInfo
 
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
@@ -130,3 +131,20 @@ class PressRoom(BrowserView):
                                               type="info")
 
         self.request.response.redirect(context.absolute_url())
+
+
+class PressRoomUtils(BrowserView):
+    """PressRoom helper methods"""
+    security = ClassSecurityInfo()
+
+    @security.public
+    def types_use_view_action_in_listings(self):
+        """Returns the types that require /view"""
+        registry = getToolByName(self.context, 'portal_registry')
+        return registry.get('plone.types_use_view_action_in_listings', [])
+
+    @security.public
+    def allow_anonymous_view_about(self):
+        """Are non users allowed to see bylines"""
+        registry = getToolByName(self.context, 'portal_registry')
+        return registry.get('plone.allow_anon_views_about', [])

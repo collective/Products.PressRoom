@@ -17,4 +17,13 @@
           allowed_interface="..interfaces.browserviews.IPressRoom"
           />
 
+    <!-- utils -->
+    <browser:page
+          name="pr-utils"
+          for="*"
+          class=".pressroom.PressRoomUtils"
+          permission="zope.Public"
+          allowed_attributes="types_use_view_action_in_listings allow_anonymous_view_about"
+          />
+
 </configure>
