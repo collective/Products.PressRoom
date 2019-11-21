@@ -98,7 +98,7 @@
                     </dd>
                     <dd tal:define="email item/getEmail|nothing"
                         tal:condition="email">
-                        <a tal:replace="structure python: here.spamProtect(email)">[Spam-protected email]</a>
+                        <a tal:replace="structure email">[Spam-protected email]</a>
                     </dd>
                     <dd tal:define="phone item/getPhone|nothing"
                         tal:condition="phone">

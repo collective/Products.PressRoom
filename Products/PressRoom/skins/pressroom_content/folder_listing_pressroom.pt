@@ -133,7 +133,7 @@
                         </div>
                         <div class='documentByLine'
                              tal:condition="item_email"
-                             ><a tal:replace="structure python: here.spamProtect(item_email)">[Spam-protected email]</a></div>
+                             ><a tal:replace="structure item_email">[Spam-protected email]</a></div>
                         <div class='documentByLine'
                              tal:condition="item_phone">
                              <span i18n:translate="label_phone">Phone:</span>

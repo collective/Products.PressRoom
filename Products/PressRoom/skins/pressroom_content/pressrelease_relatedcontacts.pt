@@ -40,7 +40,7 @@
                              </span> | 
                              <span class="contactEmail"
                                    tal:condition="item/email">
-                              <a tal:define="email item/email" tal:replace="structure python: here.spamProtect(email)" />
+                              <a tal:define="email item/email" tal:replace="structure email" />
                              </span>
                             </span>
                         </li>
