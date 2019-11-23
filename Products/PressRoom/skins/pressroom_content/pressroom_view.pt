@@ -77,7 +77,7 @@
             <h3 class="pressroomSection">
                 <span tal:replace="pressContactsCollection/Title">Press Contacts</span>
                 <span tal:condition="canAddPressContacts" class="addPressRoomItem">
-                  <a href="./press-contacts/createObject?type_name=PressContact"
+                  <a href="press/press-contacts/createObject?type_name=PressContact"
                      i18n:translate="label_add_press_contact">[Add Press Contact]</a>
                 </span>
             </h3>
@@ -131,7 +131,7 @@
                                
                 <span tal:condition="canAddPressReleases" 
                       class="addPressRoomItem">
-                    <a href="./press-releases/createObject?type_name=PressRelease" i18n:translate="label_add_release">
+                    <a href="press/press-releases/createObject?type_name=PressRelease" i18n:translate="label_add_release">
                         [Add Press Release]
                     </a>
                 </span> 
@@ -212,7 +212,7 @@
                                
                 <span tal:condition="canAddPressClips"
                       class="addPressRoomItem">
-                      <a href="./press-clips/createObject?type_name=PressClip" i18n:translate="label_add_clip">
+                      <a href="press/press-clips/createObject?type_name=PressClip" i18n:translate="label_add_clip">
                           [Add Press Clip]
                       </a>
                 </span>  
