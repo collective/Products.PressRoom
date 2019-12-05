@@ -3,6 +3,5 @@
   <version>0001</version>
   <dependencies>
     <dependency>profile-Products.PressRoom:master</dependency>
-    <!-- dependency>profile-archetypes.referencebrowserwidget:default</dependency -->
   </dependencies>
 </metadata>
