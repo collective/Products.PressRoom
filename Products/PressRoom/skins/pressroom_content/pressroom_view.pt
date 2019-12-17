@@ -195,7 +195,7 @@
                           
         <div class="morePressRoomItems"
              tal:condition="python:len(pressReleases) > viewReleaseAmt">
-            <a href="./press-releases" i18n:translate="label_more_releases">
+            <a href="press/press-releases" i18n:translate="label_more_releases">
                 More Press Releases
             </a>
         </div>
@@ -269,7 +269,7 @@
 
             <div class="morePressRoomItems"
                  tal:condition="python:len(pressClips) > viewClipAmt">
-                <a href="./press-clips" i18n:translate="label_more_clips">
+                <a href="press/press-clips" i18n:translate="label_more_clips">
                     More Press Clips
                 </a>
             </div>
