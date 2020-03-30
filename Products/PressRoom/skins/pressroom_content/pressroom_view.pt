@@ -138,12 +138,15 @@
             </h3>
             
             <dl tal:condition="pressReleases">
-                <tal:entry tal:repeat="item python:len(pressReleases) >= viewReleaseAmt and pressReleases[:viewReleaseAmt] or pressReleases">
-                    <tal:block tal:define="item_description item/Description;
+                <tal:entry tal:repeat="item pressReleases">
+
+                    <tal:block tal:define="counter repeat/item/number;
+                                           item_description item/Description;
                                            item_subhead item/getSubhead;
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                           ">
+                                           "
+                               tal:condition="python:counter <= viewReleaseAmt">
             
                     <dt metal:define-macro="releaselistitem">
         
@@ -219,11 +222,13 @@
             </h3>
             
             <dl tal:condition="pressClips">
-                <tal:entry tal:repeat="item python:len(pressClips) >= viewClipAmt and pressClips[:viewClipAmt] or pressClips">
-                    <tal:block tal:define="item_description item/Description;
+                <tal:entry tal:repeat="item pressClips">
+                    <tal:block tal:define="counter repeat/item/number;
+                                           item_description item/Description;
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                           ">
+                                           "
+                               tal:condition="python:counter <= viewClipAmt">
         
                         <dt metal:define-macro="cliplistitem">
         
