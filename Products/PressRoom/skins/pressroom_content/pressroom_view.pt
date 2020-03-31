@@ -146,8 +146,8 @@
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                            "
-                               tal:condition="python:counter <= viewReleaseAmt">
-            
+                               tal:condition="python:counter <= viewReleaseAmt or viewReleaseAmt is None">
+
                     <dt metal:define-macro="releaselistitem">
         
                         <div class="contenttype-pressrelease">
@@ -228,7 +228,7 @@
                                            item_wf_state item/review_state|python: context.portal_workflow.getInfoFor(item, 'review_state', '');
                                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                            "
-                               tal:condition="python:counter <= viewClipAmt">
+                               tal:condition="python:counter <= viewClipAmt or viewClipAmt is None">
         
                         <dt metal:define-macro="cliplistitem">
         
